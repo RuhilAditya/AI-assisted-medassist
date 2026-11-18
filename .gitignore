@@ -1,0 +1,38 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+
+# Secrets / local config
+.env
+.env.*
+!.env.example
+
+# Model weights & caches (downloaded on demand, never committed)
+models_cache/
+*.pt
+*.bin
+*.safetensors
+
+# Data: only small synthetic samples are committed
+data/*
+!data/samples/
+data/samples/*.dcm
+data/samples/biomedclip_examples/
+!data/samples/.gitkeep
+!data/samples/*.txt
+!data/samples/*.json
+!data/samples/notes/
+
+# Vector stores / outputs
+vectorstore/
+eval/results/*.png
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

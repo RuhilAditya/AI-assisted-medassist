@@ -1,0 +1,39 @@
+{
+  "_description": "Gold labels for synthetic notes in data/samples/notes. All names, IDs and contacts are fictional. 'phi' = strings that must NOT survive de-identification. 'keep' = clinical strings that MUST survive. 'active' / 'negated' = canonical findings expected from clinical NER.",
+  "note_01_pneumonia.txt": {
+    "phi": ["Rahul Verma", "AIIMS-4471923", "14/03/1968", "+91 98765 43210", "rahul.verma68@gmail.com", "42 Lajpat Nagar", "New Delhi", "Anjali Mehta"],
+    "keep": ["fever", "productive cough", "shortness of breath", "pleuritic chest pain", "5 days", "Metformin", "SpO2 89%"],
+    "active": ["fever", "productive cough", "shortness of breath", "pleuritic chest pain"],
+    "negated": ["hemoptysis", "night sweats", "weight loss"]
+  },
+  "note_02_chf.txt": {
+    "phi": ["Sunita Deshpande", "CGH-883201", "02/11/2024", "020-2556-7781", "Kulkarni", "20/11/2024", "Pune"],
+    "keep": ["congestive heart failure", "dyspnea", "orthopnea", "Kerley B lines", "Lasix", "Xarelto", "2 weeks"],
+    "active": ["congestive heart failure", "dyspnea", "leg swelling"],
+    "negated": ["chest pain", "fever"]
+  },
+  "note_03_normal.txt": {
+    "phi": ["Arjun Nair", "77120934", "arjun.nair@outlook.com"],
+    "keep": ["Asymptomatic", "no shortness of breath", "Chest x-ray", "BP 118/76"],
+    "active": [],
+    "negated": ["cough", "fever", "shortness of breath", "chest pain", "asthma", "tuberculosis", "drug allergies"]
+  },
+  "note_04_elderly_copd.txt": {
+    "phi": ["Sharma, Ramesh", "552-019-334", "93-year-old", "Vikram Sharma", "9811122233", "4821 7765 3310"],
+    "keep": ["COPD", "wheezing", "3 days", "fever", "salbutamol", "SpO2 84%"],
+    "active": ["chronic obstructive pulmonary disease", "breathlessness", "wheezing", "fever"],
+    "negated": ["chest pain", "leg swelling"]
+  },
+  "note_05_neuro.txt": {
+    "phi": ["Kavya Reddy", "18 Nov 2024", "Bengaluru", "Prakash Rao"],
+    "keep": ["slurred speech", "facial droop", "1 hour", "hypertension", "BP 186/104"],
+    "active": ["slurred speech", "facial droop", "weakness", "hypertension"],
+    "negated": ["loss of consciousness", "headache", "seizure"]
+  },
+  "note_06_parkinsons.txt": {
+    "phi": ["George Thomas", "KMC-0099812", "Kochi", "Elizabeth Mathew", "elizabeth.mathew@kmc.org"],
+    "keep": ["Parkinson's disease", "levodopa", "dizziness", "dry cough", "2 weeks", "Alzheimer's disease", "ramipril"],
+    "active": ["parkinson's disease", "tremor", "dizziness", "dry cough"],
+    "negated": ["syncope", "confusion"]
+  }
+}

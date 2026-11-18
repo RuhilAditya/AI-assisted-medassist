@@ -1,0 +1,11 @@
+Discharge Summary - City General Hospital, Pune
+Name: Mrs. Sunita Deshpande   Patient ID: CGH-883201   Admitted: 02/11/2024
+Phone: 020-2556-7781
+
+Diagnosis: Acute decompensated congestive heart failure.
+The patient is a 71-year-old woman admitted with worsening dyspnea, orthopnea and bilateral leg swelling over 2 weeks. No chest pain. No fever. Chest x-ray showed cardiomegaly with bilateral pleural effusions and Kerley B lines.
+Echocardiogram: ejection fraction 30%.
+Treated with IV Lasix and oxygen therapy. Symptoms improved.
+Past history: atrial fibrillation on Xarelto, CKD stage 3.
+Discharge medications: Furosemide 40 mg OD, Bisoprolol 2.5 mg OD, Rivaroxaban 15 mg OD.
+Follow up with Dr. Kulkarni in cardiology clinic on 20/11/2024.

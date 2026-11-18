@@ -1,0 +1,9 @@
+[project]
+name = "medassist"
+version = "0.1.0"
+description = "Multimodal Medical Assistant - B.Tech capstone (research prototype, not a medical device)"
+requires-python = ">=3.10,<3.13"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

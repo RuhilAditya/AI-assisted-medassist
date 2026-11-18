@@ -1,0 +1,17 @@
+EMERGENCY DEPARTMENT NOTE
+Patient: Rahul Verma    MRN: AIIMS-4471923    DOB: 14/03/1968
+Contact: +91 98765 43210, rahul.verma68@gmail.com
+Address: 42 Lajpat Nagar, New Delhi
+
+Chief Complaint: Fever and productive cough for 5 days.
+
+History of Present Illness:
+56-year-old male presents with fever, productive cough with yellow sputum and shortness of breath for 5 days. Reports pleuritic chest pain on the right side. Denies hemoptysis. No night sweats or weight loss.
+
+Past Medical History: Type 2 diabetes mellitus, HTN. History of tuberculosis treated in 2015.
+Medications: Metformin 500 mg BD, Amlodipine 5 mg OD.
+Family History: Father had myocardial infarction.
+
+Vitals: Temp 38.9 C, HR 112, RR 26, BP 132/84, SpO2 89% on room air.
+
+Plan: CXR, CBC, CRP, blood culture. Start empirical antibiotics. Seen by Dr. Anjali Mehta.
