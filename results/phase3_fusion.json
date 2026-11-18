@@ -1,0 +1,157 @@
+{
+  "experiment": "phase3_fusion",
+  "timestamp": "2026-11-18T17:12:17+00:00",
+  "environment": {
+    "device": "cuda",
+    "llm_model": "llama3.1:8b",
+    "biomedclip_model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "python": "3.11.7"
+  },
+  "A_real_indication": {
+    "macro_auroc": {
+      "image_only": 0.752,
+      "text_only": 0.546,
+      "fused": 0.759
+    },
+    "fused_minus_image_ci95": [
+      0.001,
+      0.014
+    ],
+    "per_finding": {
+      "cardiomegaly": {
+        "image_only": 0.879,
+        "text_only": 0.56,
+        "fused": 0.879
+      },
+      "lung opacity": {
+        "image_only": 0.797,
+        "text_only": 0.528,
+        "fused": 0.806
+      },
+      "atelectasis": {
+        "image_only": 0.703,
+        "text_only": 0.541,
+        "fused": 0.709
+      },
+      "pleural effusion": {
+        "image_only": 0.913,
+        "text_only": 0.473,
+        "fused": 0.905
+      },
+      "granuloma": {
+        "image_only": 0.571,
+        "text_only": 0.507,
+        "fused": 0.577
+      },
+      "nodule": {
+        "image_only": 0.555,
+        "text_only": 0.524,
+        "fused": 0.559
+      },
+      "emphysema": {
+        "image_only": 0.86,
+        "text_only": 0.615,
+        "fused": 0.871
+      },
+      "pulmonary edema": {
+        "image_only": 0.873,
+        "text_only": 0.629,
+        "fused": 0.88
+      },
+      "fracture": {
+        "image_only": 0.615,
+        "text_only": 0.537,
+        "fused": 0.642
+      }
+    },
+    "indications_with_any_entity": 302,
+    "llm_text_only_reference": 0.552
+  },
+  "B_simulation": {
+    "macro_auroc": {
+      "image_only": 0.752,
+      "text_only": 0.843,
+      "fused": 0.867
+    },
+    "fused_minus_image_ci95": [
+      0.097,
+      0.133
+    ],
+    "per_finding": {
+      "cardiomegaly": {
+        "image_only": 0.879,
+        "text_only": 0.88,
+        "fused": 0.922
+      },
+      "lung opacity": {
+        "image_only": 0.797,
+        "text_only": 0.893,
+        "fused": 0.874
+      },
+      "atelectasis": {
+        "image_only": 0.703,
+        "text_only": 0.797,
+        "fused": 0.772
+      },
+      "pleural effusion": {
+        "image_only": 0.913,
+        "text_only": 0.909,
+        "fused": 0.951
+      },
+      "granuloma": {
+        "image_only": 0.571,
+        "text_only": 0.806,
+        "fused": 0.835
+      },
+      "nodule": {
+        "image_only": 0.555,
+        "text_only": 0.847,
+        "fused": 0.868
+      },
+      "emphysema": {
+        "image_only": 0.86,
+        "text_only": 0.853,
+        "fused": 0.94
+      },
+      "pulmonary edema": {
+        "image_only": 0.873,
+        "text_only": 0.922,
+        "fused": 0.912
+      },
+      "fracture": {
+        "image_only": 0.615,
+        "text_only": 0.685,
+        "fused": 0.73
+      }
+    },
+    "simulation": {
+      "p_symptom": 0.5,
+      "p_assert": 0.25,
+      "p_distractor": 0.08,
+      "p_negate": 0.15,
+      "seed": 7
+    }
+  },
+  "C_conflicts": {
+    "injected": 61,
+    "detected": 29,
+    "detection_rate": 0.475,
+    "detectable": 29,
+    "detection_rate_when_image_agrees_with_truth": 1.0,
+    "by_kind": {
+      "denies_present_finding": {
+        "injected": 42,
+        "detected": 12,
+        "rate": 0.286
+      },
+      "asserts_absent_finding": {
+        "injected": 19,
+        "detected": 17,
+        "rate": 0.895
+      }
+    },
+    "alert_rate_without_injection": 0.166
+  },
+  "bootstrap_resamples": 1000
+}

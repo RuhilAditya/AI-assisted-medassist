@@ -54,9 +54,18 @@ def status() -> dict[str, object]:
     }
 
 
+class NewCase(BaseModel):
+    title: str | None = Field(default=None, max_length=120)
+
+
 @app.post("/cases", status_code=201)
-def create_case() -> dict[str, str]:
-    return {"case_id": get_store().create_case()}
+def create_case(body: NewCase | None = None) -> dict[str, str]:
+    return {"case_id": get_store().create_case(title=body.title if body else None)}
+
+
+@app.get("/cases")
+def list_cases() -> list[dict]:
+    return get_store().list_cases()
 
 
 @app.get("/cases/{case_id}")
@@ -158,3 +167,29 @@ def ask_case(case_id: str, body: Question) -> dict:
         return ask_case_notes(case, body.question, k=body.k)
     except (LLMError, ConnectionError) as exc:
         raise HTTPException(status_code=502, detail=f"LLM unavailable: {exc}") from exc
+
+
+# ---------------- Phase 3: multimodal assistant ----------------
+class ChatRequest(BaseModel):
+    question: str = Field(min_length=2, max_length=2000)
+    image_id: str | None = None  # default: the case's most recent image
+
+
+@app.post("/cases/{case_id}/chat")
+def chat(case_id: str, body: ChatRequest) -> dict:
+    """Full multimodal answer: routed, evidence-cited, with fused findings,
+    cross-modal conflicts, NEWS2 triage and follow-up suggestions."""
+    from medassist.fusion.assistant import MedAssistant
+
+    try:
+        return MedAssistant(get_store()).chat(case_id, body.question, image_id=body.image_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None
+
+
+@app.get("/cases/{case_id}/chat")
+def chat_history(case_id: str) -> list[dict]:
+    try:
+        return get_store().get_chat(case_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None

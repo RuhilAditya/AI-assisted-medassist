@@ -91,6 +91,10 @@ class TextDeidentifier:
         nlp_engine = NlpEngineProvider(nlp_configuration={
             "nlp_engine_name": "spacy",
             "models": [{"lang_code": "en", "model_name": spacy_model}],
+            # spaCy labels that are never PHI (vitals, doses, counts): skip them quietly.
+            "ner_model_configuration": {"labels_to_ignore": [
+                "CARDINAL", "PERCENT", "QUANTITY", "ORDINAL", "MONEY", "PRODUCT", "LAW",
+                "LANGUAGE", "WORK_OF_ART", "EVENT", "FAC", "NORP"]},
         }).create_engine()
         self.analyzer = AnalyzerEngine(nlp_engine=nlp_engine, supported_languages=["en"])
         for recognizer in _custom_recognizers():

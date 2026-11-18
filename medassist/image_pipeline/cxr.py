@@ -28,6 +28,7 @@ from medassist.datasets.iu_xray import DATA_DIR, FINDINGS
 from medassist.image_pipeline.biomedclip import BiomedCLIP, get_biomedclip
 
 PROBE_FILE = DATA_DIR / "linear_probe.json"
+POSSIBLE_FLOOR = 0.2  # calibrated p below this is never shown as "possible"
 
 POSITIVE_TEMPLATES = [
     "chest x-ray showing {}",
@@ -53,9 +54,14 @@ PROMPT_ALIASES = {
 
 @dataclass(frozen=True)
 class FindingScore:
+    """level: "likely" (calibrated p >= 0.5), "possible" (p >= the finding's
+    F1-optimal threshold and >= 0.2, but < 0.5) or "unlikely". F1-optimal thresholds are
+    very low for rare findings, fine for benchmarks but too alarming to show a
+    clinician as "positive", hence the middle band. positive == likely."""
     finding: str
     probability: float
     positive: bool
+    level: str = "unlikely"
 
 
 def pad_to_square(image: Image.Image, fill: int = 0) -> Image.Image:
@@ -117,18 +123,24 @@ class CXRClassifier:
         mode = mode or self.mode
         if mode == "probe":
             logits = self.probe_logits(features)
-        elif mode == "ensemble":
+        elif mode in ("ensemble", "ensemble-raw"):
             logits = 0.5 * self.zero_shot_logits(features) + 0.5 * self.probe_logits(features)
+            calib = (self.probe or {}).get("ensemble_calibration")
+            if mode == "ensemble" and calib:
+                # Platt scaling per finding (fit on train out-of-fold predictions): makes
+                # 0.9 mean ~90%. Monotonic, so AUROC is unchanged.
+                logits = logits * np.array(calib["a"]) + np.array(calib["b"])
         else:
             logits = self.zero_shot_logits(features)
         return 1.0 / (1.0 + np.exp(-logits))
 
     def classify(self, image: Image.Image) -> list[FindingScore]:
         probs = self.probabilities(self.embed([image]))[0]
-        scores = [
-            FindingScore(f, round(float(p), 3), bool(p >= self.thresholds.get(f, 0.5)))
-            for f, p in zip(self.findings, probs)
-        ]
+        scores = []
+        for f, p in zip(self.findings, probs):
+            level = ("likely" if p >= 0.5 else
+                     "possible" if p >= max(self.thresholds.get(f, 0.5), POSSIBLE_FLOOR) else "unlikely")
+            scores.append(FindingScore(f, round(float(p), 3), level == "likely", level))
         return sorted(scores, key=lambda s: s.probability, reverse=True)
 
     # ---------- linear probe ----------

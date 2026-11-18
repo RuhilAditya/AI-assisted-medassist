@@ -46,6 +46,15 @@ TEST_TERMS = [
     "troponin", "d-dimer", "abg", "blood culture", "sputum culture", "urinalysis",
     "echocardiogram", "spirometry", "covid-19 pcr", "rt-pcr", "hba1c", "lipid panel",
 ]
+# Radiology findings: the BC5CDR model (diseases/chemicals) misses most of these.
+RADIOLOGY_TERMS = [
+    "lung opacity", "opacity", "opacities", "airspace opacity", "consolidation", "infiltrate",
+    "infiltrates", "airspace disease", "nodule", "pulmonary nodule", "lung nodule", "lung mass",
+    "cardiomegaly", "enlarged heart", "pleural effusion", "pleural effusions", "effusion",
+    "atelectasis", "emphysema", "hyperinflation", "pulmonary edema", "interstitial edema",
+    "pulmonary congestion", "granuloma", "calcified granuloma", "fracture", "rib fracture",
+    "pneumothorax", "kerley b lines", "fluid overload",
+]
 PROCEDURE_TERMS = ["intubation", "bronchoscopy", "thoracentesis", "biopsy", "nebulization", "oxygen therapy"]
 
 VITAL_PATTERNS = {
@@ -164,6 +173,7 @@ class ClinicalNER:
         matcher = self.nlp.add_pipe("medspacy_target_matcher")
         rules = (
             [TargetRule(t, "PROBLEM") for t in SYMPTOM_TERMS]
+            + [TargetRule(t, "PROBLEM") for t in RADIOLOGY_TERMS]
             + [TargetRule(t, "TEST") for t in TEST_TERMS]
             + [TargetRule(t, "PROCEDURE") for t in PROCEDURE_TERMS]
         )

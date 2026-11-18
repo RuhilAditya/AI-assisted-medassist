@@ -20,22 +20,32 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | 0 Setup | ✅ models load on GPU; smoke test 5/5 |
 | 1 Ingestion & privacy | ✅ de-ID (text + DICOM), clinical NER with negation, upload API |
 | 2 Unimodal modules | ✅ CXR findings (BiomedCLIP), heatmaps, similar cases, RAG; unimodal baselines |
-| 3 Fusion | ⏳ next |
-| 4-6 | planned |
+| 3 Fusion | ✅ multimodal assistant: routing, fused scores, conflicts, NEWS2 triage, cited answers |
+| 4 Interface | ⏳ next (React) |
+| 5-6 | planned |
 
 ### Phase 2 results (details and caveats in [docs/design.md](docs/design.md) §10)
 
 | Task | Data | Result |
 |---|---|---|
 | CXR findings, ensemble (zero-shot + probe) | IU X-Ray test, n=435, 9 findings | macro AUROC **0.752** (zero-shot alone 0.710) |
-| Abnormal vs normal | same | AUROC **0.765** |
+| Abnormal vs normal | same | AUROC **0.773** (calibrated: ECE 0.022) |
 | Similar-case retrieval (image->image) | test -> 1,065-study KB | label precision@1 **0.49** (random 0.28) |
 | Abstract retrieval (PubMedBERT-MARCO) | PubMedQA, 1,000 abstracts | Recall@1 **0.975** |
 | QA, Llama 3.1 8B | PubMedQA, 150 questions | closed-book 0.573 -> RAG **0.800** (oracle 0.820) |
 | CXR findings from indication text only (Llama) | IU X-Ray test, n=408 | macro AUROC 0.552 (near chance: indications are very short) |
 
+### Phase 3 results (details in [docs/design.md](docs/design.md) §11)
+
+| Task | Result |
+|---|---|
+| Fusion on real data (image + real indication text) | macro AUROC 0.752 -> **0.759** (+0.007, 95% CI +0.001 to +0.014) |
+| Fusion, controlled simulation (informative notes) | image 0.752 / text 0.843 -> fused **0.867** |
+| Conflict detection when the image classifier is right | **29/29 (100%)** of injected conflicts |
+| End-to-end answer time | ~30 s (LLM-bound on a 6 GB GPU) |
+
 Reproduce: `python -m scripts.eval_image`, `eval_retrieval`, `eval_text_qa`,
-`eval_text_only_cxr`. Each writes `results/<experiment>.json`.
+`eval_text_only_cxr`, `eval_fusion`. Each writes `results/<experiment>.json`.
 
 ### Phase 1 results (synthetic gold set, `python -m scripts.eval_ingestion`)
 
@@ -81,6 +91,9 @@ copy .env.example .env
 python -m scripts.prepare_iu_xray --n 1500
 python -m scripts.eval_image --train-probe   # also trains the linear probe
 python -m scripts.eval_retrieval              # also builds the similar-case index
+
+# 7. Demo cases (7 synthetic notes on real X-rays)
+python -m scripts.load_demo_cases --analyze --reset
 ```
 
 ## Verify
@@ -92,7 +105,7 @@ python -m scripts.eval_ingestion   # de-ID + NER metrics (add --verbose to see o
 uvicorn api.main:app --reload      # then open http://127.0.0.1:8000/docs
 ```
 
-## API (so far)
+## API
 
 | Method | Path | Purpose |
 |---|---|---|
@@ -105,6 +118,9 @@ uvicorn api.main:app --reload      # then open http://127.0.0.1:8000/docs
 | POST | `/cases/{id}/images/{image_id}/analyze` | Modality check, 9 CXR finding probabilities, 3 similar prior cases |
 | GET | `/cases/{id}/images/{image_id}/heatmap?finding=...` | Occlusion heatmap overlay (PNG) |
 | POST | `/cases/{id}/ask` | `{"question": ...}`: RAG answer over the case's notes, with citations |
+| GET | `/cases` | List cases (title, counts) |
+| POST | `/cases/{id}/chat` | `{"question", "image_id"?}`: **full multimodal answer**: route, cited summary/details, fused findings, conflicts, NEWS2 triage, follow-ups, timings |
+| GET | `/cases/{id}/chat` | Conversation history (questions stored de-identified) |
 
 Privacy guarantees: raw uploads are never written to disk; original filenames
 are discarded; the audit log (`data/store/audit.log`) records actions and PHI
@@ -121,7 +137,8 @@ medassist/
   datasets/           IU X-Ray loader (labels from MeSH)
   vector_index.py     persistent cosine-similarity index
   analysis.py         image / text analysis services used by the API
-  fusion/             prompts (+ router, evidence bundle, triage in Phase 3)
+  fusion/             router, evidence bundle + fused scores, conflicts, NEWS2 triage,
+                      follow-ups, prompts, orchestrator (assistant.py)
   llm/                Ollama client
   evaluation/         metrics, result saving
 api/                  FastAPI app

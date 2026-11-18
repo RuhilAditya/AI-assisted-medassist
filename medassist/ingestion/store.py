@@ -59,12 +59,22 @@ class CaseStore:
             fh.write(json.dumps(entry) + "\n")
 
     # ---------- public API ----------
-    def create_case(self) -> str:
+    def create_case(self, title: str | None = None, tags: dict | None = None) -> str:
         case_id = uuid.uuid4().hex[:12]
         (self.root / case_id).mkdir()
-        self._write_index(case_id, {"case_id": case_id, "created": _now(), "notes": [], "images": []})
+        self._write_index(case_id, {"case_id": case_id, "created": _now(), "title": title,
+                                    "tags": tags or {}, "notes": [], "images": []})
         self.audit("create_case", case_id)
         return case_id
+
+    def list_cases(self) -> list[dict]:
+        """Lightweight listing for the UI (no note text)."""
+        out = []
+        for path in sorted(self.root.glob("*/case.json"), key=lambda p: p.stat().st_mtime, reverse=True):
+            index = json.loads(path.read_text(encoding="utf-8"))
+            out.append({k: index.get(k) for k in ("case_id", "created", "title", "tags")}
+                       | {"notes": len(index["notes"]), "images": len(index["images"])})
+        return out
 
     def add_note(self, case_id: str, record: dict) -> str:
         with self._lock:
@@ -97,6 +107,26 @@ class CaseStore:
         notes = [json.loads((case_dir / f"{n}.json").read_text(encoding="utf-8")) for n in index["notes"]]
         images = [json.loads((case_dir / f"{i}.json").read_text(encoding="utf-8")) for i in index["images"]]
         return {**index, "notes": notes, "images": images}
+
+    def update_image_record(self, case_id: str, image_id: str, **fields: object) -> None:
+        """Attach derived data (e.g. a cached analysis) to an image record."""
+        with self._lock:
+            path = self.image_path(case_id, image_id).with_suffix(".json")
+            record = json.loads(path.read_text(encoding="utf-8"))
+            record.update(fields)
+            path.write_text(json.dumps(record, indent=2), encoding="utf-8")
+
+    def add_chat_turn(self, case_id: str, turn: dict) -> None:
+        """Append one Q&A turn. Questions are de-identified by the caller."""
+        with self._lock, (self._case_dir(case_id) / "chat.jsonl").open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps({"time": _now(), **turn}) + "\n")
+        self.audit("chat", case_id, route=turn.get("route"), triage=turn.get("triage_level"))
+
+    def get_chat(self, case_id: str) -> list[dict]:
+        path = self._case_dir(case_id) / "chat.jsonl"
+        if not path.exists():
+            return []
+        return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
 
     def image_path(self, case_id: str, image_id: str) -> Path:
         if not re.fullmatch(r"image_\d+", image_id):

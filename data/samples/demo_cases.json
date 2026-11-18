@@ -1,0 +1,54 @@
+{
+  "_description": "Demo cases for the presentation and UI. Notes are synthetic (all names/IDs fictional, included on purpose to show de-identification). Images are real IU X-Ray test-split studies (by uid; run scripts/prepare_iu_xray.py first) or BiomedCLIP example images. Curated to demonstrate capabilities; NOT used in any evaluation.",
+  "cases": [
+    {
+      "id": "pneumonia",
+      "title": "Fever, productive cough, hypoxia",
+      "shows": "Concordant text + image (pneumonia with effusion), NEWS2 escalation",
+      "image": {"source": "iu_xray", "uid": "1593"},
+      "note": "ED NOTE\nPatient: Deepak Malhotra, MRN AIIMS-5521098, DOB 02/07/1961, ph +91 98111 23456\n64-year-old male with fever and productive cough with green sputum for 4 days. Right-sided pleuritic chest pain and shortness of breath since yesterday. No hemoptysis. No leg swelling.\nPast history: type 2 diabetes mellitus.\nMedications: metformin.\nVitals: Temp 38.8 C, HR 108, RR 24, BP 124/78, SpO2 90% on room air.\nPlan: chest x-ray, CBC, CRP, blood culture."
+    },
+    {
+      "id": "heart-failure",
+      "title": "Breathless with leg swelling",
+      "shows": "Image cardiomegaly + edema supported by heart-failure history",
+      "image": {"source": "iu_xray", "uid": "3372"},
+      "note": "Cardiology OPD - City Heart Clinic, Pune\nName: Mrs. Lata Kulkarni, Patient ID CHC-77310\n72-year-old woman with known congestive heart failure presents with worsening dyspnea, orthopnea (needs 3 pillows) and bilateral leg swelling for 10 days. No chest pain. No fever.\nPast history: hypertension, atrial fibrillation.\nMedications: furosemide, bisoprolol, apixaban.\nVitals: BP 152/90, HR 96, RR 22, SpO2 93%, Temp 36.9 C."
+    },
+    {
+      "id": "conflict-missed-effusion",
+      "title": "Note says no effusion, X-ray disagrees",
+      "shows": "HIGH conflict: image strongly suggests pleural effusion the note denies",
+      "image": {"source": "iu_xray", "uid": "702"},
+      "note": "Oncology follow-up\nPatient Meera Iyer, UHID 40118276, seen by Dr. Sanjay Gupta\n58-year-old woman with lung cancer on chemotherapy. Reports increasing shortness of breath over 2 weeks. No fever. No cough.\nExamination: chest clear. No pleural effusion.\nVitals: BP 118/72, HR 102, RR 22, SpO2 94%, Temp 37.0 C."
+    },
+    {
+      "id": "conflict-unconfirmed-pneumonia",
+      "title": "Note says pneumonia, X-ray looks normal",
+      "shows": "Conflict: note asserts pneumonia, image classifier finds no opacity",
+      "image": {"source": "iu_xray", "uid": "2880"},
+      "note": "GP referral letter\nRe: Mr. Karan Singh, 31 years, phone 9876501234\nDiagnosed with right lower lobe pneumonia at a clinic visit last week, started on amoxicillin. Now feels better, mild dry cough only. No shortness of breath. No fever.\nVitals: BP 120/80, HR 76, RR 14, SpO2 98%, Temp 36.7 C.\nReferred for follow-up chest x-ray."
+    },
+    {
+      "id": "copd-exacerbation",
+      "title": "COPD flare with low oxygen",
+      "shows": "Emphysema on image + COPD history; NEWS2 emergency-level vitals",
+      "image": {"source": "iu_xray", "uid": "624"},
+      "note": "Ward admission note - Sharma, Prakash (MRN 662-118-903)\n69-year-old man with COPD, ex-smoker, admitted with increased breathlessness and wheezing for 3 days. Sputum volume increased. No chest pain. No fever.\nOn examination: bilateral wheeze, using accessory muscles.\nVitals: RR 28, SpO2 86% on air, HR 118, BP 138/84, Temp 37.4 C.\nStarted nebulization with salbutamol and ipratropium."
+    },
+    {
+      "id": "routine-screening",
+      "title": "Pre-employment check, no complaints",
+      "shows": "All normal: ROUTINE triage, no conflicts",
+      "image": {"source": "iu_xray", "uid": "514"},
+      "note": "OPD Note\nPt: Ananya Rao, 26 y/o female, email ananya.rao@example.com\nPre-employment medical examination. Asymptomatic. No cough, no fever, no shortness of breath, no chest pain. No history of tuberculosis or asthma.\nVitals: BP 112/70, HR 70, RR 14, SpO2 99%, Temp 36.6 C."
+    },
+    {
+      "id": "wrong-image",
+      "title": "Chest symptoms but a brain MRI uploaded",
+      "shows": "Modality gate: CXR classifier not run; mismatch flagged",
+      "image": {"source": "biomedclip_example", "file": "brain_MRI.jpg"},
+      "note": "ED NOTE\nPatient: Rohit Bansal, MRN SGH-209911\n45-year-old male with cough and shortness of breath for 3 days. No chest pain.\nVitals: Temp 37.9 C, HR 98, RR 20, BP 130/82, SpO2 95%."
+    }
+  ]
+}

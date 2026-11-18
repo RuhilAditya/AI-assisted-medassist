@@ -80,6 +80,29 @@ def evaluate(name: str, p_train: np.ndarray, p_test: np.ndarray, y_train: np.nda
     return {"variant": name, "summary": summary, "per_finding": per_finding}
 
 
+def expected_calibration_error(y: np.ndarray, p: np.ndarray, bins: int = 10) -> float:
+    edges = np.linspace(0, 1, bins + 1)
+    ece = 0.0
+    for lo, hi in zip(edges[:-1], edges[1:]):
+        mask = (p >= lo) & (p < hi) if hi < 1 else (p >= lo) & (p <= hi)
+        if mask.any():
+            ece += mask.mean() * abs(p[mask].mean() - y[mask].mean())
+    return float(ece)
+
+
+def calibration_report(y_test: np.ndarray, p_cal: np.ndarray, p_raw: np.ndarray) -> dict:
+    """Mean ECE and Brier score across findings, before vs after Platt scaling."""
+    def mean_metric(fn, p):
+        return round(float(np.mean([fn(y_test[:, j], p[:, j]) for j in range(y_test.shape[1])])), 4)
+    brier = lambda y, p: float(np.mean((p - y) ** 2))  # noqa: E731
+    return {
+        "ece_raw": mean_metric(expected_calibration_error, p_raw),
+        "ece_calibrated": mean_metric(expected_calibration_error, p_cal),
+        "brier_raw": mean_metric(brier, p_raw),
+        "brier_calibrated": mean_metric(brier, p_cal),
+    }
+
+
 def train_probe(x_train: np.ndarray, y_train: np.ndarray) -> tuple[dict, np.ndarray]:
     mu, sd = x_train.mean(0), x_train.std(0) + 1e-6
     xs = (x_train - mu) / sd
@@ -127,9 +150,21 @@ def main() -> None:
         return np.log(p / (1 - p))
 
     z_train = clf.probabilities(x_train_plain, "zero-shot")
-    p_train_ens = 1 / (1 + np.exp(-(0.5 * logit(z_train) + 0.5 * logit(oof))))  # OOF on train
+    raw_train_logit = 0.5 * clf.zero_shot_logits(x_train_plain) + 0.5 * logit(oof)  # OOF on train
+
+    # Platt calibration per finding on train OOF logits (test data never touched).
+    a, b = [], []
+    for j in range(len(FINDINGS)):
+        platt = LogisticRegression(C=1e6, max_iter=1000).fit(raw_train_logit[:, j:j + 1], y_train[:, j])
+        a.append(float(platt.coef_[0, 0]))
+        b.append(float(platt.intercept_[0]))
+    probe["ensemble_calibration"] = {"a": a, "b": b}
+    p_train_ens = 1 / (1 + np.exp(-(raw_train_logit * np.array(a) + np.array(b))))
+    clf.probe = probe
     p_test_ens = clf.probabilities(x_test_plain, "ensemble")
     results.append(evaluate("ensemble (ZS+probe)", p_train_ens, p_test_ens, y_train, y_test))
+    results[-1]["calibration"] = calibration_report(y_test, p_test_ens,
+                                                    clf.probabilities(x_test_plain, "ensemble-raw"))
 
     probe["zero_shot_thresholds"] = {f: best_threshold(y_train[:, j], z_train[:, j]) for j, f in enumerate(FINDINGS)}
     probe["ensemble_thresholds"] = {f: best_threshold(y_train[:, j], p_train_ens[:, j]) for j, f in enumerate(FINDINGS)}
@@ -141,6 +176,7 @@ def main() -> None:
     for r in results:
         s = r["summary"]
         print(f"{r['variant']:<20}{s['macro_auroc']:>12}{s['macro_f1']:>10}{s['abnormal_vs_normal_auroc']:>13}")
+    print(f"\nEnsemble calibration (test): {results[-1]['calibration']}")
     print(f"\n{'finding':<18}{'pos':>5}" + "".join(f"{r['variant'][:14]:>16}" for r in results) + "   (AUROC)")
     for f in FINDINGS:
         if f in results[0]["per_finding"]:

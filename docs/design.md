@@ -84,7 +84,7 @@ the report must be reproducible with one command from `medassist/evaluation`.
 | 0 Setup | 1-2 | Repo, env (CUDA), models load, smoke test passes ✅ |
 | 1 Ingestion & privacy | 3-4 | Upload API, DICOM pipeline, de-ID, NER + negation ✅ |
 | 2 Unimodal modules | 5-8 | RAG over notes; BiomedCLIP labels + retrieval + heatmaps; unimodal baselines ✅ |
-| 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection |
+| 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection ✅ |
 | 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner |
 | 5 Evaluation | 14-16 | Full benchmark suite + user study |
 | 6 Docs & demo | 17-20 | Report, slides, demo video |
@@ -144,7 +144,7 @@ vs 0.751), so the gain does not depend on tuning.
 | Zero-shot | 0.710 | 0.327 | 0.692 |
 | Zero-shot + CLAHE | 0.704 | 0.307 | 0.696 |
 | Linear probe | 0.728 | 0.349 | 0.754 |
-| **Ensemble (default)** | **0.752** | **0.363** | **0.765** |
+| **Ensemble (default, Platt-calibrated)** | **0.752** | **0.363** | **0.773** |
 
 Per finding (ensemble AUROC): effusion 0.91, cardiomegaly 0.88, edema 0.87,
 emphysema 0.86, opacity 0.80, atelectasis 0.70, fracture 0.62, granuloma 0.57,
@@ -233,7 +233,96 @@ the ranking that AUROC measures.
 a 2,048-token context (weights ~4.9 GB + Windows display memory): ~5 s per short
 answer, longer with abstracts in the prompt.
 
-## 11. Known limitations / risks
+## 11. Phase 3 design notes and results (fusion)
+
+**Pipeline per question** (`medassist/fusion/assistant.py`): de-identify the
+question -> route -> image analysis (cached per image) -> RAG passages from the
+notes -> evidence bundle with fused scores -> conflicts + triage + follow-ups
+(all rule-based) -> route-specific prompt -> Llama 3.1 -> SUMMARY/DETAILS with
+citations. If the LLM is down, the deterministic parts are still returned.
+
+**Design principle: the LLM explains; rules decide.** Triage levels and
+conflicts are computed deterministically and handed to the LLM as facts. This
+keeps safety-relevant outputs reproducible and testable, and limits the LLM to
+what it is good at (synthesis and plain-language explanation).
+
+**Calibration (added in Phase 3).** The ensemble's raw probabilities were badly
+calibrated (zero-shot logits have a huge scale: "fracture 0.90" on films with
+no fracture). Per-finding Platt scaling fitted on train out-of-fold predictions:
+mean ECE 0.109 -> **0.022**, Brier 0.114 -> 0.081 (test), AUROC unchanged.
+Clinician-facing bands: *likely* (p >= 0.5), *possible* (p >= max(F1 threshold,
+0.2)), *unlikely*. F1-optimal thresholds are kept for benchmarking only; for rare
+findings they are ~0.05, far too alarming to show as "positive".
+
+**Numeric fusion** (`evidence.py`, `knowledge.py`): fused = sigmoid(logit(p_image)
++ LLR_text). Hand-set, documented LLRs: assertion +2.0, negation -1.5,
+supporting symptom/vital +0.4 each (cap +1.2); a documented *history* of a
+chronic cause (CHF, COPD, TB) counts as an assertion for chronic findings
+(cardiomegaly, emphysema, granuloma, nodule) but only as support for acute ones.
+
+**Conflict kinds:** note asserts / image negative; image positive / note denies
+(HIGH); clinical suspicion unconfirmed (info; acute findings only, strong support
+needed); unmentioned high-confidence image finding (info; only when nothing in
+the note points to it); inconsistency between notes; modality mismatch.
+
+**Triage:** NEWS2 (RCP 2017; room-air scale, needs >= 3 vitals) + red flags (stroke
+signs, reduced consciousness, haemoptysis, syncope, confusion, chest pain with
+breathlessness) + image escalation (acute CXR finding with SpO2 < 94%).
+EMERGENCY > URGENT > SOON > ROUTINE. Unit-tested against hand-calculated NEWS2.
+
+**Router:** keyword rules -> text / image / multimodal / triage, with fallback
+when a modality is missing. Deterministic and explainable; misrouting is cheap
+because the multimodal route sees all evidence.
+
+**NER fixes found by the fusion evaluation:** scispaCy BC5CDR does not tag
+radiology vocabulary ("lung opacity", "nodule", "consolidation"), so target
+rules for 30 radiology terms were added (Phase 1 metrics unchanged).
+
+### Results (`python -m scripts.eval_fusion`, IU X-Ray test n=435, 1,000-sample paired bootstrap)
+
+| Setting | Image-only | Text-only | **Fused** | Fused - image (95% CI) |
+|---|---|---|---|---|
+| A. Real indication text (NER + knowledge fusion) | 0.752 | 0.546 | **0.759** | +0.007 (+0.001 to +0.014) |
+| B. Controlled simulation (synthetic notes from labels) | 0.752 | 0.843 | **0.867** | +0.115 (+0.097 to +0.133) |
+
+(macro AUROC over 9 findings; LLM text-only on indications, Phase 2: 0.552.)
+
+- **A** is the honest real-data result: a small but statistically significant
+  gain. IU indications are a few words (302/435 contain any recognisable clinical
+  entity), so text has little to add.
+- **B** checks the mechanism with informative text (symptom model: each true
+  finding's typical symptoms p=0.5, assertion p=0.25, distractors p=0.08,
+  negations p=0.15). Fused beats *both* unimodal arms, i.e. the modalities are
+  complementary when both carry signal. The text strength is set by us, so this
+  is a sanity check of the fusion method, not clinical evidence.
+
+**Conflict detection** (discordances injected into 15% of simulated notes):
+
+| | Detected |
+|---|---|
+| All injected conflicts | 29/61 (48%) |
+| "Note denies X, image shows X" | 12/42 (29%) |
+| "Note asserts X, image normal" | 17/19 (90%) |
+| **When the image classifier agrees with ground truth** | **29/29 (100%)** |
+| Alert rate on notes without injection | 17% |
+
+The rule logic catches every conflict it can see; all misses come from the
+image classifier not detecting the finding (mostly subtle ones). The 17% alert
+rate comes from true findings documented in the note that the classifier
+misses: real text/image discordances, but false alarms relative to ground truth.
+
+**End-to-end latency** (RTX 4050, warm models): rules + retrieval < 1 s; image
+analysis ~1 s (cached after the first question); Llama answer ~28 s (8B model
+partly on CPU; the main bottleneck). Cold start adds ~15 s of model loading.
+
+**Demo cases** (`data/samples/demo_cases.json`, `python -m scripts.load_demo_cases
+--analyze --reset`): 7 synthetic notes on real test-split X-rays: concordant
+pneumonia (EMERGENCY, NEWS2 7), heart failure (URGENT), missed effusion (HIGH
+conflict), unconfirmed pneumonia (conflict), COPD (EMERGENCY, NEWS2 8), routine
+screening (ROUTINE), wrong image (modality mismatch). Curated for demonstration
+and never used in evaluation.
+
+## 12. Known limitations / risks
 
 - Zero-shot BiomedCLIP accuracy on CXR findings is moderate; mitigation: a
   linear probe on frozen features as an improved variant.
