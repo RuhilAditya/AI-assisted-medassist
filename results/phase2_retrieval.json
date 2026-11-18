@@ -1,0 +1,38 @@
+{
+  "experiment": "phase2_retrieval",
+  "timestamp": "2026-11-18T14:53:05+00:00",
+  "environment": {
+    "device": "cuda",
+    "llm_model": "llama3.1:8b",
+    "biomedclip_model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "embedding_model": "pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb",
+    "python": "3.11.7"
+  },
+  "exact_report_retrieval": {
+    "model": {
+      "recall@1": 0.002,
+      "recall@5": 0.039,
+      "recall@10": 0.062
+    },
+    "random": {
+      "recall@1": 0.002,
+      "recall@5": 0.011,
+      "recall@10": 0.023
+    },
+    "candidates": 435
+  },
+  "similar_case_label_precision": {
+    "image->report": {
+      "label_precision@1": 0.382,
+      "label_precision@5": 0.406,
+      "label_precision@10": 0.414
+    },
+    "image->image": {
+      "label_precision@1": 0.492,
+      "label_precision@5": 0.44,
+      "label_precision@10": 0.429
+    },
+    "random": 0.278,
+    "kb_size": 1065
+  }
+}

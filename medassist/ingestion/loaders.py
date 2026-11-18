@@ -36,9 +36,21 @@ class DataValidationError(ValueError):
 @dataclass(frozen=True)
 class LoadedImage:
     name: str
-    pixels: np.ndarray  # uint8, H x W, grayscale
+    pixels: np.ndarray  # uint8, H x W, grayscale (always present)
     source_format: str  # "dicom" | "png" | "jpeg"
     metadata: dict[str, str] = field(default_factory=dict)
+    color: np.ndarray | None = None  # uint8, H x W x 3, only for genuinely colour images
+
+    @property
+    def is_color(self) -> bool:
+        return self.color is not None
+
+
+def _is_genuinely_color(rgb: np.ndarray, tolerance: float = 8.0) -> bool:
+    """Many X-ray PNGs/JPEGs are saved as RGB with R=G=B. Treat those as grayscale."""
+    sample = rgb[:: max(1, rgb.shape[0] // 128), :: max(1, rgb.shape[1] // 128)].astype(np.int16)
+    spread = (sample.max(axis=2) - sample.min(axis=2)).mean()
+    return float(spread) > tolerance
 
 
 def _to_uint8(array: np.ndarray) -> np.ndarray:
@@ -82,8 +94,14 @@ def load_standard_image(name: str, content: bytes) -> LoadedImage:
     except Exception as exc:
         raise DataValidationError(f"Unable to read image '{name}'.") from exc
     pixels = np.asarray(image.convert("L"), dtype=np.uint8)
+    rgb = np.asarray(image.convert("RGB"), dtype=np.uint8)
     fmt = "png" if (image.format or "").upper() == "PNG" else "jpeg"
-    return LoadedImage(name=name, pixels=pixels, source_format=fmt)
+    return LoadedImage(
+        name=name,
+        pixels=pixels,
+        source_format=fmt,
+        color=rgb if _is_genuinely_color(rgb) else None,
+    )
 
 
 def load_upload(name: str, content: bytes) -> LoadedImage:

@@ -20,6 +20,7 @@ class Settings:
     ollama_url: str
     llm_model: str
     llm_timeout: float
+    llm_num_ctx: int
     biomedclip_model: str
     embedding_model: str
     device: str
@@ -45,13 +46,15 @@ def get_settings() -> Settings:
         ollama_url=os.getenv("OLLAMA_URL", "http://localhost:11434").rstrip("/"),
         llm_model=os.getenv("MEDASSIST_LLM_MODEL", "llama3.1:8b"),
         llm_timeout=timeout,
+        # Prompts stay well under 2048 tokens; a smaller context saves VRAM on 6 GB GPUs.
+        llm_num_ctx=int(os.getenv("MEDASSIST_LLM_NUM_CTX", "2048")),
         biomedclip_model=os.getenv(
             "MEDASSIST_BIOMEDCLIP_MODEL",
             "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
         ),
         embedding_model=os.getenv(
             "MEDASSIST_EMBEDDING_MODEL",
-            "pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb",
+            "pritamdeka/S-PubMedBert-MS-MARCO",
         ),
         device=_resolve_device(os.getenv("MEDASSIST_DEVICE", "auto")),
     )

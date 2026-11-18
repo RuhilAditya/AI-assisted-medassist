@@ -2,13 +2,17 @@
 
 Phase 0: /health, /status
 Phase 1: case creation and de-identified ingestion of notes and images.
+Phase 2: image analysis (findings, similar cases, heatmaps) and RAG over notes.
 """
 from __future__ import annotations
 
+import io
 from functools import lru_cache
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
+from PIL import Image
+from pydantic import BaseModel, Field
 
 from medassist.config import get_settings
 from medassist.ingestion.loaders import DataValidationError
@@ -103,3 +107,54 @@ def get_image(case_id: str, image_id: str) -> FileResponse:
         return FileResponse(get_store().image_path(case_id, image_id), media_type="image/png")
     except CaseNotFoundError:
         raise HTTPException(status_code=404, detail="Image not found.") from None
+
+
+# ---------------- Phase 2: unimodal analysis ----------------
+def _open_case_image(case_id: str, image_id: str) -> Image.Image:
+    try:
+        return Image.open(get_store().image_path(case_id, image_id))
+    except CaseNotFoundError:
+        raise HTTPException(status_code=404, detail="Image not found.") from None
+
+
+@app.post("/cases/{case_id}/images/{image_id}/analyze")
+def analyze_case_image(case_id: str, image_id: str, k_similar: int = 3) -> dict:
+    """Modality check, chest X-ray finding probabilities, and similar prior cases."""
+    from medassist.analysis import analyze_image
+
+    return analyze_image(_open_case_image(case_id, image_id), k_similar=k_similar)
+
+
+@app.get("/cases/{case_id}/images/{image_id}/heatmap")
+def case_image_heatmap(case_id: str, image_id: str, finding: str) -> Response:
+    """Occlusion-sensitivity heatmap for one finding, as a PNG overlay."""
+    from medassist.analysis import heatmap_image
+
+    try:
+        overlay = heatmap_image(_open_case_image(case_id, image_id), finding)
+    except ValueError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    buffer = io.BytesIO()
+    overlay.save(buffer, format="PNG")
+    return Response(content=buffer.getvalue(), media_type="image/png")
+
+
+class Question(BaseModel):
+    question: str = Field(min_length=3, max_length=1000)
+    k: int = Field(default=4, ge=1, le=10)
+
+
+@app.post("/cases/{case_id}/ask")
+def ask_case(case_id: str, body: Question) -> dict:
+    """RAG question answering over the case's de-identified notes, with citations."""
+    from medassist.analysis import ask_case_notes
+    from medassist.llm.ollama_client import LLMError
+
+    try:
+        case = get_store().get_case(case_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None
+    try:
+        return ask_case_notes(case, body.question, k=body.k)
+    except (LLMError, ConnectionError) as exc:
+        raise HTTPException(status_code=502, detail=f"LLM unavailable: {exc}") from exc

@@ -7,8 +7,9 @@ capstone project.
 > ⚠️ Research prototype. Not a medical device. Outputs must be verified by a
 > qualified clinician.
 
-**Stack:** Llama 3.1 (Ollama) · BiomedCLIP · BioBERT/ClinicalBERT (Sentence
-Transformers) · LangChain · OpenCV · pydicom · FastAPI · Streamlit
+**Stack:** Llama 3.1 (Ollama) · BiomedCLIP · Sentence Transformers (PubMedBERT,
+with BioBERT/ClinicalBERT as measured baselines) · LangChain · OpenCV · pydicom ·
+Presidio · scispaCy/medspaCy · FastAPI · React (Vite)
 
 See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 
@@ -18,8 +19,23 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 |---|---|
 | 0 Setup | ✅ models load on GPU; smoke test 5/5 |
 | 1 Ingestion & privacy | ✅ de-ID (text + DICOM), clinical NER with negation, upload API |
-| 2 Unimodal modules | ⏳ next |
-| 3-6 | planned |
+| 2 Unimodal modules | ✅ CXR findings (BiomedCLIP), heatmaps, similar cases, RAG; unimodal baselines |
+| 3 Fusion | ⏳ next |
+| 4-6 | planned |
+
+### Phase 2 results (details and caveats in [docs/design.md](docs/design.md) §10)
+
+| Task | Data | Result |
+|---|---|---|
+| CXR findings, ensemble (zero-shot + probe) | IU X-Ray test, n=435, 9 findings | macro AUROC **0.752** (zero-shot alone 0.710) |
+| Abnormal vs normal | same | AUROC **0.765** |
+| Similar-case retrieval (image->image) | test -> 1,065-study KB | label precision@1 **0.49** (random 0.28) |
+| Abstract retrieval (PubMedBERT-MARCO) | PubMedQA, 1,000 abstracts | Recall@1 **0.975** |
+| QA, Llama 3.1 8B | PubMedQA, 150 questions | closed-book 0.573 -> RAG **0.800** (oracle 0.820) |
+| CXR findings from indication text only (Llama) | IU X-Ray test, n=408 | macro AUROC 0.552 (near chance: indications are very short) |
+
+Reproduce: `python -m scripts.eval_image`, `eval_retrieval`, `eval_text_qa`,
+`eval_text_only_cxr`. Each writes `results/<experiment>.json`.
 
 ### Phase 1 results (synthetic gold set, `python -m scripts.eval_ingestion`)
 
@@ -60,6 +76,11 @@ ollama pull llama3.1:8b
 
 # 5. Optional: override defaults
 copy .env.example .env
+
+# 6. Datasets for Phase 2 (IU X-Ray subset: ~2.7 GB download, 150 MB kept)
+python -m scripts.prepare_iu_xray --n 1500
+python -m scripts.eval_image --train-probe   # also trains the linear probe
+python -m scripts.eval_retrieval              # also builds the similar-case index
 ```
 
 ## Verify
@@ -81,6 +102,9 @@ uvicorn api.main:app --reload      # then open http://127.0.0.1:8000/docs
 | POST | `/cases/{id}/images` | Upload DICOM/PNG/JPEG; DICOM tags anonymised |
 | GET | `/cases/{id}` | Case with de-identified notes, entity summaries, image metadata |
 | GET | `/cases/{id}/images/{image_id}` | Processed image (PNG) |
+| POST | `/cases/{id}/images/{image_id}/analyze` | Modality check, 9 CXR finding probabilities, 3 similar prior cases |
+| GET | `/cases/{id}/images/{image_id}/heatmap?finding=...` | Occlusion heatmap overlay (PNG) |
+| POST | `/cases/{id}/ask` | `{"question": ...}`: RAG answer over the case's notes, with citations |
 
 Privacy guarantees: raw uploads are never written to disk; original filenames
 are discarded; the audit log (`data/store/audit.log`) records actions and PHI
@@ -92,14 +116,18 @@ are discarded; the audit log (`data/store/audit.log`) records actions and PHI
 medassist/
   config.py           settings from env/.env
   ingestion/          loaders, text + DICOM de-ID, clinical NER, case store, pipeline
-  image_pipeline/     OpenCV preprocessing, BiomedCLIP
-  text_pipeline/      clinical embeddings (+ vector store/RAG in Phase 2)
+  image_pipeline/     preprocessing, BiomedCLIP, CXR classifier + heatmaps, case retrieval
+  text_pipeline/      sentence embeddings, RAG (LangChain)
+  datasets/           IU X-Ray loader (labels from MeSH)
+  vector_index.py     persistent cosine-similarity index
+  analysis.py         image / text analysis services used by the API
   fusion/             prompts (+ router, evidence bundle, triage in Phase 3)
   llm/                Ollama client
-  evaluation/         metrics (+ benchmark runners in Phase 5)
+  evaluation/         metrics, result saving
 api/                  FastAPI app
-ui/                   Streamlit app (Phase 4)
-scripts/              smoke test, data download helpers
+ui/                   React + Vite frontend (Phase 4)
+scripts/              smoke test, dataset preparation, evaluation scripts
+results/              evaluation outputs (JSON), committed for reproducibility
 tests/                pytest suite
 data/samples/         small synthetic samples (large datasets are not committed)
 docs/                 design document, report material

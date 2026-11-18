@@ -59,10 +59,12 @@ def ingest_image(store: CaseStore, case_id: str, filename: str, content: bytes) 
 
     loaded = load_upload(filename, content)
     buffer = io.BytesIO()
-    Image.fromarray(loaded.pixels).save(buffer, format="PNG")
+    # Colour images (histopathology, photos) keep their colour; radiology is grayscale.
+    Image.fromarray(loaded.color if loaded.is_color else loaded.pixels).save(buffer, format="PNG")
 
     record = {
         "source_format": loaded.source_format,
+        "color": loaded.is_color,
         "shape": list(loaded.pixels.shape),
         "metadata": loaded.metadata,
         "deid": deid_report,

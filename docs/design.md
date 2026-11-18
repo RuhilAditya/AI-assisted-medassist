@@ -18,9 +18,9 @@ combining modalities beats either modality alone.
 | Fusion strategy | **Late fusion** | Each modality is encoded by a specialist model; outputs are combined into a structured evidence bundle that the LLM reasons over. Explainable and testable per stage. |
 | LLM | Llama 3.1 8B (Ollama, 4-bit) | Runs locally on a 6 GB GPU; no patient data leaves the machine. Llama 3.2 3B as a fast fallback. |
 | Image encoder | BiomedCLIP (open_clip) | Trained on 15M biomedical image-caption pairs (PMC-15M); shared image-text space enables zero-shot labels **and** image-to-report retrieval. |
-| Text embeddings | BioBERT sentence model (S-T) | Domain-specific semantic search; ClinicalBERT compared as an ablation. |
+| Text embeddings | PubMedBERT fine-tuned for retrieval (S-T) | Won the Phase 2 comparison against BioBERT, ClinicalBERT and a general model (see section 10). |
 | Orchestration | LangChain (core + Ollama) | Prompt templates, retrieval chains, routing. |
-| UI | Streamlit | Fast to build; effort goes to the AI pipeline. |
+| UI | React + Vite + TypeScript, served by FastAPI | The interface is the most visible part of the evaluation, so a custom frontend replaces Streamlit (which limits layout and styling). Built with the Impeccable design skill (`.claude/skills/impeccable`, hooks not installed). The production build is served by FastAPI, so the demo runs from one command. |
 | Privacy | Local-only inference, de-identification on ingest, PHI-free DICOM metadata | Compliance story for evaluation. |
 
 ## 3. Architecture
@@ -54,7 +54,7 @@ combining modalities beats either modality alone.
 | `medassist/llm` | Ollama client | 0 |
 | `medassist/evaluation` | Metrics + benchmark runners | 0, 5 |
 | `api/` | FastAPI endpoints | 0-4 |
-| `ui/` | Streamlit interface | 4 |
+| `ui/` | React + Vite frontend | 4 |
 
 ## 5. Datasets (planned)
 
@@ -83,9 +83,9 @@ the report must be reproducible with one command from `medassist/evaluation`.
 |---|---|---|
 | 0 Setup | 1-2 | Repo, env (CUDA), models load, smoke test passes ✅ |
 | 1 Ingestion & privacy | 3-4 | Upload API, DICOM pipeline, de-ID, NER + negation ✅ |
-| 2 Unimodal modules | 5-8 | RAG over notes; BiomedCLIP labels + retrieval + heatmaps; unimodal baselines |
+| 2 Unimodal modules | 5-8 | RAG over notes; BiomedCLIP labels + retrieval + heatmaps; unimodal baselines ✅ |
 | 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection |
-| 4 Interface | 12-13 | Streamlit app with chat, uploads, heatmap viewer, evidence panel |
+| 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner |
 | 5 Evaluation | 14-16 | Full benchmark suite + user study |
 | 6 Docs & demo | 17-20 | Report, slides, demo video |
 
@@ -116,7 +116,124 @@ CPU if VRAM is short. Large benchmark runs can move to Kaggle/Colab.
 - **Images are converted to grayscale** in the loader. Correct for radiology,
   but **histopathology needs colour**. Phase 2 must add an RGB path.
 
-## 10. Known limitations / risks
+## 10. Phase 2 design notes and results
+
+**Data.** IU X-Ray via a Hugging Face mirror of the Kaggle/Open-i release (the
+NIH bulk endpoint returns an error page). One frontal image per study; labels
+from NLM-assigned MeSH terms grouped into 9 findings + normal; studies tagged
+"Technical Quality Unsatisfactory"/"No Indexing" excluded. Stratified subset of
+1,500 studies (rare findings guaranteed), fixed 70/30 train/test split (seed
+42): train = 1,065 (retrieval knowledge base + probe training), test = 435.
+Images resized to 512 px (147 MB). `python -m scripts.prepare_iu_xray --n N`
+scales it up.
+
+**Leakage rule.** Model inputs may use the image and the *indication* only.
+Findings/impression are the label source, so they are used only as the
+retrieval corpus (other patients' reports), never as input for the same study.
+
+**Image classifier (BiomedCLIP).** Zero-shot = prompt ensembles (4 positive x 3
+negative templates, radiology synonyms), 2-way softmax per finding. Linear probe
+= logistic regression per finding on frozen features, C=0.05, balanced classes;
+thresholds from 5-fold out-of-fold predictions on train. Ensemble = equal-weight
+logit average. *Honesty note:* the 0.5 weight is the untuned default; we looked
+at 0.3/0.7 on test afterwards as a sensitivity check (macro AUROC 0.747 / 0.746
+vs 0.751), so the gain does not depend on tuning.
+
+| Variant (test, n=435) | Macro AUROC | Macro F1 | Abnormal-vs-normal AUROC |
+|---|---|---|---|
+| Zero-shot | 0.710 | 0.327 | 0.692 |
+| Zero-shot + CLAHE | 0.704 | 0.307 | 0.696 |
+| Linear probe | 0.728 | 0.349 | 0.754 |
+| **Ensemble (default)** | **0.752** | **0.363** | **0.765** |
+
+Per finding (ensemble AUROC): effusion 0.91, cardiomegaly 0.88, edema 0.87,
+emphysema 0.86, opacity 0.80, atelectasis 0.70, fracture 0.62, granuloma 0.57,
+nodule 0.56. Small focal findings are weak at 224 px input resolution; this
+is a limitation to discuss rather than hide.
+
+Findings: (1) **CLAHE slightly hurts** zero-shot BiomedCLIP, which was trained
+on unenhanced PubMed figures, so it is off by default. (2) Zero-shot and probe
+have **complementary strengths** (zero-shot wins on effusion/edema/fracture,
+where few training positives make the probe overfit; the probe wins on
+emphysema/granuloma). That is why the ensemble beats both.
+
+**Explainability.** Occlusion sensitivity (32 px patches, stride 16, ~170
+masked forward passes batched on GPU, about 1 s). Model-agnostic, so it
+explains the same score the user sees.
+
+**Modality gate.** BiomedCLIP zero-shot over 9 modality labels; CXR findings
+are only produced when the top label is "chest X-ray" with p >= 0.5.
+
+**Retrieval (BiomedCLIP shared space).**
+
+| Task | Metric | Model | Random |
+|---|---|---|---|
+| Similar case, image->image (test -> 1,065 KB) | label precision@1 / @5 / @10 | 0.49 / 0.44 / 0.43 | 0.28 |
+| Similar case, image->report | label precision@1 / @5 / @10 | 0.38 / 0.41 / 0.41 | 0.28 |
+| Exact own-report retrieval (435 candidates) | Recall@1 / @5 / @10 | 0.002 / 0.039 / 0.062 | 0.002 / 0.011 / 0.023 |
+
+Exact report retrieval is near chance because IU reports are heavily
+templated (~40% normal studies have near-identical text), so the task is
+ill-posed. Label precision is the meaningful metric and shows a clear gain.
+The app uses image->image retrieval to surface similar prior cases.
+
+**Text RAG.** Sentence-aware chunking (600 chars, 1-sentence overlap) ->
+sentence embeddings -> `VectorIndex` -> LangChain `prompt | ChatOllama |
+StrOutputParser`, numbered passages and enforced [n] citations; citation numbers
+outside the retrieved set are discarded.
+
+**Text evaluation: PubMedQA** (pqa_labeled, 1,000 expert-labelled questions).
+
+Retrieval (each question's own abstract among all 1,000):
+
+| Embedder | R@1 | R@3 | R@10 |
+|---|---|---|---|
+| BioBERT (S-T, NLI/STS-tuned) | 0.899 | 0.959 | 0.986 |
+| ClinicalBERT (raw, mean-pooled) | 0.159 | 0.251 | 0.373 |
+| **PubMedBERT (MS-MARCO retrieval-tuned): new default** | **0.975** | **0.989** | 0.994 |
+| MiniLM (general domain) | 0.971 | 0.989 | 0.997 |
+
+Takeaways for the report: (1) *Domain pre-training is not retrieval ability.*
+Raw ClinicalBERT, a strong clinical encoder, is nearly useless for search
+without sentence-level fine-tuning. (2) *The training objective matters more
+than the domain*: a small general model trained for retrieval matches the
+biomedical one, and both beat BioBERT tuned for NLI/similarity. So the default
+moved to PubMedBERT-MARCO (biomedical *and* retrieval-tuned); the brief's
+BioBERT/ClinicalBERT are kept as measured baselines. Caveat: PubMedQA questions
+are derived from paper titles, so lexical overlap makes retrieval easier than
+for real clinical queries.
+
+QA with Llama 3.1 8B (150-question random sample, seed 42, temperature 0):
+
+| Mode | Accuracy | Macro F1 |
+|---|---|---|
+| Majority class ("yes") | 0.647 | 0.262 |
+| Closed-book | 0.573 | 0.361 |
+| **RAG, top-3 retrieved** | **0.800** | **0.546** |
+| Oracle (gold abstract) | 0.820 | 0.562 |
+
+RAG adds +22.7 accuracy points and recovers 92% of the gap to the oracle.
+Closed-book is *below* the majority baseline: without evidence the 8B model
+answers confidently but often wrongly, a direct argument for evidence-grounded
+answers. Macro F1 stays low because "maybe" (11% of labels) is rarely predicted.
+
+**Text-only CXR baseline** (Llama reads only the indication, rates each finding
+low/medium/high -> 0.1/0.5/0.9; 408 test studies with an indication, 0 parse
+failures): **macro AUROC 0.552, abnormal-vs-normal 0.485, i.e. near chance.**
+Best findings: edema 0.65, fracture 0.62. IU X-Ray indications are very short
+("chest pain", "preop") and carry little information about the radiograph,
+so on this dataset the image dominates. **Implication for Phase 3:** fusion
+cannot gain much AUROC from such thin text; the multimodal value must be shown
+via richer clinical context (synthetic case vignettes with symptoms/vitals)
+and qualitative capabilities (conflict detection, triage, cited reasoning),
+not by overstating a small AUROC difference. The 3-level rating also coarsens
+the ranking that AUROC measures.
+
+**Hardware note.** On the 6 GB RTX 4050, llama3.1:8b runs ~20% on CPU even with
+a 2,048-token context (weights ~4.9 GB + Windows display memory): ~5 s per short
+answer, longer with abstracts in the prompt.
+
+## 11. Known limitations / risks
 
 - Zero-shot BiomedCLIP accuracy on CXR findings is moderate; mitigation: a
   linear probe on frozen features as an improved variant.

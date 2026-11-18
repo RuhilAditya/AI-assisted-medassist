@@ -29,6 +29,7 @@ streamlit==1.40.2
 # --- Evaluation ---
 scikit-learn==1.5.2
 pandas==2.2.3
+pyarrow==18.1.0               # parquet (PubMedQA)
 
 # --- De-identification & clinical NLP (Phase 1) ---
 presidio-analyzer==2.2.366

@@ -33,13 +33,20 @@ class OllamaClient:
         messages: list[dict[str, str]],
         model: str | None = None,
         temperature: float = 0.2,
+        json_mode: bool = False,
+        seed: int | None = 0,
     ) -> str:
+        options: dict[str, Any] = {"temperature": temperature, "num_ctx": self.settings.llm_num_ctx}
+        if seed is not None:
+            options["seed"] = seed  # reproducible evaluation runs
         payload: dict[str, Any] = {
             "model": model or self.settings.llm_model,
             "messages": messages,
             "stream": False,
-            "options": {"temperature": temperature},
+            "options": options,
         }
+        if json_mode:
+            payload["format"] = "json"
         try:
             response = requests.post(
                 f"{self.settings.ollama_url}/api/chat",

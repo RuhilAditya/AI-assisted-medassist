@@ -1,0 +1,65 @@
+{
+  "experiment": "phase2_text_qa",
+  "timestamp": "2026-11-18T15:47:14+00:00",
+  "environment": {
+    "device": "cuda",
+    "llm_model": "llama3.1:8b",
+    "biomedclip_model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "embedding_model": "pritamdeka/BioBERT-mnli-snli-scinli-scitail-mednli-stsb",
+    "python": "3.11.7"
+  },
+  "dataset": {
+    "name": "PubMedQA pqa_labeled",
+    "questions": 1000,
+    "qa_sample": 150
+  },
+  "retrieval": {
+    "BioBERT (S-T, NLI/STS)": {
+      "recall@1": 0.899,
+      "recall@3": 0.959,
+      "recall@5": 0.976,
+      "recall@10": 0.986,
+      "seconds": 56.6
+    },
+    "ClinicalBERT (mean-pooled)": {
+      "recall@1": 0.159,
+      "recall@3": 0.251,
+      "recall@5": 0.294,
+      "recall@10": 0.373,
+      "seconds": 178.4
+    },
+    "PubMedBERT (MS-MARCO)": {
+      "recall@1": 0.975,
+      "recall@3": 0.989,
+      "recall@5": 0.991,
+      "recall@10": 0.994,
+      "seconds": 165.3
+    },
+    "MiniLM (general domain)": {
+      "recall@1": 0.971,
+      "recall@3": 0.989,
+      "recall@5": 0.991,
+      "recall@10": 0.997,
+      "seconds": 16.7
+    }
+  },
+  "rag_embedder": "PubMedBERT (MS-MARCO)",
+  "qa": {
+    "closed-book": {
+      "accuracy": 0.573,
+      "macro_f1": 0.361
+    },
+    "RAG (top-3)": {
+      "accuracy": 0.8,
+      "macro_f1": 0.546
+    },
+    "oracle context": {
+      "accuracy": 0.82,
+      "macro_f1": 0.562
+    },
+    "majority-class baseline": {
+      "accuracy": 0.647,
+      "macro_f1": 0.262
+    }
+  }
+}
