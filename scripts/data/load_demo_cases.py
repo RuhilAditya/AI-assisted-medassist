@@ -1,7 +1,7 @@
 """Load the demo cases into the case store through the real ingestion pipeline
 (de-identification, NER, DICOM/PNG handling), so the demo exercises everything.
 
-Usage: python -m scripts.load_demo_cases [--analyze] [--reset]
+Usage: python -m scripts.data.load_demo_cases [--analyze] [--reset]
   --analyze  also pre-compute image analysis so the first question is fast
   --reset    delete the demo cases a previous run created (other cases untouched)
 """
@@ -45,7 +45,7 @@ def main() -> None:
     for case in cases:
         path = image_path(case["image"])
         if not path.exists():
-            print(f"  skip {case['id']}: image missing ({path}); run scripts.prepare_iu_xray / smoke_test first")
+            print(f"  skip {case['id']}: image missing ({path}); run scripts.data.prepare_iu_xray / scripts.smoke_test first")
             continue
         cid = store.create_case(title=case["title"], tags={"demo": case["id"], "shows": case["shows"]})
         note = ingest_note(store, cid, text=case["note"])

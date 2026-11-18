@@ -7,7 +7,7 @@ output is never used for tuning. All people, IDs and contacts are fictional.
 
 Gold per note: phi ({type, value} strings that must be removed), keep (clinical strings that must
 survive), active / negated (findings the NER should report).
-Usage: python -m scripts.generate_heldout_notes [--n 120]
+Usage: python -m scripts.data.generate_heldout_notes [--n 120]
 """
 from __future__ import annotations
 

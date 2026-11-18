@@ -38,7 +38,7 @@ def analyze_image(image: Image.Image, k_similar: int = 3) -> dict:
 
         result["similar_cases"] = [asdict(c) for c in get_case_retriever().similar(image, k=k_similar)]
     except FileNotFoundError:
-        result["warnings"].append("Similar-case index not built (python -m scripts.eval_retrieval).")
+        result["warnings"].append("Similar-case index not built (python -m scripts.evaluate.retrieval).")
     return result
 
 

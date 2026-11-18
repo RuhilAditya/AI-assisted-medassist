@@ -8,7 +8,7 @@
    randomly drawn cases), so the gain is measurable.
 
 Also (re)builds the case indexes used by the app.
-Usage: python -m scripts.eval_retrieval
+Usage: python -m scripts.evaluate.retrieval
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ from medassist.evaluation.metrics import recall_at_k
 from medassist.evaluation.results import save_results
 from medassist.image_pipeline.case_retrieval import build_indexes
 from medassist.image_pipeline.cxr import CXRClassifier
-from scripts.eval_image import features_for
+from scripts.evaluate.image import features_for
 
 KS = (1, 5, 10)
 

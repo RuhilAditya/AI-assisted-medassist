@@ -5,7 +5,7 @@ never the report (labels were derived from the report: that would be leakage).
 Llama rates each finding low / medium / high; mapped to 0.1 / 0.5 / 0.9 for AUROC.
 This is the text arm of the Phase 3 unimodal-vs-multimodal ablation.
 
-Usage: python -m scripts.eval_text_only_cxr [--limit N]
+Usage: python -m scripts.evaluate.text_only_cxr [--limit N]
 """
 from __future__ import annotations
 

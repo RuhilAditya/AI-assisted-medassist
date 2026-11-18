@@ -87,7 +87,7 @@ the report must be reproducible with one command from `medassist/evaluation`.
 | 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection ✅ |
 | 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner ✅ |
 | 5 Evaluation | 14-16 | Full benchmark suite + user study ✅ (study kit ready; to be run with participants) |
-| 6 Docs & demo | 17-20 | Report, slides, demo video |
+| 6 Docs & demo | 17-20 | Report, slides ✅ (demo video dropped: live demo instead) |
 
 ## 8. Hardware
 
@@ -124,7 +124,7 @@ from NLM-assigned MeSH terms grouped into 9 findings + normal; studies tagged
 "Technical Quality Unsatisfactory"/"No Indexing" excluded. Stratified subset of
 1,500 studies (rare findings guaranteed), fixed 70/30 train/test split (seed
 42): train = 1,065 (retrieval knowledge base + probe training), test = 435.
-Images resized to 512 px (147 MB). `python -m scripts.prepare_iu_xray --n N`
+Images resized to 512 px (147 MB). `python -m scripts.data.prepare_iu_xray --n N`
 scales it up.
 
 **Leakage rule.** Model inputs may use the image and the *indication* only.
@@ -278,7 +278,7 @@ because the multimodal route sees all evidence.
 radiology vocabulary ("lung opacity", "nodule", "consolidation"), so target
 rules for 30 radiology terms were added (Phase 1 metrics unchanged).
 
-### Results (`python -m scripts.eval_fusion`, IU X-Ray test n=435, 1,000-sample paired bootstrap)
+### Results (`python -m scripts.evaluate.fusion`, IU X-Ray test n=435, 1,000-sample paired bootstrap)
 
 | Setting | Image-only | Text-only | **Fused** | Fused - image (95% CI) |
 |---|---|---|---|---|
@@ -315,7 +315,7 @@ misses: real text/image discordances, but false alarms relative to ground truth.
 analysis ~1 s (cached after the first question); Llama answer ~28 s (8B model
 partly on CPU; the main bottleneck). Cold start adds ~15 s of model loading.
 
-**Demo cases** (`data/samples/demo_cases.json`, `python -m scripts.load_demo_cases
+**Demo cases** (`data/samples/demo_cases.json`, `python -m scripts.data.load_demo_cases
 --analyze --reset`): 7 synthetic notes on real test-split X-rays: concordant
 pneumonia (EMERGENCY, NEWS2 7), heart failure (URGENT), missed effusion (HIGH
 conflict), unconfirmed pneumonia (conflict), COPD (EMERGENCY, NEWS2 8), routine
@@ -355,19 +355,19 @@ approved and its agents were not loaded); this is disclosed rather than claimed.
 **Verified in the browser**: demo case loading, overview, heatmap (vermilion overlay,
 aligned), leader lines for citations and finding rows (and that they clear), live
 streaming of a real Llama answer with citation chips (~37 s), mobile tabs. Tests:
-`tests/test_phase4.py` covers overview, streaming order, listing, creation, notes.
+`tests/test_api.py` covers overview, streaming order, listing, creation, notes.
 
 ## 13. Phase 5 design notes (evaluation)
 
 All numbers, tables and figures: [results.md](results.md), regenerated from
-`results/*.json` by `python -m scripts.make_report`.
+`results/*.json` by `python -m scripts.report.make_report`.
 
-**Image robustness** (`eval_robustness.py`, 435 test X-rays, deployed calibrated
+**Image robustness** (`evaluate.robustness.py`, 435 test X-rays, deployed calibrated
 ensemble). Drops stay within 0.017 macro AUROC at realistic levels (noise sigma <= 15,
 blur <= 2 px, rotation <= 10 deg, contrast x0.5, JPEG q20, 128 px). Failure only at
 extremes: noise sigma 30 (-0.101), JPEG quality 5 (-0.106), 64 px (-0.054), 20 deg (-0.044).
 
-**Held-out text set** (`generate_heldout_notes.py`, `eval_heldout_text.py`). 120 notes
+**Held-out text set** (`data.generate_heldout_notes.py`, `evaluate.heldout_text.py`). 120 notes
 from a separate generator (different templates, names, ID/phone/date formats), written
 after the rules were frozen. *Process note for the report:* the first (discovery) set
 revealed that hospital names were never removed (0%; overall PHI recall 86%). A
@@ -378,7 +378,7 @@ clinical text kept 99.9%, finding recall 99.7%, negation F1 1.00. With 10% of wo
 typo'd: PHI recall 97.8%, finding recall 0.91, negation F1 0.94. Caveat: generated notes
 are more regular than real ones.
 
-**Answer faithfulness** (`eval_answers.py`, real Llama, 7 demo cases x 4 question types,
+**Answer faithfulness** (`evaluate.answers.py`, real Llama, 7 demo cases x 4 question types,
 automatic scoring; no LLM-as-judge, to avoid the model grading itself): routing 100%,
 format 100%, citation validity 97.8%, ungrounded numbers 0.4% (the one hit is "0.5" taken
 from the system prompt's rule, an artefact), triage level stated in 100% of triage answers
@@ -391,7 +391,7 @@ temperature" and did not mention the modality mismatch. Median latency: evidence
 
 **Usability study** (`docs/user_study/`): protocol (5 timed tasks on the demo cases),
 SUS questionnaire plus 6 explanation/trust items, response template, and
-`score_user_study.py` (SUS with 95% CI and Bangor adjective, per background). Must be run
+`evaluate.user_study.py` (SUS with 95% CI and Bangor adjective, per background). Must be run
 with 10-15 participants; nothing is reported until it is.
 
 ## 14. Known limitations / risks

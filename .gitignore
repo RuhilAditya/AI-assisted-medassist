@@ -16,19 +16,15 @@ models_cache/
 *.bin
 *.safetensors
 
-# Data: only small synthetic samples are committed
+# Data: only the small synthetic samples in data/samples/ are committed.
+# data/processed (IU X-Ray subset) and data/store (case store) are rebuilt by scripts.
 data/*
 !data/samples/
 data/samples/*.dcm
 data/samples/biomedclip_examples/
-!data/samples/.gitkeep
-!data/samples/*.txt
-!data/samples/*.json
-!data/samples/notes/
 
-# Vector stores / outputs
-vectorstore/
-eval/results/*.png
+# Run logs
+logs/
 *.log
 
 # OS / IDE

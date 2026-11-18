@@ -1,0 +1,15 @@
+{
+  "name": "medassist-report",
+  "private": true,
+  "type": "commonjs",
+  "description": "Builds the project report (.docx) and slides (.pptx) from results/*.json",
+  "dependencies": {
+    "docx": "^9.15.4",
+    "jszip": "^3.10.2",
+    "pptxgenjs": "^4.0.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.4.0",
+    "sharp": "^0.33.5"
+  }
+}

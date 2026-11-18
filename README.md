@@ -13,6 +13,25 @@ Presidio · scispaCy/medspaCy · FastAPI · React (Vite)
 
 See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 
+## Deliverables
+
+| What | Where |
+|---|---|
+| Project report (Word, A4, 36 pages) | [docs/deliverables/MedAssist_Project_Report.docx](docs/deliverables/MedAssist_Project_Report.docx) |
+| Presentation (PowerPoint, 16 slides, speaker notes) | [docs/deliverables/MedAssist_Presentation.pptx](docs/deliverables/MedAssist_Presentation.pptx) |
+| All results tables and figures | [docs/results.md](docs/results.md), [docs/figures/](docs/figures/) |
+| Design document (decisions, per-phase notes) | [docs/design.md](docs/design.md) |
+| Interface design system | [DESIGN.md](DESIGN.md), [PRODUCT.md](PRODUCT.md) |
+| Usability study kit | [docs/user_study/](docs/user_study/) |
+
+Placeholders in the report and slides (`[Student Name]`, `[Roll Number]`, `[Guide Name]`,
+`[College]` …) must be filled in. Both files are generated from `results/*.json`, so after new
+results (e.g. the user study) run `python -m scripts.report.make_report`, then
+`node docs/deliverables/build_report.js` and `node docs/deliverables/build_slides.js` (once:
+`npm --prefix docs/deliverables install`).
+Open the regenerated report in Word and update the table of contents (right-click > Update Field).
+Demo deep links: `http://127.0.0.1:8000/?case=conflict-missed-effusion&trace=pleural%20effusion`.
+
 ## Status
 
 | Phase | Status |
@@ -23,7 +42,7 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | 3 Fusion | ✅ multimodal assistant: routing, fused scores, conflicts, NEWS2 triage, cited answers |
 | 4 Interface | ✅ React app: case workspace, streaming cited answers, heatmaps, leader-line evidence tracing |
 | 5 Evaluation | ✅ robustness, held-out text set, answer faithfulness, latency, user-study kit, report + figures |
-| 6 Docs & demo | ⏳ next |
+| 6 Docs & demo | ✅ project report (.docx), presentation (.pptx), results report, user-study kit |
 
 ### Phase 2 results (details and caveats in [docs/design.md](docs/design.md) §10)
 
@@ -57,12 +76,12 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | Latency | evidence 0.07 s; LLM median 15.8 s (text 11 s, multimodal 27 s) |
 | Usability (SUS) | kit ready in `docs/user_study/`; to be run with participants |
 
-Reproduce: `python -m scripts.eval_image`, `eval_retrieval`, `eval_text_qa`,
-`eval_text_only_cxr`, `eval_fusion`, `eval_robustness`, `eval_heldout_text --data data/samples/heldout_notes_test.json`,
-`eval_answers`; then `python -m scripts.make_report` rebuilds `docs/results.md` and `docs/figures/`.
+Reproduce: `python -m scripts.evaluate.image`, `evaluate.retrieval`, `evaluate.text_qa`,
+`evaluate.text_only_cxr`, `evaluate.fusion`, `evaluate.robustness`, `evaluate.heldout_text --data data/samples/heldout_notes_test.json`,
+`evaluate.answers`; then `python -m scripts.report.make_report` rebuilds `docs/results.md` and `docs/figures/`.
 Each experiment writes `results/<experiment>.json`.
 
-### Phase 1 results (synthetic gold set, `python -m scripts.eval_ingestion`)
+### Phase 1 results (synthetic gold set, `python -m scripts.evaluate.ingestion`)
 
 | Metric | Score |
 |---|---|
@@ -103,12 +122,12 @@ ollama pull llama3.1:8b
 copy .env.example .env
 
 # 6. Datasets for Phase 2 (IU X-Ray subset: ~2.7 GB download, 150 MB kept)
-python -m scripts.prepare_iu_xray --n 1500
-python -m scripts.eval_image --train-probe   # also trains the linear probe
-python -m scripts.eval_retrieval              # also builds the similar-case index
+python -m scripts.data.prepare_iu_xray --n 1500
+python -m scripts.evaluate.image --train-probe   # also trains the linear probe
+python -m scripts.evaluate.retrieval              # also builds the similar-case index
 
 # 7. Demo cases (7 synthetic notes on real X-rays)
-python -m scripts.load_demo_cases --analyze --reset
+python -m scripts.data.load_demo_cases --analyze --reset
 
 # 8. Build the web interface (Node 18+)
 npm --prefix ui install
@@ -135,7 +154,7 @@ to draw leader lines to the exact evidence. Design system: [DESIGN.md](DESIGN.md
 ```bash
 pytest -q                          # fast unit tests, no downloads
 python -m scripts.smoke_test       # loads every model end-to-end (first run downloads ~1 GB)
-python -m scripts.eval_ingestion   # de-ID + NER metrics (add --verbose to see outputs)
+python -m scripts.evaluate.ingestion   # de-ID + NER metrics (add --verbose to see outputs)
 uvicorn api.main:app --reload      # then open http://127.0.0.1:8000/docs
 ```
 
@@ -166,23 +185,36 @@ are discarded; the audit log (`data/store/audit.log`) records actions and PHI
 ## Project layout
 
 ```
-medassist/
-  config.py           settings from env/.env
-  ingestion/          loaders, text + DICOM de-ID, clinical NER, case store, pipeline
-  image_pipeline/     preprocessing, BiomedCLIP, CXR classifier + heatmaps, case retrieval
-  text_pipeline/      sentence embeddings, RAG (LangChain)
-  datasets/           IU X-Ray loader (labels from MeSH)
-  vector_index.py     persistent cosine-similarity index
-  analysis.py         image / text analysis services used by the API
-  fusion/             router, evidence bundle + fused scores, conflicts, NEWS2 triage,
-                      follow-ups, prompts, orchestrator (assistant.py)
-  llm/                Ollama client
-  evaluation/         metrics, result saving
-api/                  FastAPI app
-ui/                   React + Vite + TypeScript frontend (src/components, leader.tsx, styles.css)
-scripts/              smoke test, dataset preparation, evaluation scripts
-results/              evaluation outputs (JSON), committed for reproducibility
-tests/                pytest suite
-data/samples/         small synthetic samples (large datasets are not committed)
-docs/                 design document, report material
+medassist/                Python package: all the AI logic
+  config.py               settings from env/.env
+  ingestion/              upload loaders, text + DICOM de-identification, clinical NER, case store
+  image_pipeline/         BiomedCLIP, chest X-ray classifier + heatmaps, similar-case retrieval
+  text_pipeline/          sentence embeddings, RAG (LangChain)
+  fusion/                 evidence bundle, fused scores, conflicts, NEWS2 triage, router,
+                          prompts, and the orchestrator (assistant.py)
+  llm/                    Ollama client
+  datasets/               IU X-Ray loader (labels from MeSH)
+  evaluation/             metrics and result saving
+  analysis.py             image / text analysis services used by the API
+  vector_index.py         cosine-similarity index
+api/main.py               FastAPI backend (also serves the built UI)
+ui/                       React + Vite + TypeScript web interface
+scripts/
+  smoke_test.py           checks that every model loads and runs
+  data/                   prepare IU X-Ray, generate held-out notes, load demo cases
+  evaluate/               one script per experiment; each writes results/<name>.json
+  report/                 builds docs/results.md and docs/figures/ from results/
+tests/                    pytest suite, one file per area (core, ingestion, image_and_rag,
+                          fusion, api, evaluation_tools)
+results/                  experiment outputs (JSON), committed for reproducibility
+data/samples/             small synthetic notes and gold labels (large data is not committed)
+docs/
+  deliverables/           project report (.docx), presentation (.pptx) and their generators
+  design.md               design decisions and per-phase notes
+  results.md, figures/    all result tables and charts
+  user_study/             usability-study protocol, questionnaire, response template
+DESIGN.md, PRODUCT.md     interface design system and product record (Impeccable skill)
 ```
+
+Created locally and git-ignored: `.venv/`, `models_cache/` (model weights),
+`data/processed/` (IU X-Ray subset), `data/store/` (cases), `logs/`, `node_modules/`, `ui/dist/`.

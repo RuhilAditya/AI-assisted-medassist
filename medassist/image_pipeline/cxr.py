@@ -80,7 +80,7 @@ class CXRClassifier:
         self.findings = FINDINGS
         self.probe = self._load_probe() if mode != "zero-shot" else None
         if mode in ("probe", "ensemble") and self.probe is None:
-            raise FileNotFoundError(f"No linear probe at {PROBE_FILE}. Run: python -m scripts.eval_image --train-probe")
+            raise FileNotFoundError(f"No linear probe at {PROBE_FILE}. Run: python -m scripts.evaluate.image --train-probe")
         self.mode = ("ensemble" if self.probe else "zero-shot") if mode == "auto" else mode
         self._pos, self._neg = self._prompt_embeddings()
         key = {"ensemble": "ensemble_thresholds", "probe": "thresholds"}.get(self.mode)

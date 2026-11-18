@@ -5,8 +5,6 @@ import cv2
 import numpy as np
 from PIL import Image
 
-from medassist.ingestion.loaders import LoadedImage
-
 
 def enhance_contrast(pixels: np.ndarray, clip_limit: float = 2.0) -> np.ndarray:
     """CLAHE: local contrast enhancement, standard for radiographs."""
@@ -25,15 +23,3 @@ def to_model_image(pixels: np.ndarray, apply_clahe: bool = True) -> Image.Image:
     if apply_clahe:
         pixels = enhance_contrast(pixels)
     return Image.fromarray(pixels).convert("RGB")
-
-
-def prepare_for_model(image: LoadedImage, apply_clahe: bool = False) -> Image.Image:
-    """Pick the right path: colour images (histopathology, photos) keep their
-    colour; grayscale images (radiology) optionally get CLAHE.
-
-    CLAHE defaults to off: BiomedCLIP was trained on unenhanced figures from
-    PubMed papers, and eval_image.py measures whether CLAHE helps or hurts.
-    """
-    if image.is_color:
-        return Image.fromarray(image.color)
-    return to_model_image(image.pixels, apply_clahe=apply_clahe)

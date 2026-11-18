@@ -2,7 +2,7 @@
 
 SUS (Brooke 1996): odd items contribute (score - 1), even items (5 - score); the sum x 2.5
 gives 0-100. Adjective bands after Bangor, Kortum & Miller (2009).
-Usage: python -m scripts.score_user_study [--csv docs/user_study/responses.csv]
+Usage: python -m scripts.evaluate.user_study [--csv docs/user_study/responses.csv]
 """
 from __future__ import annotations
 

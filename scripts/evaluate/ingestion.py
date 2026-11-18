@@ -7,7 +7,7 @@ Metrics
   Active recall     expected active findings detected as active
   Negation P/R/F1   for findings the NER marks as negated
 
-Usage:  python -m scripts.eval_ingestion [--verbose]
+Usage:  python -m scripts.evaluate.ingestion [--verbose]
 """
 from __future__ import annotations
 

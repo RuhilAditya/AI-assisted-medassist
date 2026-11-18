@@ -8,7 +8,7 @@ Steps: read reports + projections CSVs -> keep one frontal image per study ->
 derive labels from MeSH -> stratified sample -> download, resize to 512 px ->
 write data/processed/iu_xray/studies.jsonl with a fixed train/test split.
 
-Usage: python -m scripts.prepare_iu_xray [--n 1500] [--workers 8]
+Usage: python -m scripts.data.prepare_iu_xray [--n 1500] [--workers 8]
 """
 from __future__ import annotations
 

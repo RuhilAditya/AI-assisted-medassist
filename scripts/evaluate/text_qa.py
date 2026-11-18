@@ -8,7 +8,7 @@ Part B: question answering with Llama (yes / no / maybe):
           RAG          top-3 retrieved passages (best embedder from Part A)
           oracle       the gold abstract (upper bound)
 
-Usage: python -m scripts.eval_text_qa [--limit 150] [--skip-qa]
+Usage: python -m scripts.evaluate.text_qa [--limit 150] [--skip-qa]
 """
 from __future__ import annotations
 

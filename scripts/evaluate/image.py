@@ -10,7 +10,7 @@ Metrics per finding: AUROC (threshold-free, primary), F1 at a threshold chosen
 on the TRAIN split only. Plus "abnormal vs normal" AUROC using max finding prob.
 Per-study predictions are saved for the Phase 3 multimodal comparison.
 
-Usage: python -m scripts.eval_image [--train-probe]
+Usage: python -m scripts.evaluate.image [--train-probe]
 """
 from __future__ import annotations
 

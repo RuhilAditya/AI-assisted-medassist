@@ -13,7 +13,7 @@ C. CONFLICT DETECTION: discordances injected into the simulated notes ("no X"
    detected and the alert rate on notes without injections.
 
 Paired bootstrap (1,000 resamples) gives 95% CIs for fused minus image-only AUROC.
-Usage: python -m scripts.eval_fusion
+Usage: python -m scripts.evaluate.fusion
 """
 from __future__ import annotations
 

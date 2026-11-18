@@ -21,7 +21,7 @@ SUS is stable from about 8–12 participants; report the clinical group separate
 ## Setup (once)
 
 ```bash
-python -m scripts.load_demo_cases --analyze --reset
+python -m scripts.data.load_demo_cases --analyze --reset
 uvicorn api.main:app --port 8000          # open http://127.0.0.1:8000
 ```
 
@@ -52,7 +52,7 @@ Enter every participant as one row in `docs/user_study/responses.csv` (copy the 
 then run:
 
 ```bash
-python -m scripts.score_user_study
+python -m scripts.evaluate.user_study
 ```
 
 It computes SUS (0–100) per participant with mean, SD and 95% CI, the Bangor adjective

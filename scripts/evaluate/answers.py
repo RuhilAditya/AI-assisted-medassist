@@ -11,7 +11,7 @@ Each case gets 4 questions (one per route). Every answer is scored automatically
   latency              evidence stage (rules, retrieval) and LLM stage, per route
 
 Runs on a temporary copy of the demo cases, so their chat history stays clean.
-Usage: python -m scripts.eval_answers [--cases N]
+Usage: python -m scripts.evaluate.answers [--cases N]
 """
 from __future__ import annotations
 

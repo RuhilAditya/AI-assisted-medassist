@@ -1,7 +1,8 @@
 import { AlertTriangle, CheckCircle2, Info, Microscope, Siren, Images } from "lucide-react";
 import type { Conflict, Evidence, FusedFinding, Triage } from "../api";
 import type { Ink } from "../leader";
-import { useTarget, useTraceProps } from "../leader";
+import { useEffect, useRef } from "react";
+import { useLeader, useTarget, useTraceProps } from "../leader";
 import { Cite } from "./Cite";
 import { termKey } from "./NotePanel";
 
@@ -9,19 +10,29 @@ import { termKey } from "./NotePanel";
 
 const pct = (p: number) => `${Math.max(0, Math.min(100, p * 100))}%`;
 
-function FindingRow({ f, selected, onSelect }: { f: FusedFinding; selected: boolean; onSelect: () => void }) {
+function FindingRow({ f, selected, onSelect, autoTrace }: { f: FusedFinding; selected: boolean; onSelect: () => void; autoTrace?: boolean }) {
   const targets: { id: string; ink: Ink }[] = [{ id: "image", ink: "image" }];
   f.signals.forEach((s) => {
     if (s.kind === "vital") targets.push({ id: "vitals", ink: "note" });
     else targets.push({ id: termKey(s.term), ink: "note" });
   });
   const trace = useTraceProps(targets);
+  const { trace: traceNow } = useLeader();
+  const rowRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    // deep link (?trace=<finding>): draw this row's leader lines once the page has settled
+    if (!autoTrace) return;
+    const t = setTimeout(() => rowRef.current && traceNow(rowRef.current, targets), 1200);
+    return () => clearTimeout(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoTrace]);
   const shift = f.fused_probability - f.image_probability;
   const supports = f.signals.filter((s) => s.llr > 0).map((s) => s.term).slice(0, 3);
   const against = f.signals.filter((s) => s.llr < 0).map((s) => `no ${s.term}`);
   return (
     <button
       type="button"
+      ref={rowRef}
       className="finding"
       aria-pressed={selected}
       onClick={onSelect}
@@ -72,10 +83,12 @@ export function Findings({
   evidence,
   heatFinding,
   onHeatFinding,
+  autoTrace,
 }: {
   evidence: Evidence | undefined;
   heatFinding: string | null;
   onHeatFinding: (f: string | null) => void;
+  autoTrace?: string | null;
 }) {
   if (!evidence) return <Skeleton rows={4} title="Image findings" />;
   const analysis = evidence.image_analysis;
@@ -132,6 +145,7 @@ export function Findings({
             key={f.finding}
             f={f}
             selected={heatFinding === f.finding}
+            autoTrace={autoTrace === f.finding}
             onSelect={() => onHeatFinding(heatFinding === f.finding ? null : f.finding)}
           />
         ))}

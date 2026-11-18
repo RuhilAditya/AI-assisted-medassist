@@ -5,10 +5,10 @@ import random
 
 import pytest
 
-from scripts.eval_answers import claims, score
-from scripts.eval_heldout_text import perturb, typo
-from scripts.generate_heldout_notes import make_note
-from scripts.score_user_study import adjective, describe, sus_score
+from scripts.evaluate.answers import claims, score
+from scripts.evaluate.heldout_text import perturb, typo
+from scripts.data.generate_heldout_notes import make_note
+from scripts.evaluate.user_study import adjective, describe, sus_score
 
 
 # ---------- SUS ----------

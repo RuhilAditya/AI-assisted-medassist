@@ -89,7 +89,7 @@ def clean_text(text: str | float | None) -> str:
 def load_studies(split: str | None = None) -> list[Study]:
     if not STUDIES_FILE.exists():
         raise FileNotFoundError(
-            f"{STUDIES_FILE} not found. Run: python -m scripts.prepare_iu_xray"
+            f"{STUDIES_FILE} not found. Run: python -m scripts.data.prepare_iu_xray"
         )
     studies = [Study(**json.loads(line)) for line in STUDIES_FILE.read_text(encoding="utf-8").splitlines()]
     return [s for s in studies if split is None or s.split == split]

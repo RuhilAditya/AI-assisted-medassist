@@ -58,14 +58,17 @@ function CaseBand({ detail, overview }: { detail: CaseDetail; overview: Overview
 
 type Tab = "image" | "evidence" | "ask";
 
+/** Deep links for demos and report screenshots: ?case=<demo id|case id>&heat=<finding>&trace=<finding>&tab=<image|evidence|ask> */
+const params = new URLSearchParams(window.location.search);
+
 function Workspace({ caseId, onTriage }: { caseId: string; onTriage: (id: string, level: TriageLevel) => void }) {
   const [detail, setDetail] = useState<CaseDetail>();
   const [overview, setOverview] = useState<Overview>();
   const [history, setHistory] = useState<HistoryTurn[]>([]);
   const [live, setLive] = useState<LiveTurn[]>([]);
-  const [heatFinding, setHeatFinding] = useState<string | null>(null);
+  const [heatFinding, setHeatFinding] = useState<string | null>(params.get("heat"));
   const [error, setError] = useState<string | null>(null);
-  const [tab, setTab] = useState<Tab>("evidence");
+  const [tab, setTab] = useState<Tab>((params.get("tab") as Tab) || "evidence");
   const turnId = useRef(0);
   const abort = useRef<AbortController | null>(null);
 
@@ -74,7 +77,7 @@ function Workspace({ caseId, onTriage }: { caseId: string; onTriage: (id: string
     setDetail(undefined);
     setOverview(undefined);
     setLive([]);
-    setHeatFinding(null);
+    setHeatFinding(params.get("heat"));
     setError(null);
     api.getCase(caseId).then((d) => !cancelled && setDetail(d)).catch((e) => setError(String(e.message ?? e)));
     api.history(caseId).then((h) => !cancelled && setHistory(h)).catch(() => setHistory([]));
@@ -158,7 +161,7 @@ function Workspace({ caseId, onTriage }: { caseId: string; onTriage: (id: string
           <div className="col" data-active={tab === "evidence"}>
             <TriagePanel triage={overview?.triage} />
             <Conflicts conflicts={overview?.conflicts} />
-            <Findings evidence={overview?.evidence} heatFinding={heatFinding} onHeatFinding={setHeatFinding} />
+            <Findings evidence={overview?.evidence} heatFinding={heatFinding} onHeatFinding={setHeatFinding} autoTrace={params.get("trace")} />
             <SimilarCases evidence={overview?.evidence} />
           </div>
           <div className="col col-chat" data-active={tab === "ask"}>
@@ -191,7 +194,9 @@ export default function App() {
       // demo cases first, in the order they were defined; then everything else newest first
       list.sort((a, b) => Number(!!b.tags?.demo) - Number(!!a.tags?.demo) || (a.tags?.demo ? a.created.localeCompare(b.created) : b.created.localeCompare(a.created)));
       setCases(list);
-      setSelected((cur) => select ?? cur ?? list[0]?.case_id ?? null);
+      const linked = params.get("case");
+      const fromLink = linked ? list.find((c) => c.case_id === linked || c.tags?.demo === linked)?.case_id : undefined;
+      setSelected((cur) => select ?? cur ?? fromLink ?? list[0]?.case_id ?? null);
       setLoadError(null);
     } catch (e) {
       setLoadError((e as Error).message);
@@ -281,7 +286,7 @@ export default function App() {
             <div className="intro" style={{ textAlign: "center" }}>
               <h2>No cases yet</h2>
               <p>
-                Create a case, or load the demo cases with <code>python -m scripts.load_demo_cases --analyze</code>.
+                Create a case, or load the demo cases with <code>python -m scripts.data.load_demo_cases --analyze</code>.
               </p>
               <button className="btn btn-primary" style={{ marginTop: 16 }} onClick={() => setCreating(true)}>
                 <Plus size={16} aria-hidden="true" /> New case

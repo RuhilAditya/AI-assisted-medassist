@@ -9,7 +9,7 @@ from fastapi.testclient import TestClient
 
 from medassist.fusion.assistant import MedAssistant
 from medassist.ingestion.store import CaseStore
-from tests.test_phase3 import FakeChain, FakeDeid, image_findings
+from tests.test_fusion import FakeChain, FakeDeid, image_findings
 
 
 class StreamingChain(FakeChain):

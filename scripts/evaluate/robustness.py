@@ -10,7 +10,7 @@ Corruptions (3 severities each), applied to the IU X-Ray test images before Biom
 
 Metrics per condition: macro AUROC and abnormal-vs-normal AUROC (calibrated ensemble,
 the deployed classifier), and mean absolute change in probability vs the clean image.
-Usage: python -m scripts.eval_robustness
+Usage: python -m scripts.evaluate.robustness
 """
 from __future__ import annotations
 

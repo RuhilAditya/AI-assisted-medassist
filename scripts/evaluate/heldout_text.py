@@ -9,7 +9,7 @@ Metrics
   Negation P / R / F1      symptoms reported as absent
 Typo robustness: the same metrics after swapping adjacent letters in 2% / 5% / 10% of
 the words (identifier strings are perturbed too, as in real notes).
-Usage: python -m scripts.eval_heldout_text
+Usage: python -m scripts.evaluate.heldout_text
 """
 from __future__ import annotations
 
