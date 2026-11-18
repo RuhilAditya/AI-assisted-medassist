@@ -86,7 +86,7 @@ the report must be reproducible with one command from `medassist/evaluation`.
 | 2 Unimodal modules | 5-8 | RAG over notes; BiomedCLIP labels + retrieval + heatmaps; unimodal baselines ✅ |
 | 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection ✅ |
 | 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner ✅ |
-| 5 Evaluation | 14-16 | Full benchmark suite + user study |
+| 5 Evaluation | 14-16 | Full benchmark suite + user study ✅ (study kit ready; to be run with participants) |
 | 6 Docs & demo | 17-20 | Report, slides, demo video |
 
 ## 8. Hardware
@@ -357,7 +357,44 @@ aligned), leader lines for citations and finding rows (and that they clear), liv
 streaming of a real Llama answer with citation chips (~37 s), mobile tabs. Tests:
 `tests/test_phase4.py` covers overview, streaming order, listing, creation, notes.
 
-## 13. Known limitations / risks
+## 13. Phase 5 design notes (evaluation)
+
+All numbers, tables and figures: [results.md](results.md), regenerated from
+`results/*.json` by `python -m scripts.make_report`.
+
+**Image robustness** (`eval_robustness.py`, 435 test X-rays, deployed calibrated
+ensemble). Drops stay within 0.017 macro AUROC at realistic levels (noise sigma <= 15,
+blur <= 2 px, rotation <= 10 deg, contrast x0.5, JPEG q20, 128 px). Failure only at
+extremes: noise sigma 30 (-0.101), JPEG quality 5 (-0.106), 64 px (-0.054), 20 deg (-0.044).
+
+**Held-out text set** (`generate_heldout_notes.py`, `eval_heldout_text.py`). 120 notes
+from a separate generator (different templates, names, ID/phone/date formats), written
+after the rules were frozen. *Process note for the report:* the first (discovery) set
+revealed that hospital names were never removed (0%; overall PHI recall 86%). A
+case-sensitive facility-name recogniser was added, and the reported numbers come from a
+**fresh** set (seed 2027) generated afterwards, so the fix is not scored on the data
+that revealed the problem: PHI recall 99.8% (all types 100% except person names 99.2%),
+clinical text kept 99.9%, finding recall 99.7%, negation F1 1.00. With 10% of words
+typo'd: PHI recall 97.8%, finding recall 0.91, negation F1 0.94. Caveat: generated notes
+are more regular than real ones.
+
+**Answer faithfulness** (`eval_answers.py`, real Llama, 7 demo cases x 4 question types,
+automatic scoring; no LLM-as-judge, to avoid the model grading itself): routing 100%,
+format 100%, citation validity 97.8%, ungrounded numbers 0.4% (the one hit is "0.5" taken
+from the system prompt's rule, an artefact), triage level stated in 100% of triage answers
+with 0 contradictions, HIGH/MEDIUM conflicts disclosed in 91.7%, no unsafe certainty
+language. **Weak spot: citation coverage 50%** of claims (the metric is conservative: a
+citation at the end of a multi-sentence bullet credits only its last sentence). Observed
+error example: a notes-only answer on the wrong-image case called 37.9 C "normal
+temperature" and did not mention the modality mismatch. Median latency: evidence stage
+0.07 s (warm), LLM 15.8 s (text 10.9 s, image 14.9 s, triage 17.9 s, multimodal 27.4 s).
+
+**Usability study** (`docs/user_study/`): protocol (5 timed tasks on the demo cases),
+SUS questionnaire plus 6 explanation/trust items, response template, and
+`score_user_study.py` (SUS with 95% CI and Bangor adjective, per background). Must be run
+with 10-15 participants; nothing is reported until it is.
+
+## 14. Known limitations / risks
 
 - Zero-shot BiomedCLIP accuracy on CXR findings is moderate; mitigation: a
   linear probe on frozen features as an improved variant.

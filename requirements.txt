@@ -30,6 +30,7 @@ streamlit==1.40.2
 scikit-learn==1.5.2
 pandas==2.2.3
 pyarrow==18.1.0               # parquet (PubMedQA)
+matplotlib==3.9.4            # report figures (scripts/make_report.py)
 
 # --- De-identification & clinical NLP (Phase 1) ---
 presidio-analyzer==2.2.366

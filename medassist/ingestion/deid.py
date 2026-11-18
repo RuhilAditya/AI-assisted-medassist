@@ -34,6 +34,7 @@ ENTITY_PLACEHOLDERS = {
     "IP_ADDRESS": "[IP]",
     "MEDICAL_LICENSE": "[ID]",
     "AGE_OVER_89": "[AGE>89]",
+    "FACILITY": "[FACILITY]",
 }
 
 
@@ -79,7 +80,24 @@ def _custom_recognizers():
         supported_entity="PHONE_NUMBER",
         patterns=[Pattern("in_mobile", r"(?<!\d)(?:\+91[- ]?)?[6-9]\d{4}[- ]?\d{5}(?!\d)", 0.7)],
     )
-    return [mrn, aadhaar, age_over_89, indian_phone]
+    # Healthcare facility names ("Sunrise Multispeciality Hospital", "St. Mary's Clinic"):
+    # a quasi-identifier Presidio has no recogniser for. Found by the Phase 5 held-out
+    # evaluation (0% removed). A suffix pattern is used instead of spaCy ORG, which also
+    # tags clinical acronyms (ED, OPD, CBC) and would over-redact.
+    facility = PatternRecognizer(
+        supported_entity="FACILITY",
+        patterns=[Pattern(
+            "facility_suffix",
+            # (?-i:...) because Presidio compiles patterns case-insensitively; a proper name
+            # (>= 1 capitalised word) must precede the capitalised suffix, so "admitted to
+            # hospital" or "the TB clinic" are never touched.
+            r"(?-i:\b(?:(?:St\.?|Saint)\s+)?(?:[A-Z][\w'&.-]*\s+){1,4}?"
+            r"(?:Hospitals?|Clinic|Medical\s+(?:Centre|Center|College)|Nursing\s+Home|"
+            r"Healthcare|Institute(?:\s+of\s+[A-Z]\w*(?:\s+[A-Z]\w*){0,3})?|Infirmary|Polyclinic)\b)",
+            0.75,
+        )],
+    )
+    return [mrn, aadhaar, age_over_89, indian_phone, facility]
 
 
 class TextDeidentifier:

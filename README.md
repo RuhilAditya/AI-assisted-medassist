@@ -22,8 +22,8 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | 2 Unimodal modules | ✅ CXR findings (BiomedCLIP), heatmaps, similar cases, RAG; unimodal baselines |
 | 3 Fusion | ✅ multimodal assistant: routing, fused scores, conflicts, NEWS2 triage, cited answers |
 | 4 Interface | ✅ React app: case workspace, streaming cited answers, heatmaps, leader-line evidence tracing |
-| 5 Evaluation | ⏳ next |
-| 6 Docs & demo | planned |
+| 5 Evaluation | ✅ robustness, held-out text set, answer faithfulness, latency, user-study kit, report + figures |
+| 6 Docs & demo | ⏳ next |
 
 ### Phase 2 results (details and caveats in [docs/design.md](docs/design.md) §10)
 
@@ -45,8 +45,22 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | Conflict detection when the image classifier is right | **29/29 (100%)** of injected conflicts |
 | End-to-end answer time | ~30 s (LLM-bound on a 6 GB GPU) |
 
+### Phase 5 results (all tables and figures: [docs/results.md](docs/results.md))
+
+| Evaluation | Result |
+|---|---|
+| Image robustness (6 corruptions x 3 levels) | <= 0.017 AUROC drop at realistic levels; fails only at extremes (noise sigma 30, JPEG q5: -0.10) |
+| De-ID on 120 fresh held-out notes | PHI recall **99.8%** (facility names fixed after a discovery set showed 0%), token leak 2.1% |
+| NER on held-out notes | finding recall 99.7%, negation F1 1.00; at 10% typos 0.91 / 0.94 |
+| Answer faithfulness (28 real answers) | routing 100%, citation validity 97.8%, ungrounded numbers 0.4%, triage stated 100%, conflicts disclosed 91.7%, unsafe phrases 0 |
+| Weak spot | citation coverage 50% of claims |
+| Latency | evidence 0.07 s; LLM median 15.8 s (text 11 s, multimodal 27 s) |
+| Usability (SUS) | kit ready in `docs/user_study/`; to be run with participants |
+
 Reproduce: `python -m scripts.eval_image`, `eval_retrieval`, `eval_text_qa`,
-`eval_text_only_cxr`, `eval_fusion`. Each writes `results/<experiment>.json`.
+`eval_text_only_cxr`, `eval_fusion`, `eval_robustness`, `eval_heldout_text --data data/samples/heldout_notes_test.json`,
+`eval_answers`; then `python -m scripts.make_report` rebuilds `docs/results.md` and `docs/figures/`.
+Each experiment writes `results/<experiment>.json`.
 
 ### Phase 1 results (synthetic gold set, `python -m scripts.eval_ingestion`)
 
@@ -58,8 +72,8 @@ Reproduce: `python -m scripts.eval_image`, `eval_retrieval`, `eval_text_qa`,
 | Active finding recall | 94.7% (18/19) |
 | Negation precision / recall / F1 | 1.00 / 1.00 / 1.00 |
 
-*Caveat: 6 notes, written by the developers, and used while tuning the rules. A
-larger held-out set is planned for Phase 5 before these numbers go in the report.*
+*Caveat: 6 notes, written by the developers, and used while tuning the rules. Use the
+Phase 5 held-out numbers (120 generated notes, never used for tuning) in the report.*
 
 ## Requirements
 

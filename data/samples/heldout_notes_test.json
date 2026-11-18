@@ -1,0 +1,6378 @@
+{
+ "_description": "Generate a HELD-OUT set of synthetic clinical notes with gold labels.",
+ "seed": 2027,
+ "notes": [
+  {
+   "id": "heldout_000",
+   "text": "Silver Oak Multispeciality Hospital - Admission note\nPatient: Nikhil Shah   Hospital No. 2025/63226   DOB: 21 March 1991\nAddress: 220, Anna Salai, Lucknow\n\n73-year-old male presents with breathlessness, dizziness and weight loss for 13 days. Denies night sweats. No sore throat. There is no productive cough. Known case of tuberculosis. Vitals: BP 145/82, HR 74, RR 20, SpO2 94%, Temp 38.1 C. Seen by Dr. Siddharth Sharma. Review on 25 March 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nikhil Shah"
+    },
+    {
+     "type": "id",
+     "value": "2025/63226"
+    },
+    {
+     "type": "date",
+     "value": "21 March 1991"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Sharma"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Multispeciality Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Lucknow"
+    },
+    {
+     "type": "date",
+     "value": "25 March 2025"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "dizziness",
+    "weight loss",
+    "13 days",
+    "SpO2 94%",
+    "tuberculosis"
+   ],
+   "active": [
+    "breathlessness",
+    "dizziness",
+    "weight loss"
+   ],
+   "negated": [
+    "night sweats",
+    "sore throat",
+    "productive cough"
+   ]
+  },
+  {
+   "id": "heldout_001",
+   "text": "Ganga Multispeciality Hospital - ED note\nPatient: Swati Nair   IP No: 171562   DOB: 16/04/1967\nContact: +91 64253 04964\n\n20-year-old male presents with night sweats, palpitations, dizziness and shortness of breath for 8 days. There is no abdominal pain. Denies breathlessness. Known case of hypertension and COPD. Vitals: BP 163/67, HR 95, RR 30, SpO2 97%, Temp 36.9 C. Seen by Dr. Siddharth Yadav. Review on 24 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Swati Nair"
+    },
+    {
+     "type": "id",
+     "value": "171562"
+    },
+    {
+     "type": "date",
+     "value": "16/04/1967"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Yadav"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 64253 04964"
+    },
+    {
+     "type": "date",
+     "value": "24 November 2026"
+    }
+   ],
+   "keep": [
+    "night sweats",
+    "palpitations",
+    "dizziness",
+    "shortness of breath",
+    "8 days",
+    "SpO2 97%",
+    "hypertension",
+    "COPD"
+   ],
+   "active": [
+    "night sweats",
+    "palpitations",
+    "dizziness",
+    "shortness of breath"
+   ],
+   "negated": [
+    "abdominal pain",
+    "breathlessness"
+   ]
+  },
+  {
+   "id": "heldout_002",
+   "text": "Sahyadri Clinic - Admission note\nPatient: Nisha Rao   IP No: 549402   DOB: 05-11-1972\nEmail: nisha.rao84@outlook.com\n\n44-year-old female presents with wheezing and weight loss for 5 days. There is no shortness of breath. There is no chills. Denies dizziness. Vitals: BP 144/63, HR 90, RR 20, SpO2 87%, Temp 36.3 C. Seen by Dr. Siddharth Gill. Review on 2 December 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nisha Rao"
+    },
+    {
+     "type": "id",
+     "value": "549402"
+    },
+    {
+     "type": "date",
+     "value": "05-11-1972"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Gill"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Clinic"
+    },
+    {
+     "type": "email",
+     "value": "nisha.rao84@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "2 December 2024"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "weight loss",
+    "5 days",
+    "SpO2 87%"
+   ],
+   "active": [
+    "wheezing",
+    "weight loss"
+   ],
+   "negated": [
+    "shortness of breath",
+    "chills",
+    "dizziness"
+   ]
+  },
+  {
+   "id": "heldout_003",
+   "text": "Kaveri Medical Centre - Ward round\nPt: Mathew, Aarav   Hospital No. 2023/45564   DOB: 18/07/1955\nEmail: aarav.mathew84@gmail.com\nAddress: 38, MG Road, Indore\n\n40-year-old female presents with abdominal pain and dizziness for 3 days. There is no vomiting. No fatigue. Denies shortness of breath. Known case of COPD. Vitals: BP 134/70, HR 92, RR 14, SpO2 97%, Temp 36.5 C. Seen by Dr. Swati Banerjee. Review on 16 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mathew, Aarav"
+    },
+    {
+     "type": "id",
+     "value": "2023/45564"
+    },
+    {
+     "type": "date",
+     "value": "18/07/1955"
+    },
+    {
+     "type": "name",
+     "value": "Swati Banerjee"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Medical Centre"
+    },
+    {
+     "type": "email",
+     "value": "aarav.mathew84@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "16 October 2024"
+    }
+   ],
+   "keep": [
+    "abdominal pain",
+    "dizziness",
+    "3 days",
+    "SpO2 97%",
+    "COPD"
+   ],
+   "active": [
+    "abdominal pain",
+    "dizziness"
+   ],
+   "negated": [
+    "vomiting",
+    "fatigue",
+    "shortness of breath"
+   ]
+  },
+  {
+   "id": "heldout_004",
+   "text": "Metro Nursing Home - Ward round\nPatient: Olivia Pillai   IP No: 355965   DOB: 27-09-1947\nAddress: 232, Residency Road, Kolkata\n\n27-year-old male presents with abdominal pain, hemoptysis, dizziness and syncope for 7 days. Denies shortness of breath. Known case of COPD and asthma. Vitals: BP 147/67, HR 94, RR 13, SpO2 87%, Temp 39.1 C. Seen by Dr. Emily Nair. Review on 20 May 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Olivia Pillai"
+    },
+    {
+     "type": "id",
+     "value": "355965"
+    },
+    {
+     "type": "date",
+     "value": "27-09-1947"
+    },
+    {
+     "type": "name",
+     "value": "Emily Nair"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Nursing Home"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "20 May 2025"
+    }
+   ],
+   "keep": [
+    "abdominal pain",
+    "hemoptysis",
+    "dizziness",
+    "syncope",
+    "7 days",
+    "SpO2 87%",
+    "COPD",
+    "asthma"
+   ],
+   "active": [
+    "abdominal pain",
+    "hemoptysis",
+    "dizziness",
+    "syncope"
+   ],
+   "negated": [
+    "shortness of breath"
+   ]
+  },
+  {
+   "id": "heldout_005",
+   "text": "Shanti Hospital - OPD note\nName: Ms. Joseph Mehta   UHID LMC98447036   DOB: 21/11/1942\n\n44-year-old female presents with high-grade fever, dry cough and weight loss for 8 days. No abdominal pain. There is no syncope. Known case of asthma and COPD. Vitals: BP 168/87, HR 126, RR 18, SpO2 98%, Temp 38.4 C. Seen by Dr. Tanvi Pillai. Review on 12 August 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Joseph Mehta"
+    },
+    {
+     "type": "id",
+     "value": "LMC98447036"
+    },
+    {
+     "type": "date",
+     "value": "21/11/1942"
+    },
+    {
+     "type": "name",
+     "value": "Tanvi Pillai"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Hospital"
+    },
+    {
+     "type": "date",
+     "value": "12 August 2025"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "dry cough",
+    "weight loss",
+    "8 days",
+    "SpO2 98%",
+    "asthma",
+    "COPD"
+   ],
+   "active": [
+    "fever",
+    "dry cough",
+    "weight loss"
+   ],
+   "negated": [
+    "abdominal pain",
+    "syncope"
+   ]
+  },
+  {
+   "id": "heldout_006",
+   "text": "St. Mary's Multispeciality Hospital - Admission note\nPt: Fernandes, Sneha   MRN: 2464891   DOB: 02-02-1955\nEmail: sneha.fernandes68@gmail.com\n\n53-year-old female presents with weight loss, night sweats and sore throat for 8 days. There is no high-grade fever. Negative for cough. Vitals: BP 147/66, HR 62, RR 28, SpO2 91%, Temp 39.0 C. Seen by Dr. Imran Saxena. Review on 4 November 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Fernandes, Sneha"
+    },
+    {
+     "type": "id",
+     "value": "2464891"
+    },
+    {
+     "type": "date",
+     "value": "02-02-1955"
+    },
+    {
+     "type": "name",
+     "value": "Imran Saxena"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Multispeciality Hospital"
+    },
+    {
+     "type": "email",
+     "value": "sneha.fernandes68@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "4 November 2024"
+    }
+   ],
+   "keep": [
+    "weight loss",
+    "night sweats",
+    "sore throat",
+    "8 days",
+    "SpO2 91%"
+   ],
+   "active": [
+    "weight loss",
+    "night sweats",
+    "sore throat"
+   ],
+   "negated": [
+    "fever",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_007",
+   "text": "St. Joseph's Medical Centre - Ward round\nPatient: Olivia Kapoor   UHID AC94048084   DOB: 1952-08-04\nAddress: 205, Banjara Hills, Hyderabad\n\n75-year-old female presents with vomiting, headache, orthopnea and productive cough for 12 days. Negative for nausea. Known case of COPD. Vitals: BP 142/89, HR 113, RR 24, SpO2 95%, Temp 38.9 C. Seen by Dr. Harish Joshi. Review on 13 June 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Olivia Kapoor"
+    },
+    {
+     "type": "id",
+     "value": "AC94048084"
+    },
+    {
+     "type": "date",
+     "value": "1952-08-04"
+    },
+    {
+     "type": "name",
+     "value": "Harish Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Medical Centre"
+    },
+    {
+     "type": "location",
+     "value": "Hyderabad"
+    },
+    {
+     "type": "date",
+     "value": "13 June 2025"
+    }
+   ],
+   "keep": [
+    "vomiting",
+    "headache",
+    "orthopnea",
+    "productive cough",
+    "12 days",
+    "SpO2 95%",
+    "COPD"
+   ],
+   "active": [
+    "vomiting",
+    "headache",
+    "orthopnea",
+    "productive cough"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_008",
+   "text": "St. Joseph's Nursing Home - ED note\nPt: Kapoor, Vivaan   UHID AC38546023   DOB: 08-10-1946\nContact: +91 96192 17206\n\n85-year-old male presents with cough, fatigue, syncope and wheezing for 8 days. There is no hemoptysis. Known case of type 2 diabetes mellitus and chronic kidney disease. Vitals: BP 96/78, HR 109, RR 18, SpO2 99%, Temp 37.2 C. Seen by Dr. Ishaan Deshmukh. Review on 1 July 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Kapoor, Vivaan"
+    },
+    {
+     "type": "id",
+     "value": "AC38546023"
+    },
+    {
+     "type": "date",
+     "value": "08-10-1946"
+    },
+    {
+     "type": "name",
+     "value": "Ishaan Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91 96192 17206"
+    },
+    {
+     "type": "date",
+     "value": "1 July 2025"
+    }
+   ],
+   "keep": [
+    "cough",
+    "fatigue",
+    "syncope",
+    "wheezing",
+    "8 days",
+    "SpO2 99%",
+    "type 2 diabetes mellitus",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "cough",
+    "fatigue",
+    "syncope",
+    "wheezing"
+   ],
+   "negated": [
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_009",
+   "text": "Metro Institute of Medical Sciences - Admission note\nPt: Fernandes, Ayesha   Hospital No. 2021/92817   DOB: 14-10-1960\nContact: +91 86633 85458\nAddress: 36, Linking Road, Kochi\n\n41-year-old male presents with hemoptysis and leg swelling for 1 day. Denies productive cough. Known case of COPD and asthma. Vitals: BP 150/62, HR 77, RR 13, SpO2 97%, Temp 36.4 C. Seen by Dr. Harleen Bansal. Review on 23 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Fernandes, Ayesha"
+    },
+    {
+     "type": "id",
+     "value": "2021/92817"
+    },
+    {
+     "type": "date",
+     "value": "14-10-1960"
+    },
+    {
+     "type": "name",
+     "value": "Harleen Bansal"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "+91 86633 85458"
+    },
+    {
+     "type": "location",
+     "value": "Kochi"
+    },
+    {
+     "type": "date",
+     "value": "23 September 2024"
+    }
+   ],
+   "keep": [
+    "hemoptysis",
+    "leg swelling",
+    "1 day",
+    "SpO2 97%",
+    "COPD",
+    "asthma"
+   ],
+   "active": [
+    "hemoptysis",
+    "leg swelling"
+   ],
+   "negated": [
+    "productive cough"
+   ]
+  },
+  {
+   "id": "heldout_010",
+   "text": "St. Mary's Institute of Medical Sciences - OPD note\nName: Ms. Mary Mathew   Hospital No. 2023/79743   DOB: 20-06-2002\nContact: 021-2360-8799\nEmail: mary.mathew60@outlook.com\n\n51-year-old female presents with dry cough, headache and breathlessness for 7 days. Denies chills. No confusion. There is no abdominal pain. Vitals: BP 117/69, HR 70, RR 14, SpO2 87%, Temp 39.5 C. Seen by Dr. Lakshmi Mukherjee. Review on 24 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mary Mathew"
+    },
+    {
+     "type": "id",
+     "value": "2023/79743"
+    },
+    {
+     "type": "date",
+     "value": "20-06-2002"
+    },
+    {
+     "type": "name",
+     "value": "Lakshmi Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "021-2360-8799"
+    },
+    {
+     "type": "email",
+     "value": "mary.mathew60@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "24 October 2024"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "headache",
+    "breathlessness",
+    "7 days",
+    "SpO2 87%"
+   ],
+   "active": [
+    "dry cough",
+    "headache",
+    "breathlessness"
+   ],
+   "negated": [
+    "chills",
+    "confusion",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_011",
+   "text": "St. Joseph's Medical Centre - OPD note\nPt: Nair, Michael   Hospital No. 2019/31473   DOB: 1950-02-11\nAddress: 244, Anna Salai, Jaipur\n\n71-year-old male presents with orthopnea and headache for 12 days. There is no fatigue. Denies chest pain. Denies vomiting. Known case of COPD. Vitals: BP 118/65, HR 121, RR 13, SpO2 99%, Temp 36.7 C. Seen by Dr. Ishaan Thomas. Review on 11 September 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nair, Michael"
+    },
+    {
+     "type": "id",
+     "value": "2019/31473"
+    },
+    {
+     "type": "date",
+     "value": "1950-02-11"
+    },
+    {
+     "type": "name",
+     "value": "Ishaan Thomas"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Medical Centre"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "11 September 2026"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "headache",
+    "12 days",
+    "SpO2 99%",
+    "COPD"
+   ],
+   "active": [
+    "orthopnea",
+    "headache"
+   ],
+   "negated": [
+    "fatigue",
+    "chest pain",
+    "vomiting"
+   ]
+  },
+  {
+   "id": "heldout_012",
+   "text": "Sahyadri Nursing Home - ED note\nPt: Das, Pooja   Hospital No. 2019/95785   DOB: 1988-08-23\nContact: 8844296014\n\n80-year-old male presents with confusion, chills, dry cough and fever for 5 days. Denies orthopnea. Known case of hypothyroidism. Vitals: BP 119/78, HR 114, RR 13, SpO2 95%, Temp 38.4 C. Seen by Dr. Rohan Bansal. Review on 17 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Das, Pooja"
+    },
+    {
+     "type": "id",
+     "value": "2019/95785"
+    },
+    {
+     "type": "date",
+     "value": "1988-08-23"
+    },
+    {
+     "type": "name",
+     "value": "Rohan Bansal"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "8844296014"
+    },
+    {
+     "type": "date",
+     "value": "17 October 2026"
+    }
+   ],
+   "keep": [
+    "confusion",
+    "chills",
+    "dry cough",
+    "fever",
+    "5 days",
+    "SpO2 95%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "confusion",
+    "chills",
+    "dry cough",
+    "fever"
+   ],
+   "negated": [
+    "orthopnea"
+   ]
+  },
+  {
+   "id": "heldout_013",
+   "text": "Lotus Nursing Home - OPD note\nPt: Nair, Harleen   IP No: 183180   DOB: 16 December 1979\nContact: 9742327476\n\n47-year-old female presents with confusion and shortness of breath for 5 days. Denies vomiting. No headache. Known case of coronary artery disease and tuberculosis. Vitals: BP 123/99, HR 112, RR 18, SpO2 87%, Temp 38.1 C. Seen by Dr. Sneha Patel. Review on 28 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nair, Harleen"
+    },
+    {
+     "type": "id",
+     "value": "183180"
+    },
+    {
+     "type": "date",
+     "value": "16 December 1979"
+    },
+    {
+     "type": "name",
+     "value": "Sneha Patel"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "9742327476"
+    },
+    {
+     "type": "date",
+     "value": "28 June 2024"
+    }
+   ],
+   "keep": [
+    "confusion",
+    "shortness of breath",
+    "5 days",
+    "SpO2 87%",
+    "coronary artery disease",
+    "tuberculosis"
+   ],
+   "active": [
+    "confusion",
+    "shortness of breath"
+   ],
+   "negated": [
+    "vomiting",
+    "headache"
+   ]
+  },
+  {
+   "id": "heldout_014",
+   "text": "Lotus Nursing Home - OPD note\nPt: Iyer, Deepika   MRN: 5035268   DOB: 06/02/2003\nContact: 9454213572\nAddress: 155, Park Street, Kochi\n\n38-year-old female presents with productive cough and sore throat for 1 day. No fatigue. Negative for vomiting. Known case of tuberculosis and asthma. Vitals: BP 160/93, HR 96, RR 29, SpO2 98%, Temp 37.1 C. Seen by Dr. Rajesh Malhotra. Review on 15 July 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Iyer, Deepika"
+    },
+    {
+     "type": "id",
+     "value": "5035268"
+    },
+    {
+     "type": "date",
+     "value": "06/02/2003"
+    },
+    {
+     "type": "name",
+     "value": "Rajesh Malhotra"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "9454213572"
+    },
+    {
+     "type": "location",
+     "value": "Kochi"
+    },
+    {
+     "type": "date",
+     "value": "15 July 2026"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "sore throat",
+    "1 day",
+    "SpO2 98%",
+    "tuberculosis",
+    "asthma"
+   ],
+   "active": [
+    "productive cough",
+    "sore throat"
+   ],
+   "negated": [
+    "fatigue",
+    "vomiting"
+   ]
+  },
+  {
+   "id": "heldout_015",
+   "text": "Sunrise Super Speciality Hospital - Ward round\nPt: Chatterjee, Suresh   UHID LMC11172025   DOB: 1964-06-23\nContact: +91 75873 06558\nEmail: suresh.chatterjee68@outlook.com\nAddress: 50, MG Road, Lucknow\n\n37-year-old male presents with chest pain, headache, shortness of breath and palpitations for 14 days. Denies weight loss. There is no high-grade fever. There is no chills. Known case of hypothyroidism and coronary artery disease. Vitals: BP 144/96, HR 95, RR 12, SpO2 93%, Temp 39.3 C. Seen by Dr. Rajesh Sharma. Review on 14 August 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Chatterjee, Suresh"
+    },
+    {
+     "type": "id",
+     "value": "LMC11172025"
+    },
+    {
+     "type": "date",
+     "value": "1964-06-23"
+    },
+    {
+     "type": "name",
+     "value": "Rajesh Sharma"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 75873 06558"
+    },
+    {
+     "type": "email",
+     "value": "suresh.chatterjee68@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Lucknow"
+    },
+    {
+     "type": "date",
+     "value": "14 August 2026"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "headache",
+    "shortness of breath",
+    "palpitations",
+    "14 days",
+    "SpO2 93%",
+    "hypothyroidism",
+    "coronary artery disease"
+   ],
+   "active": [
+    "chest pain",
+    "headache",
+    "shortness of breath",
+    "palpitations"
+   ],
+   "negated": [
+    "weight loss",
+    "fever",
+    "chills"
+   ]
+  },
+  {
+   "id": "heldout_016",
+   "text": "Lakeview Multispeciality Hospital - Admission note\nPatient: Kavya Kapoor   IP No: 818700   DOB: 06-11-1975\nEmail: kavya.kapoor45@yahoo.co.in\n\n59-year-old female presents with confusion, sore throat and nausea for 1 day. Patient denies any cough. Vitals: BP 94/93, HR 125, RR 16, SpO2 88%, Temp 36.9 C. Seen by Dr. Gurpreet Qureshi. Review on 13 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Kavya Kapoor"
+    },
+    {
+     "type": "id",
+     "value": "818700"
+    },
+    {
+     "type": "date",
+     "value": "06-11-1975"
+    },
+    {
+     "type": "name",
+     "value": "Gurpreet Qureshi"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Multispeciality Hospital"
+    },
+    {
+     "type": "email",
+     "value": "kavya.kapoor45@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "13 June 2024"
+    }
+   ],
+   "keep": [
+    "confusion",
+    "sore throat",
+    "nausea",
+    "1 day",
+    "SpO2 88%"
+   ],
+   "active": [
+    "confusion",
+    "sore throat",
+    "nausea"
+   ],
+   "negated": [
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_017",
+   "text": "Kaveri Nursing Home - Admission note\nPt: Fernandes, Arjun   IP No: 296277   DOB: 1997-07-23\nContact: 8499116784\nEmail: arjun.fernandes89@gmail.com\nAddress: 4, MG Road, Kochi\n\n52-year-old male presents with productive cough, dry cough and nausea for 6 days. Negative for chest pain. Vitals: BP 110/69, HR 113, RR 30, SpO2 90%, Temp 38.8 C. Seen by Dr. Neha Shah. Review on 11 July 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Fernandes, Arjun"
+    },
+    {
+     "type": "id",
+     "value": "296277"
+    },
+    {
+     "type": "date",
+     "value": "1997-07-23"
+    },
+    {
+     "type": "name",
+     "value": "Neha Shah"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "8499116784"
+    },
+    {
+     "type": "email",
+     "value": "arjun.fernandes89@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Kochi"
+    },
+    {
+     "type": "date",
+     "value": "11 July 2026"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "dry cough",
+    "nausea",
+    "6 days",
+    "SpO2 90%"
+   ],
+   "active": [
+    "productive cough",
+    "dry cough",
+    "nausea"
+   ],
+   "negated": [
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_018",
+   "text": "Lakeview Nursing Home - ED note\nPatient: Sneha Fernandes   IP No: 318571   DOB: 19-07-1958\nContact: +91 78421 47131\n\n66-year-old female presents with chest pain and headache for 6 days. Denies weight loss. Vitals: BP 139/91, HR 88, RR 24, SpO2 95%, Temp 39.0 C. Seen by Dr. Gaurav Agarwal. Review on 25 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Sneha Fernandes"
+    },
+    {
+     "type": "id",
+     "value": "318571"
+    },
+    {
+     "type": "date",
+     "value": "19-07-1958"
+    },
+    {
+     "type": "name",
+     "value": "Gaurav Agarwal"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91 78421 47131"
+    },
+    {
+     "type": "date",
+     "value": "25 September 2024"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "headache",
+    "6 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "chest pain",
+    "headache"
+   ],
+   "negated": [
+    "weight loss"
+   ]
+  },
+  {
+   "id": "heldout_019",
+   "text": "Green Valley Medical Centre - Ward round\nPatient: Gurpreet Qureshi   Hospital No. 2019/67574   DOB: 1972-09-17\nContact: +91-8815435421\nAddress: 210, Park Street, Chennai\n\n69-year-old male presents with fatigue, wheezing and orthopnea for 7 days. Negative for nausea. Denies fever. There is no leg swelling. Vitals: BP 156/65, HR 68, RR 23, SpO2 87%, Temp 37.2 C. Seen by Dr. Thomas Fernandes. Review on 4 October 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gurpreet Qureshi"
+    },
+    {
+     "type": "id",
+     "value": "2019/67574"
+    },
+    {
+     "type": "date",
+     "value": "1972-09-17"
+    },
+    {
+     "type": "name",
+     "value": "Thomas Fernandes"
+    },
+    {
+     "type": "facility",
+     "value": "Green Valley Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8815435421"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "4 October 2025"
+    }
+   ],
+   "keep": [
+    "fatigue",
+    "wheezing",
+    "orthopnea",
+    "7 days",
+    "SpO2 87%"
+   ],
+   "active": [
+    "fatigue",
+    "wheezing",
+    "orthopnea"
+   ],
+   "negated": [
+    "nausea",
+    "fever",
+    "leg swelling"
+   ]
+  },
+  {
+   "id": "heldout_020",
+   "text": "Sahyadri Medical Centre - Ward round\nPatient: Ayesha Fernandes   IP No: 343473   DOB: 12-05-1969\nContact: 9560661706\n\n19-year-old female presents with abdominal pain and breathlessness for 14 days. Patient denies any orthopnea. Denies sore throat. Known case of asthma and coronary artery disease. Vitals: BP 106/94, HR 127, RR 22, SpO2 90%, Temp 39.0 C. Seen by Dr. Pooja Thomas. Review on 18 September 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Ayesha Fernandes"
+    },
+    {
+     "type": "id",
+     "value": "343473"
+    },
+    {
+     "type": "date",
+     "value": "12-05-1969"
+    },
+    {
+     "type": "name",
+     "value": "Pooja Thomas"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "9560661706"
+    },
+    {
+     "type": "date",
+     "value": "18 September 2026"
+    }
+   ],
+   "keep": [
+    "abdominal pain",
+    "breathlessness",
+    "14 days",
+    "SpO2 90%",
+    "asthma",
+    "coronary artery disease"
+   ],
+   "active": [
+    "abdominal pain",
+    "breathlessness"
+   ],
+   "negated": [
+    "orthopnea",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_021",
+   "text": "Sunrise Medical Centre - Ward round\nPt: Qureshi, Lakshmi   IP No: 158680   DOB: 10 November 1993\nContact: 073-2231-9434\n\n57-year-old male presents with breathlessness, shortness of breath, hemoptysis and chest pain for 4 days. Denies orthopnea. No cough. Vitals: BP 92/78, HR 105, RR 16, SpO2 86%, Temp 39.1 C. Seen by Dr. Riya Desai. Review on 3 December 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Qureshi, Lakshmi"
+    },
+    {
+     "type": "id",
+     "value": "158680"
+    },
+    {
+     "type": "date",
+     "value": "10 November 1993"
+    },
+    {
+     "type": "name",
+     "value": "Riya Desai"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "073-2231-9434"
+    },
+    {
+     "type": "date",
+     "value": "3 December 2025"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "shortness of breath",
+    "hemoptysis",
+    "chest pain",
+    "4 days",
+    "SpO2 86%"
+   ],
+   "active": [
+    "breathlessness",
+    "shortness of breath",
+    "hemoptysis",
+    "chest pain"
+   ],
+   "negated": [
+    "orthopnea",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_022",
+   "text": "Lotus Hospital - OPD note\nName: Ms. Ananya Kaur   UHID AC28035391   DOB: 05/11/1944\n\n51-year-old female presents with confusion and leg swelling for 10 days. Negative for abdominal pain. Patient denies any vomiting. Patient denies any cough. Known case of hypothyroidism. Vitals: BP 161/90, HR 96, RR 12, SpO2 94%, Temp 38.0 C. Seen by Dr. Emily Chopra. Review on 21 June 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Ananya Kaur"
+    },
+    {
+     "type": "id",
+     "value": "AC28035391"
+    },
+    {
+     "type": "date",
+     "value": "05/11/1944"
+    },
+    {
+     "type": "name",
+     "value": "Emily Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Hospital"
+    },
+    {
+     "type": "date",
+     "value": "21 June 2026"
+    }
+   ],
+   "keep": [
+    "confusion",
+    "leg swelling",
+    "10 days",
+    "SpO2 94%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "confusion",
+    "leg swelling"
+   ],
+   "negated": [
+    "abdominal pain",
+    "vomiting",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_023",
+   "text": "Lotus Hospital - Admission note\nPatient: Kavya Malhotra   IP No: 852906   DOB: 23 September 1998\nAddress: 105, Anna Salai, Indore\n\n85-year-old female presents with cough, palpitations, leg swelling and syncope for 9 days. Patient denies any headache. Negative for sore throat. Patient denies any productive cough. Vitals: BP 116/66, HR 113, RR 24, SpO2 90%, Temp 37.6 C. Seen by Dr. Nikhil Bansal. Review on 17 January 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Kavya Malhotra"
+    },
+    {
+     "type": "id",
+     "value": "852906"
+    },
+    {
+     "type": "date",
+     "value": "23 September 1998"
+    },
+    {
+     "type": "name",
+     "value": "Nikhil Bansal"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "17 January 2024"
+    }
+   ],
+   "keep": [
+    "cough",
+    "palpitations",
+    "leg swelling",
+    "syncope",
+    "9 days",
+    "SpO2 90%"
+   ],
+   "active": [
+    "cough",
+    "palpitations",
+    "leg swelling",
+    "syncope"
+   ],
+   "negated": [
+    "headache",
+    "sore throat",
+    "productive cough"
+   ]
+  },
+  {
+   "id": "heldout_024",
+   "text": "Lakeview Nursing Home - ED note\nPatient: Tanvi Mukherjee   MRN: 9684338   DOB: 20/07/2002\nContact: +91-9535521647\nEmail: tanvi.mukherjee23@yahoo.co.in\n\n33-year-old female presents with orthopnea and syncope for 10 days. No night sweats. Patient denies any shortness of breath. Patient denies any chest pain. Known case of type 2 diabetes mellitus and hypertension. Vitals: BP 155/75, HR 121, RR 16, SpO2 96%, Temp 37.3 C. Seen by Dr. Lakshmi Deshmukh. Review on 19 July 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tanvi Mukherjee"
+    },
+    {
+     "type": "id",
+     "value": "9684338"
+    },
+    {
+     "type": "date",
+     "value": "20/07/2002"
+    },
+    {
+     "type": "name",
+     "value": "Lakshmi Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-9535521647"
+    },
+    {
+     "type": "email",
+     "value": "tanvi.mukherjee23@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "19 July 2024"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "syncope",
+    "10 days",
+    "SpO2 96%",
+    "type 2 diabetes mellitus",
+    "hypertension"
+   ],
+   "active": [
+    "orthopnea",
+    "syncope"
+   ],
+   "negated": [
+    "night sweats",
+    "shortness of breath",
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_025",
+   "text": "Metro Institute of Medical Sciences - OPD note\nPt: George, Gurpreet   MRN: 8954793   DOB: 16 August 1977\nContact: 9309939100\nAddress: 224, MG Road, Jaipur\n\n78-year-old male presents with orthopnea, cough, leg swelling and sore throat for 10 days. Negative for breathlessness. Denies headache. Known case of hypertension and type 2 diabetes mellitus. Vitals: BP 145/96, HR 114, RR 15, SpO2 90%, Temp 38.2 C. Seen by Dr. Mary Chatterjee. Review on 2 September 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "George, Gurpreet"
+    },
+    {
+     "type": "id",
+     "value": "8954793"
+    },
+    {
+     "type": "date",
+     "value": "16 August 1977"
+    },
+    {
+     "type": "name",
+     "value": "Mary Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "9309939100"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "2 September 2025"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "cough",
+    "leg swelling",
+    "sore throat",
+    "10 days",
+    "SpO2 90%",
+    "hypertension",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "orthopnea",
+    "cough",
+    "leg swelling",
+    "sore throat"
+   ],
+   "negated": [
+    "breathlessness",
+    "headache"
+   ]
+  },
+  {
+   "id": "heldout_026",
+   "text": "St. Joseph's Nursing Home - OPD note\nPt: Rao, Rohan   Hospital No. 2023/15820   DOB: 02-07-1994\n\n62-year-old male presents with leg swelling, fever, weight loss and shortness of breath for 14 days. There is no nausea. Known case of type 2 diabetes mellitus and hypertension. Vitals: BP 163/93, HR 76, RR 19, SpO2 92%, Temp 38.0 C. Seen by Dr. Sarah Verma. Review on 24 March 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Rao, Rohan"
+    },
+    {
+     "type": "id",
+     "value": "2023/15820"
+    },
+    {
+     "type": "date",
+     "value": "02-07-1994"
+    },
+    {
+     "type": "name",
+     "value": "Sarah Verma"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Nursing Home"
+    },
+    {
+     "type": "date",
+     "value": "24 March 2024"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "fever",
+    "weight loss",
+    "shortness of breath",
+    "14 days",
+    "SpO2 92%",
+    "type 2 diabetes mellitus",
+    "hypertension"
+   ],
+   "active": [
+    "leg swelling",
+    "fever",
+    "weight loss",
+    "shortness of breath"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_027",
+   "text": "St. Mary's Hospital - Ward round\nPt: Qureshi, Aarav   Hospital No. 2024/83409   DOB: 11 January 1955\nContact: 7424009248\nEmail: aarav.qureshi13@yahoo.co.in\nAddress: 29, MG Road, Indore\n\n52-year-old male presents with high-grade fever, dry cough and fever for 7 days. Negative for weight loss. Known case of hypertension. Vitals: BP 170/63, HR 94, RR 14, SpO2 90%, Temp 39.0 C. Seen by Dr. Olivia Saxena. Review on 19 May 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Qureshi, Aarav"
+    },
+    {
+     "type": "id",
+     "value": "2024/83409"
+    },
+    {
+     "type": "date",
+     "value": "11 January 1955"
+    },
+    {
+     "type": "name",
+     "value": "Olivia Saxena"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "7424009248"
+    },
+    {
+     "type": "email",
+     "value": "aarav.qureshi13@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "19 May 2026"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "dry cough",
+    "fever",
+    "7 days",
+    "SpO2 90%",
+    "hypertension"
+   ],
+   "active": [
+    "fever",
+    "dry cough",
+    "fever"
+   ],
+   "negated": [
+    "weight loss"
+   ]
+  },
+  {
+   "id": "heldout_028",
+   "text": "Navjeevan Hospital - Admission note\nName: Ms. Gaurav Das   IP No: 655812   DOB: 20/10/1990\nContact: 9727148663\n\n72-year-old female presents with syncope, breathlessness and cough for 6 days. No headache. Patient denies any sore throat. Known case of hypertension. Vitals: BP 103/95, HR 120, RR 18, SpO2 98%, Temp 37.1 C. Seen by Dr. Tanvi Mathew. Review on 13 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gaurav Das"
+    },
+    {
+     "type": "id",
+     "value": "655812"
+    },
+    {
+     "type": "date",
+     "value": "20/10/1990"
+    },
+    {
+     "type": "name",
+     "value": "Tanvi Mathew"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "9727148663"
+    },
+    {
+     "type": "date",
+     "value": "13 February 2024"
+    }
+   ],
+   "keep": [
+    "syncope",
+    "breathlessness",
+    "cough",
+    "6 days",
+    "SpO2 98%",
+    "hypertension"
+   ],
+   "active": [
+    "syncope",
+    "breathlessness",
+    "cough"
+   ],
+   "negated": [
+    "headache",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_029",
+   "text": "Silver Oak Institute of Medical Sciences - Admission note\nPatient: Riya Kaur   UHID SJH81541959   DOB: 16-09-1996\nEmail: riya.kaur67@outlook.com\nAddress: 150, Park Street, Kolkata\n\n63-year-old female presents with productive cough and nausea for 4 days. Patient denies any dizziness. No shortness of breath. There is no vomiting. Known case of coronary artery disease. Vitals: BP 129/65, HR 97, RR 15, SpO2 97%, Temp 39.3 C. Seen by Dr. Suresh Qureshi. Review on 16 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Riya Kaur"
+    },
+    {
+     "type": "id",
+     "value": "SJH81541959"
+    },
+    {
+     "type": "date",
+     "value": "16-09-1996"
+    },
+    {
+     "type": "name",
+     "value": "Suresh Qureshi"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Institute of Medical Sciences"
+    },
+    {
+     "type": "email",
+     "value": "riya.kaur67@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "16 November 2026"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "nausea",
+    "4 days",
+    "SpO2 97%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "productive cough",
+    "nausea"
+   ],
+   "negated": [
+    "dizziness",
+    "shortness of breath",
+    "vomiting"
+   ]
+  },
+  {
+   "id": "heldout_030",
+   "text": "St. Mary's Hospital - ED note\nName: Mr. Tanvi Singh   MRN: 9299906   DOB: 23 December 1961\nEmail: tanvi.singh64@yahoo.co.in\nAddress: 106, Residency Road, Nagpur\n\n61-year-old male presents with wheezing, breathlessness, orthopnea and abdominal pain for 14 days. No confusion. Negative for chills. Negative for high-grade fever. Known case of asthma and hypothyroidism. Vitals: BP 117/87, HR 125, RR 12, SpO2 92%, Temp 37.5 C. Seen by Dr. Suresh Agarwal. Review on 11 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tanvi Singh"
+    },
+    {
+     "type": "id",
+     "value": "9299906"
+    },
+    {
+     "type": "date",
+     "value": "23 December 1961"
+    },
+    {
+     "type": "name",
+     "value": "Suresh Agarwal"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Hospital"
+    },
+    {
+     "type": "email",
+     "value": "tanvi.singh64@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "11 September 2024"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "breathlessness",
+    "orthopnea",
+    "abdominal pain",
+    "14 days",
+    "SpO2 92%",
+    "asthma",
+    "hypothyroidism"
+   ],
+   "active": [
+    "wheezing",
+    "breathlessness",
+    "orthopnea",
+    "abdominal pain"
+   ],
+   "negated": [
+    "confusion",
+    "chills",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_031",
+   "text": "Kaveri Super Speciality Hospital - Admission note\nPt: Khan, Suresh   IP No: 853367   DOB: 2 January 1948\nAddress: 243, MG Road, Kolkata\n\n78-year-old female presents with leg swelling, abdominal pain, headache and productive cough for 1 day. No cough. Vitals: BP 151/59, HR 111, RR 14, SpO2 98%, Temp 39.1 C. Seen by Dr. Swati Iyer. Review on 26 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Khan, Suresh"
+    },
+    {
+     "type": "id",
+     "value": "853367"
+    },
+    {
+     "type": "date",
+     "value": "2 January 1948"
+    },
+    {
+     "type": "name",
+     "value": "Swati Iyer"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Super Speciality Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "26 June 2024"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "abdominal pain",
+    "headache",
+    "productive cough",
+    "1 day",
+    "SpO2 98%"
+   ],
+   "active": [
+    "leg swelling",
+    "abdominal pain",
+    "headache",
+    "productive cough"
+   ],
+   "negated": [
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_032",
+   "text": "Lifeline Multispeciality Hospital - Admission note\nPatient: Rajesh Shah   Hospital No. 2021/66386   DOB: 15/05/1964\nContact: +91-9687577978\nAddress: 154, Banjara Hills, Chennai\n\n49-year-old female presents with headache, leg swelling, vomiting and shortness of breath for 2 days. Patient denies any confusion. Patient denies any fever. Vitals: BP 109/96, HR 68, RR 27, SpO2 97%, Temp 39.5 C. Seen by Dr. Sarah Deshmukh. Review on 5 September 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Rajesh Shah"
+    },
+    {
+     "type": "id",
+     "value": "2021/66386"
+    },
+    {
+     "type": "date",
+     "value": "15/05/1964"
+    },
+    {
+     "type": "name",
+     "value": "Sarah Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-9687577978"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "5 September 2025"
+    }
+   ],
+   "keep": [
+    "headache",
+    "leg swelling",
+    "vomiting",
+    "shortness of breath",
+    "2 days",
+    "SpO2 97%"
+   ],
+   "active": [
+    "headache",
+    "leg swelling",
+    "vomiting",
+    "shortness of breath"
+   ],
+   "negated": [
+    "confusion",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_033",
+   "text": "Lotus Nursing Home - OPD note\nPt: George, Ananya   MRN: 7371932   DOB: 16-08-1964\nEmail: ananya.george17@yahoo.co.in\n\n23-year-old female presents with wheezing, vomiting and weight loss for 6 days. Negative for dry cough. Patient denies any abdominal pain. Patient denies any hemoptysis. Vitals: BP 147/75, HR 93, RR 22, SpO2 95%, Temp 37.1 C. Seen by Dr. David Kapoor. Review on 10 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "George, Ananya"
+    },
+    {
+     "type": "id",
+     "value": "7371932"
+    },
+    {
+     "type": "date",
+     "value": "16-08-1964"
+    },
+    {
+     "type": "name",
+     "value": "David Kapoor"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "ananya.george17@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "10 February 2024"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "vomiting",
+    "weight loss",
+    "6 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "wheezing",
+    "vomiting",
+    "weight loss"
+   ],
+   "negated": [
+    "dry cough",
+    "abdominal pain",
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_034",
+   "text": "Silver Oak Nursing Home - OPD note\nPatient: Diya Singh   MRN: 9975314   DOB: 07-02-1976\nContact: +91-7293917472\n\n36-year-old female presents with abdominal pain, nausea, shortness of breath and syncope for 5 days. No fever. There is no chills. Vitals: BP 145/58, HR 106, RR 26, SpO2 86%, Temp 36.3 C. Seen by Dr. Kabir Singh. Review on 22 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Diya Singh"
+    },
+    {
+     "type": "id",
+     "value": "9975314"
+    },
+    {
+     "type": "date",
+     "value": "07-02-1976"
+    },
+    {
+     "type": "name",
+     "value": "Kabir Singh"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-7293917472"
+    },
+    {
+     "type": "date",
+     "value": "22 February 2024"
+    }
+   ],
+   "keep": [
+    "abdominal pain",
+    "nausea",
+    "shortness of breath",
+    "syncope",
+    "5 days",
+    "SpO2 86%"
+   ],
+   "active": [
+    "abdominal pain",
+    "nausea",
+    "shortness of breath",
+    "syncope"
+   ],
+   "negated": [
+    "fever",
+    "chills"
+   ]
+  },
+  {
+   "id": "heldout_035",
+   "text": "Sahyadri Multispeciality Hospital - Admission note\nPatient: Suresh Khan   IP No: 122140   DOB: 15 March 1943\nContact: 7759023211\nEmail: suresh.khan59@yahoo.co.in\n\n63-year-old female presents with headache, weight loss, nausea and chest pain for 4 days. There is no wheezing. Patient denies any hemoptysis. Vitals: BP 120/73, HR 73, RR 27, SpO2 99%, Temp 37.1 C. Seen by Dr. Lakshmi Khan. Review on 19 September 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Suresh Khan"
+    },
+    {
+     "type": "id",
+     "value": "122140"
+    },
+    {
+     "type": "date",
+     "value": "15 March 1943"
+    },
+    {
+     "type": "name",
+     "value": "Lakshmi Khan"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "7759023211"
+    },
+    {
+     "type": "email",
+     "value": "suresh.khan59@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "19 September 2026"
+    }
+   ],
+   "keep": [
+    "headache",
+    "weight loss",
+    "nausea",
+    "chest pain",
+    "4 days",
+    "SpO2 99%"
+   ],
+   "active": [
+    "headache",
+    "weight loss",
+    "nausea",
+    "chest pain"
+   ],
+   "negated": [
+    "wheezing",
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_036",
+   "text": "Lakeview Hospital - ED note\nPatient: Gurpreet Sharma   Hospital No. 2024/58412   DOB: 22 November 1991\nContact: +91-7938293632\n\n24-year-old male presents with nausea and fever for 6 days. No chest pain. Vitals: BP 118/93, HR 108, RR 16, SpO2 91%, Temp 36.3 C. Seen by Dr. Pranav Iyer. Review on 2 October 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gurpreet Sharma"
+    },
+    {
+     "type": "id",
+     "value": "2024/58412"
+    },
+    {
+     "type": "date",
+     "value": "22 November 1991"
+    },
+    {
+     "type": "name",
+     "value": "Pranav Iyer"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-7938293632"
+    },
+    {
+     "type": "date",
+     "value": "2 October 2025"
+    }
+   ],
+   "keep": [
+    "nausea",
+    "fever",
+    "6 days",
+    "SpO2 91%"
+   ],
+   "active": [
+    "nausea",
+    "fever"
+   ],
+   "negated": [
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_037",
+   "text": "Kaveri Medical Centre - Ward round\nPt: Shah, Arjun   UHID AC89607126   DOB: 23 March 1999\nContact: +91 97089 53570\nEmail: arjun.shah14@gmail.com\nAddress: 49, Park Street, Jaipur\n\n29-year-old male presents with dizziness and orthopnea for 11 days. Denies confusion. Denies fever. Vitals: BP 136/60, HR 125, RR 28, SpO2 95%, Temp 37.2 C. Seen by Dr. Imran Saxena. Review on 17 July 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Shah, Arjun"
+    },
+    {
+     "type": "id",
+     "value": "AC89607126"
+    },
+    {
+     "type": "date",
+     "value": "23 March 1999"
+    },
+    {
+     "type": "name",
+     "value": "Imran Saxena"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "+91 97089 53570"
+    },
+    {
+     "type": "email",
+     "value": "arjun.shah14@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "17 July 2024"
+    }
+   ],
+   "keep": [
+    "dizziness",
+    "orthopnea",
+    "11 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "dizziness",
+    "orthopnea"
+   ],
+   "negated": [
+    "confusion",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_038",
+   "text": "St. Joseph's Super Speciality Hospital - ED note\nPt: Yadav, Rohan   Hospital No. 2019/92190   DOB: 08-05-1956\nContact: +91-6393957969\nAddress: 163, Civil Lines, Indore\n\n83-year-old male presents with dry cough, vomiting, hemoptysis and cough for 2 days. Patient denies any sore throat. Known case of hypothyroidism. Vitals: BP 118/93, HR 81, RR 25, SpO2 99%, Temp 37.1 C. Seen by Dr. Kavya Menon. Review on 10 April 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Yadav, Rohan"
+    },
+    {
+     "type": "id",
+     "value": "2019/92190"
+    },
+    {
+     "type": "date",
+     "value": "08-05-1956"
+    },
+    {
+     "type": "name",
+     "value": "Kavya Menon"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-6393957969"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "10 April 2025"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "vomiting",
+    "hemoptysis",
+    "cough",
+    "2 days",
+    "SpO2 99%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "dry cough",
+    "vomiting",
+    "hemoptysis",
+    "cough"
+   ],
+   "negated": [
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_039",
+   "text": "Riverside Institute of Medical Sciences - OPD note\nName: Mr. David Chatterjee   UHID SJH90380569   DOB: 1950-04-10\n\n51-year-old male presents with high-grade fever, sore throat, hemoptysis and chills for 5 days. Patient denies any productive cough. Negative for weight loss. Negative for dizziness. Vitals: BP 97/78, HR 63, RR 17, SpO2 97%, Temp 37.5 C. Seen by Dr. Siddharth Bansal. Review on 19 April 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "David Chatterjee"
+    },
+    {
+     "type": "id",
+     "value": "SJH90380569"
+    },
+    {
+     "type": "date",
+     "value": "1950-04-10"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Bansal"
+    },
+    {
+     "type": "facility",
+     "value": "Riverside Institute of Medical Sciences"
+    },
+    {
+     "type": "date",
+     "value": "19 April 2026"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "sore throat",
+    "hemoptysis",
+    "chills",
+    "5 days",
+    "SpO2 97%"
+   ],
+   "active": [
+    "fever",
+    "sore throat",
+    "hemoptysis",
+    "chills"
+   ],
+   "negated": [
+    "productive cough",
+    "weight loss",
+    "dizziness"
+   ]
+  },
+  {
+   "id": "heldout_040",
+   "text": "Lakeview Nursing Home - ED note\nPt: Khan, Rajesh   IP No: 726430   DOB: 06/01/1990\nContact: 7206665612\nEmail: rajesh.khan94@outlook.com\n\n31-year-old female presents with nausea, cough, weight loss and chest pain for 14 days. No confusion. There is no chills. Patient denies any high-grade fever. Known case of type 2 diabetes mellitus. Vitals: BP 135/74, HR 113, RR 15, SpO2 95%, Temp 39.4 C. Seen by Dr. Thomas Kaur. Review on 7 December 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Khan, Rajesh"
+    },
+    {
+     "type": "id",
+     "value": "726430"
+    },
+    {
+     "type": "date",
+     "value": "06/01/1990"
+    },
+    {
+     "type": "name",
+     "value": "Thomas Kaur"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "7206665612"
+    },
+    {
+     "type": "email",
+     "value": "rajesh.khan94@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "7 December 2024"
+    }
+   ],
+   "keep": [
+    "nausea",
+    "cough",
+    "weight loss",
+    "chest pain",
+    "14 days",
+    "SpO2 95%",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "nausea",
+    "cough",
+    "weight loss",
+    "chest pain"
+   ],
+   "negated": [
+    "confusion",
+    "chills",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_041",
+   "text": "Shanti Multispeciality Hospital - Ward round\nPt: Iyer, Gurpreet   MRN: 8240556   DOB: 22/07/1948\nContact: +91-8901506339\nEmail: gurpreet.iyer91@yahoo.co.in\n\n68-year-old female presents with chest pain, fever and chills for 13 days. Negative for syncope. Denies leg swelling. Patient denies any productive cough. Known case of hypothyroidism and tuberculosis. Vitals: BP 103/91, HR 116, RR 18, SpO2 93%, Temp 36.8 C. Seen by Dr. Kavya Joshi. Review on 2 March 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Iyer, Gurpreet"
+    },
+    {
+     "type": "id",
+     "value": "8240556"
+    },
+    {
+     "type": "date",
+     "value": "22/07/1948"
+    },
+    {
+     "type": "name",
+     "value": "Kavya Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8901506339"
+    },
+    {
+     "type": "email",
+     "value": "gurpreet.iyer91@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "2 March 2024"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "fever",
+    "chills",
+    "13 days",
+    "SpO2 93%",
+    "hypothyroidism",
+    "tuberculosis"
+   ],
+   "active": [
+    "chest pain",
+    "fever",
+    "chills"
+   ],
+   "negated": [
+    "syncope",
+    "leg swelling",
+    "productive cough"
+   ]
+  },
+  {
+   "id": "heldout_042",
+   "text": "St. Joseph's Hospital - Ward round\nName: Ms. Zoya Reddy   UHID SMH54709969   DOB: 06-06-1956\nContact: +91 83941 43622\nEmail: zoya.reddy97@outlook.com\nAddress: 65, MG Road, Nagpur\n\n25-year-old female presents with dry cough and confusion for 13 days. There is no hemoptysis. No fatigue. Vitals: BP 113/94, HR 106, RR 24, SpO2 88%, Temp 38.4 C. Seen by Dr. Rajesh Patel. Review on 6 July 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Zoya Reddy"
+    },
+    {
+     "type": "id",
+     "value": "SMH54709969"
+    },
+    {
+     "type": "date",
+     "value": "06-06-1956"
+    },
+    {
+     "type": "name",
+     "value": "Rajesh Patel"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 83941 43622"
+    },
+    {
+     "type": "email",
+     "value": "zoya.reddy97@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "6 July 2024"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "confusion",
+    "13 days",
+    "SpO2 88%"
+   ],
+   "active": [
+    "dry cough",
+    "confusion"
+   ],
+   "negated": [
+    "hemoptysis",
+    "fatigue"
+   ]
+  },
+  {
+   "id": "heldout_043",
+   "text": "Metro Super Speciality Hospital - Admission note\nPatient: Pranav Desai   IP No: 219029   DOB: 1942-03-21\nContact: +91 83868 67240\nEmail: pranav.desai45@gmail.com\nAddress: 63, Civil Lines, Kolkata\n\n72-year-old female presents with breathlessness, abdominal pain and high-grade fever for 3 days. Negative for productive cough. Patient denies any shortness of breath. Patient denies any dry cough. Known case of COPD and type 2 diabetes mellitus. Vitals: BP 92/100, HR 104, RR 19, SpO2 87%, Temp 37.1 C. Seen by Dr. Thomas Verma. Review on 21 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Pranav Desai"
+    },
+    {
+     "type": "id",
+     "value": "219029"
+    },
+    {
+     "type": "date",
+     "value": "1942-03-21"
+    },
+    {
+     "type": "name",
+     "value": "Thomas Verma"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 83868 67240"
+    },
+    {
+     "type": "email",
+     "value": "pranav.desai45@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "21 September 2024"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "abdominal pain",
+    "high-grade fever",
+    "3 days",
+    "SpO2 87%",
+    "COPD",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "breathlessness",
+    "abdominal pain",
+    "fever"
+   ],
+   "negated": [
+    "productive cough",
+    "shortness of breath",
+    "dry cough"
+   ]
+  },
+  {
+   "id": "heldout_044",
+   "text": "Shanti Medical Centre - OPD note\nPt: Saxena, Olivia   Hospital No. 2023/96828   DOB: 22-09-1945\nContact: 070-2616-7715\nEmail: olivia.saxena89@outlook.com\nAddress: 129, MG Road, Indore\n\n67-year-old male presents with wheezing, vomiting and productive cough for 13 days. There is no leg swelling. No palpitations. Known case of coronary artery disease and type 2 diabetes mellitus. Vitals: BP 106/62, HR 118, RR 19, SpO2 95%, Temp 38.5 C. Seen by Dr. Siddharth Joshi. Review on 21 January 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Saxena, Olivia"
+    },
+    {
+     "type": "id",
+     "value": "2023/96828"
+    },
+    {
+     "type": "date",
+     "value": "22-09-1945"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "070-2616-7715"
+    },
+    {
+     "type": "email",
+     "value": "olivia.saxena89@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "21 January 2025"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "vomiting",
+    "productive cough",
+    "13 days",
+    "SpO2 95%",
+    "coronary artery disease",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "wheezing",
+    "vomiting",
+    "productive cough"
+   ],
+   "negated": [
+    "leg swelling",
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_045",
+   "text": "Ganga Medical Centre - Admission note\nName: Mr. Mary Reddy   Hospital No. 2025/74885   DOB: 8 April 1945\n\n30-year-old male presents with shortness of breath, chest pain, high-grade fever and breathlessness for 9 days. There is no weight loss. Vitals: BP 150/63, HR 111, RR 14, SpO2 88%, Temp 39.0 C. Seen by Dr. Meera Malhotra. Review on 2 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mary Reddy"
+    },
+    {
+     "type": "id",
+     "value": "2025/74885"
+    },
+    {
+     "type": "date",
+     "value": "8 April 1945"
+    },
+    {
+     "type": "name",
+     "value": "Meera Malhotra"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Medical Centre"
+    },
+    {
+     "type": "date",
+     "value": "2 June 2024"
+    }
+   ],
+   "keep": [
+    "shortness of breath",
+    "chest pain",
+    "high-grade fever",
+    "breathlessness",
+    "9 days",
+    "SpO2 88%"
+   ],
+   "active": [
+    "shortness of breath",
+    "chest pain",
+    "fever",
+    "breathlessness"
+   ],
+   "negated": [
+    "weight loss"
+   ]
+  },
+  {
+   "id": "heldout_046",
+   "text": "Lotus Super Speciality Hospital - OPD note\nPatient: Nisha Nair   MRN: 3522942   DOB: 1999-01-02\nEmail: nisha.nair66@outlook.com\nAddress: 207, MG Road, Indore\n\n63-year-old female presents with fever, abdominal pain, syncope and chest pain for 12 days. No cough. Negative for palpitations. Known case of type 2 diabetes mellitus and coronary artery disease. Vitals: BP 170/84, HR 86, RR 19, SpO2 86%, Temp 36.7 C. Seen by Dr. Gaurav Chatterjee. Review on 2 June 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nisha Nair"
+    },
+    {
+     "type": "id",
+     "value": "3522942"
+    },
+    {
+     "type": "date",
+     "value": "1999-01-02"
+    },
+    {
+     "type": "name",
+     "value": "Gaurav Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Super Speciality Hospital"
+    },
+    {
+     "type": "email",
+     "value": "nisha.nair66@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "2 June 2026"
+    }
+   ],
+   "keep": [
+    "fever",
+    "abdominal pain",
+    "syncope",
+    "chest pain",
+    "12 days",
+    "SpO2 86%",
+    "type 2 diabetes mellitus",
+    "coronary artery disease"
+   ],
+   "active": [
+    "fever",
+    "abdominal pain",
+    "syncope",
+    "chest pain"
+   ],
+   "negated": [
+    "cough",
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_047",
+   "text": "Shanti Hospital - Admission note\nName: Mr. Pooja Kaur   IP No: 965282   DOB: 1943-10-03\nAddress: 13, Anna Salai, Chennai\n\n49-year-old male presents with headache, vomiting, hemoptysis and orthopnea for 8 days. Denies wheezing. There is no sore throat. Known case of hypertension. Vitals: BP 112/64, HR 83, RR 20, SpO2 90%, Temp 37.6 C. Seen by Dr. Siddharth Thomas. Review on 17 March 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Pooja Kaur"
+    },
+    {
+     "type": "id",
+     "value": "965282"
+    },
+    {
+     "type": "date",
+     "value": "1943-10-03"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Thomas"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "17 March 2026"
+    }
+   ],
+   "keep": [
+    "headache",
+    "vomiting",
+    "hemoptysis",
+    "orthopnea",
+    "8 days",
+    "SpO2 90%",
+    "hypertension"
+   ],
+   "active": [
+    "headache",
+    "vomiting",
+    "hemoptysis",
+    "orthopnea"
+   ],
+   "negated": [
+    "wheezing",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_048",
+   "text": "Sahyadri Multispeciality Hospital - Admission note\nPt: Menon, Siddharth   IP No: 126814   DOB: 7 November 1982\nContact: 7276520077\nEmail: siddharth.menon48@yahoo.co.in\n\n43-year-old female presents with high-grade fever, sore throat and fever for 11 days. There is no confusion. Vitals: BP 110/83, HR 75, RR 27, SpO2 93%, Temp 39.2 C. Seen by Dr. Gaurav George. Review on 18 May 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Menon, Siddharth"
+    },
+    {
+     "type": "id",
+     "value": "126814"
+    },
+    {
+     "type": "date",
+     "value": "7 November 1982"
+    },
+    {
+     "type": "name",
+     "value": "Gaurav George"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "7276520077"
+    },
+    {
+     "type": "email",
+     "value": "siddharth.menon48@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "18 May 2026"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "sore throat",
+    "fever",
+    "11 days",
+    "SpO2 93%"
+   ],
+   "active": [
+    "fever",
+    "sore throat",
+    "fever"
+   ],
+   "negated": [
+    "confusion"
+   ]
+  },
+  {
+   "id": "heldout_049",
+   "text": "Lifeline Medical Centre - Admission note\nPatient: Harish Kapoor   IP No: 715491   DOB: 20 September 1981\nContact: 6348464266\nAddress: 112, Banjara Hills, Ahmedabad\n\n71-year-old male presents with dry cough, wheezing and shortness of breath for 3 days. Negative for high-grade fever. Known case of coronary artery disease. Vitals: BP 158/66, HR 94, RR 16, SpO2 86%, Temp 37.7 C. Seen by Dr. Suresh Yadav. Review on 6 January 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Harish Kapoor"
+    },
+    {
+     "type": "id",
+     "value": "715491"
+    },
+    {
+     "type": "date",
+     "value": "20 September 1981"
+    },
+    {
+     "type": "name",
+     "value": "Suresh Yadav"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "6348464266"
+    },
+    {
+     "type": "location",
+     "value": "Ahmedabad"
+    },
+    {
+     "type": "date",
+     "value": "6 January 2025"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "wheezing",
+    "shortness of breath",
+    "3 days",
+    "SpO2 86%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "dry cough",
+    "wheezing",
+    "shortness of breath"
+   ],
+   "negated": [
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_050",
+   "text": "Sunrise Clinic - OPD note\nPt: Bose, Thomas   Hospital No. 2025/42493   DOB: 1993-09-11\nContact: 071-2251-9700\n\n20-year-old female presents with leg swelling, vomiting, dizziness and palpitations for 4 days. Denies cough. No headache. There is no syncope. Known case of hypertension and type 2 diabetes mellitus. Vitals: BP 136/61, HR 118, RR 23, SpO2 87%, Temp 39.5 C. Seen by Dr. Harleen Chatterjee. Review on 9 September 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Bose, Thomas"
+    },
+    {
+     "type": "id",
+     "value": "2025/42493"
+    },
+    {
+     "type": "date",
+     "value": "1993-09-11"
+    },
+    {
+     "type": "name",
+     "value": "Harleen Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "071-2251-9700"
+    },
+    {
+     "type": "date",
+     "value": "9 September 2026"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "vomiting",
+    "dizziness",
+    "palpitations",
+    "4 days",
+    "SpO2 87%",
+    "hypertension",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "leg swelling",
+    "vomiting",
+    "dizziness",
+    "palpitations"
+   ],
+   "negated": [
+    "cough",
+    "headache",
+    "syncope"
+   ]
+  },
+  {
+   "id": "heldout_051",
+   "text": "Lakeview Institute of Medical Sciences - ED note\nName: Ms. Emily Iyer   Hospital No. 2024/81386   DOB: 10/06/1964\nContact: 078-2321-3048\n\n79-year-old female presents with night sweats, dry cough and chest pain for 9 days. There is no chills. Known case of hypertension and hypothyroidism. Vitals: BP 106/71, HR 85, RR 12, SpO2 97%, Temp 37.2 C. Seen by Dr. Aarav Chatterjee. Review on 27 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Emily Iyer"
+    },
+    {
+     "type": "id",
+     "value": "2024/81386"
+    },
+    {
+     "type": "date",
+     "value": "10/06/1964"
+    },
+    {
+     "type": "name",
+     "value": "Aarav Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "078-2321-3048"
+    },
+    {
+     "type": "date",
+     "value": "27 October 2024"
+    }
+   ],
+   "keep": [
+    "night sweats",
+    "dry cough",
+    "chest pain",
+    "9 days",
+    "SpO2 97%",
+    "hypertension",
+    "hypothyroidism"
+   ],
+   "active": [
+    "night sweats",
+    "dry cough",
+    "chest pain"
+   ],
+   "negated": [
+    "chills"
+   ]
+  },
+  {
+   "id": "heldout_052",
+   "text": "Metro Medical Centre - OPD note\nName: Mr. Arjun Sharma   IP No: 871777   DOB: 12-11-1942\nContact: 6774920690\nEmail: arjun.sharma67@gmail.com\nAddress: 214, Civil Lines, Lucknow\n\n80-year-old male presents with fever and syncope for 2 days. There is no chest pain. There is no abdominal pain. Known case of coronary artery disease. Vitals: BP 102/62, HR 79, RR 27, SpO2 89%, Temp 38.4 C. Seen by Dr. Kabir George. Review on 7 September 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Arjun Sharma"
+    },
+    {
+     "type": "id",
+     "value": "871777"
+    },
+    {
+     "type": "date",
+     "value": "12-11-1942"
+    },
+    {
+     "type": "name",
+     "value": "Kabir George"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "6774920690"
+    },
+    {
+     "type": "email",
+     "value": "arjun.sharma67@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Lucknow"
+    },
+    {
+     "type": "date",
+     "value": "7 September 2026"
+    }
+   ],
+   "keep": [
+    "fever",
+    "syncope",
+    "2 days",
+    "SpO2 89%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "fever",
+    "syncope"
+   ],
+   "negated": [
+    "chest pain",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_053",
+   "text": "Navjeevan Medical Centre - Ward round\nName: Ms. Tanvi Malhotra   UHID LMC13562668   DOB: 21/01/1992\nContact: +91 82821 69316\n\n67-year-old female presents with hemoptysis and chills for 11 days. Negative for weight loss. Patient denies any cough. Negative for palpitations. Known case of hypothyroidism. Vitals: BP 104/72, HR 76, RR 21, SpO2 91%, Temp 37.4 C. Seen by Dr. Meera Singh. Review on 28 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tanvi Malhotra"
+    },
+    {
+     "type": "id",
+     "value": "LMC13562668"
+    },
+    {
+     "type": "date",
+     "value": "21/01/1992"
+    },
+    {
+     "type": "name",
+     "value": "Meera Singh"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "+91 82821 69316"
+    },
+    {
+     "type": "date",
+     "value": "28 October 2026"
+    }
+   ],
+   "keep": [
+    "hemoptysis",
+    "chills",
+    "11 days",
+    "SpO2 91%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "hemoptysis",
+    "chills"
+   ],
+   "negated": [
+    "weight loss",
+    "cough",
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_054",
+   "text": "Sunrise Hospital - Admission note\nPt: Gill, Aarav   Hospital No. 2019/25247   DOB: 1996-01-17\nContact: 9171892328\nAddress: 215, MG Road, Ahmedabad\n\n54-year-old female presents with chest pain and sore throat for 3 days. Patient denies any hemoptysis. Vitals: BP 155/98, HR 128, RR 18, SpO2 86%, Temp 39.5 C. Seen by Dr. Imran George. Review on 18 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gill, Aarav"
+    },
+    {
+     "type": "id",
+     "value": "2019/25247"
+    },
+    {
+     "type": "date",
+     "value": "1996-01-17"
+    },
+    {
+     "type": "name",
+     "value": "Imran George"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "9171892328"
+    },
+    {
+     "type": "location",
+     "value": "Ahmedabad"
+    },
+    {
+     "type": "date",
+     "value": "18 November 2026"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "sore throat",
+    "3 days",
+    "SpO2 86%"
+   ],
+   "active": [
+    "chest pain",
+    "sore throat"
+   ],
+   "negated": [
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_055",
+   "text": "Metro Institute of Medical Sciences - ED note\nPatient: Zoya Kulkarni   Hospital No. 2024/99767   DOB: 01-02-1976\nAddress: 108, Anna Salai, Lucknow\n\n86-year-old male presents with dry cough, night sweats, chest pain and cough for 13 days. Negative for orthopnea. Known case of hypertension. Vitals: BP 118/73, HR 109, RR 20, SpO2 91%, Temp 36.5 C. Seen by Dr. Rohan D'Souza. Review on 27 September 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Zoya Kulkarni"
+    },
+    {
+     "type": "id",
+     "value": "2024/99767"
+    },
+    {
+     "type": "date",
+     "value": "01-02-1976"
+    },
+    {
+     "type": "name",
+     "value": "Rohan D'Souza"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Institute of Medical Sciences"
+    },
+    {
+     "type": "location",
+     "value": "Lucknow"
+    },
+    {
+     "type": "date",
+     "value": "27 September 2025"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "night sweats",
+    "chest pain",
+    "cough",
+    "13 days",
+    "SpO2 91%",
+    "hypertension"
+   ],
+   "active": [
+    "dry cough",
+    "night sweats",
+    "chest pain",
+    "cough"
+   ],
+   "negated": [
+    "orthopnea"
+   ]
+  },
+  {
+   "id": "heldout_056",
+   "text": "Silver Oak Super Speciality Hospital - Admission note\nPt: D'Souza, Mary   IP No: 342249   DOB: 25/02/1977\nContact: 056-2387-7626\nAddress: 16, Banjara Hills, Ahmedabad\n\n26-year-old male presents with headache and leg swelling for 6 days. There is no sore throat. No cough. Known case of tuberculosis and asthma. Vitals: BP 114/85, HR 111, RR 19, SpO2 92%, Temp 38.6 C. Seen by Dr. Siddharth Joshi. Review on 16 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "D'Souza, Mary"
+    },
+    {
+     "type": "id",
+     "value": "342249"
+    },
+    {
+     "type": "date",
+     "value": "25/02/1977"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "056-2387-7626"
+    },
+    {
+     "type": "location",
+     "value": "Ahmedabad"
+    },
+    {
+     "type": "date",
+     "value": "16 October 2026"
+    }
+   ],
+   "keep": [
+    "headache",
+    "leg swelling",
+    "6 days",
+    "SpO2 92%",
+    "tuberculosis",
+    "asthma"
+   ],
+   "active": [
+    "headache",
+    "leg swelling"
+   ],
+   "negated": [
+    "sore throat",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_057",
+   "text": "Riverside Super Speciality Hospital - Admission note\nPatient: Aarav Qureshi   Hospital No. 2025/36029   DOB: 10/04/1981\nEmail: aarav.qureshi7@outlook.com\n\n43-year-old female presents with syncope and headache for 12 days. Denies hemoptysis. Vitals: BP 165/65, HR 84, RR 12, SpO2 88%, Temp 36.2 C. Seen by Dr. Olivia Deshmukh. Review on 4 August 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Aarav Qureshi"
+    },
+    {
+     "type": "id",
+     "value": "2025/36029"
+    },
+    {
+     "type": "date",
+     "value": "10/04/1981"
+    },
+    {
+     "type": "name",
+     "value": "Olivia Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "Riverside Super Speciality Hospital"
+    },
+    {
+     "type": "email",
+     "value": "aarav.qureshi7@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "4 August 2026"
+    }
+   ],
+   "keep": [
+    "syncope",
+    "headache",
+    "12 days",
+    "SpO2 88%"
+   ],
+   "active": [
+    "syncope",
+    "headache"
+   ],
+   "negated": [
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_058",
+   "text": "Sunrise Multispeciality Hospital - ED note\nName: Ms. Harish Kapoor   IP No: 876970   DOB: 25-03-1975\nContact: +91 89205 12674\nAddress: 205, Residency Road, Kolkata\n\n85-year-old female presents with confusion and sore throat for 13 days. Patient denies any productive cough. Negative for wheezing. Known case of hypothyroidism. Vitals: BP 153/95, HR 122, RR 13, SpO2 99%, Temp 36.8 C. Seen by Dr. Sarah Khan. Review on 3 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Harish Kapoor"
+    },
+    {
+     "type": "id",
+     "value": "876970"
+    },
+    {
+     "type": "date",
+     "value": "25-03-1975"
+    },
+    {
+     "type": "name",
+     "value": "Sarah Khan"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 89205 12674"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "3 September 2024"
+    }
+   ],
+   "keep": [
+    "confusion",
+    "sore throat",
+    "13 days",
+    "SpO2 99%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "confusion",
+    "sore throat"
+   ],
+   "negated": [
+    "productive cough",
+    "wheezing"
+   ]
+  },
+  {
+   "id": "heldout_059",
+   "text": "Ganga Nursing Home - Ward round\nName: Ms. Gaurav Shah   Hospital No. 2025/17248   DOB: 08-06-1957\nContact: +91-8669991805\n\n27-year-old female presents with fever and cough for 3 days. There is no chest pain. There is no dizziness. There is no night sweats. Known case of COPD. Vitals: BP 158/71, HR 68, RR 29, SpO2 89%, Temp 39.4 C. Seen by Dr. Vivaan Iyer. Review on 27 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gaurav Shah"
+    },
+    {
+     "type": "id",
+     "value": "2025/17248"
+    },
+    {
+     "type": "date",
+     "value": "08-06-1957"
+    },
+    {
+     "type": "name",
+     "value": "Vivaan Iyer"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8669991805"
+    },
+    {
+     "type": "date",
+     "value": "27 November 2026"
+    }
+   ],
+   "keep": [
+    "fever",
+    "cough",
+    "3 days",
+    "SpO2 89%",
+    "COPD"
+   ],
+   "active": [
+    "fever",
+    "cough"
+   ],
+   "negated": [
+    "chest pain",
+    "dizziness",
+    "night sweats"
+   ]
+  },
+  {
+   "id": "heldout_060",
+   "text": "Shanti Hospital - OPD note\nPt: Ansari, David   IP No: 808008   DOB: 19/08/1979\nContact: +91 67621 30918\n\n28-year-old male presents with weight loss and cough for 2 days. There is no dry cough. Negative for chills. There is no orthopnea. Vitals: BP 99/80, HR 66, RR 22, SpO2 88%, Temp 39.2 C. Seen by Dr. Pooja Bose. Review on 21 December 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Ansari, David"
+    },
+    {
+     "type": "id",
+     "value": "808008"
+    },
+    {
+     "type": "date",
+     "value": "19/08/1979"
+    },
+    {
+     "type": "name",
+     "value": "Pooja Bose"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 67621 30918"
+    },
+    {
+     "type": "date",
+     "value": "21 December 2024"
+    }
+   ],
+   "keep": [
+    "weight loss",
+    "cough",
+    "2 days",
+    "SpO2 88%"
+   ],
+   "active": [
+    "weight loss",
+    "cough"
+   ],
+   "negated": [
+    "dry cough",
+    "chills",
+    "orthopnea"
+   ]
+  },
+  {
+   "id": "heldout_061",
+   "text": "Shanti Super Speciality Hospital - ED note\nName: Ms. Sarah Verma   UHID SJH43128177   DOB: 13 January 1942\nContact: +91-9766716898\nEmail: sarah.verma99@outlook.com\n\n54-year-old female presents with nausea, fever, cough and weight loss for 9 days. Patient denies any chest pain. No palpitations. Known case of hypothyroidism. Vitals: BP 169/67, HR 124, RR 20, SpO2 92%, Temp 37.9 C. Seen by Dr. Vivaan Gupta. Review on 21 April 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Sarah Verma"
+    },
+    {
+     "type": "id",
+     "value": "SJH43128177"
+    },
+    {
+     "type": "date",
+     "value": "13 January 1942"
+    },
+    {
+     "type": "name",
+     "value": "Vivaan Gupta"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-9766716898"
+    },
+    {
+     "type": "email",
+     "value": "sarah.verma99@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "21 April 2026"
+    }
+   ],
+   "keep": [
+    "nausea",
+    "fever",
+    "cough",
+    "weight loss",
+    "9 days",
+    "SpO2 92%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "nausea",
+    "fever",
+    "cough",
+    "weight loss"
+   ],
+   "negated": [
+    "chest pain",
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_062",
+   "text": "Ganga Clinic - Admission note\nName: Ms. Arjun Chatterjee   UHID LMC82916208   DOB: 16-09-1975\nContact: 6657943676\nAddress: 23, Anna Salai, Chennai\n\n49-year-old female presents with nausea and wheezing for 9 days. Negative for breathlessness. Denies shortness of breath. Negative for headache. Known case of tuberculosis. Vitals: BP 155/71, HR 66, RR 30, SpO2 91%, Temp 37.9 C. Seen by Dr. Pranav Chatterjee. Review on 2 May 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Arjun Chatterjee"
+    },
+    {
+     "type": "id",
+     "value": "LMC82916208"
+    },
+    {
+     "type": "date",
+     "value": "16-09-1975"
+    },
+    {
+     "type": "name",
+     "value": "Pranav Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "6657943676"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "2 May 2025"
+    }
+   ],
+   "keep": [
+    "nausea",
+    "wheezing",
+    "9 days",
+    "SpO2 91%",
+    "tuberculosis"
+   ],
+   "active": [
+    "nausea",
+    "wheezing"
+   ],
+   "negated": [
+    "breathlessness",
+    "shortness of breath",
+    "headache"
+   ]
+  },
+  {
+   "id": "heldout_063",
+   "text": "Lotus Super Speciality Hospital - Admission note\nPatient: Sneha Iyer   MRN: 4490495   DOB: 23-10-1954\n\n29-year-old female presents with hemoptysis, breathlessness, dry cough and cough for 6 days. No palpitations. Denies abdominal pain. Known case of coronary artery disease. Vitals: BP 165/93, HR 98, RR 17, SpO2 99%, Temp 38.1 C. Seen by Dr. Imran Mukherjee. Review on 14 July 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Sneha Iyer"
+    },
+    {
+     "type": "id",
+     "value": "4490495"
+    },
+    {
+     "type": "date",
+     "value": "23-10-1954"
+    },
+    {
+     "type": "name",
+     "value": "Imran Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Super Speciality Hospital"
+    },
+    {
+     "type": "date",
+     "value": "14 July 2025"
+    }
+   ],
+   "keep": [
+    "hemoptysis",
+    "breathlessness",
+    "dry cough",
+    "cough",
+    "6 days",
+    "SpO2 99%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "hemoptysis",
+    "breathlessness",
+    "dry cough",
+    "cough"
+   ],
+   "negated": [
+    "palpitations",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_064",
+   "text": "Lakeview Super Speciality Hospital - Ward round\nPatient: Nikhil Deshmukh   MRN: 2341002   DOB: 16-05-1999\nEmail: nikhil.deshmukh79@yahoo.co.in\n\n46-year-old female presents with fever and palpitations for 4 days. There is no productive cough. Denies breathlessness. Denies fatigue. Vitals: BP 130/78, HR 103, RR 25, SpO2 90%, Temp 38.4 C. Seen by Dr. Harleen Menon. Review on 26 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nikhil Deshmukh"
+    },
+    {
+     "type": "id",
+     "value": "2341002"
+    },
+    {
+     "type": "date",
+     "value": "16-05-1999"
+    },
+    {
+     "type": "name",
+     "value": "Harleen Menon"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Super Speciality Hospital"
+    },
+    {
+     "type": "email",
+     "value": "nikhil.deshmukh79@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "26 February 2024"
+    }
+   ],
+   "keep": [
+    "fever",
+    "palpitations",
+    "4 days",
+    "SpO2 90%"
+   ],
+   "active": [
+    "fever",
+    "palpitations"
+   ],
+   "negated": [
+    "productive cough",
+    "breathlessness",
+    "fatigue"
+   ]
+  },
+  {
+   "id": "heldout_065",
+   "text": "Silver Oak Nursing Home - Ward round\nName: Ms. Emily Singh   UHID LMC59202279   DOB: 09/02/1995\n\n24-year-old female presents with headache, dizziness and chills for 1 day. There is no nausea. Patient denies any high-grade fever. Vitals: BP 124/95, HR 116, RR 15, SpO2 88%, Temp 36.7 C. Seen by Dr. Sneha Gill. Review on 5 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Emily Singh"
+    },
+    {
+     "type": "id",
+     "value": "LMC59202279"
+    },
+    {
+     "type": "date",
+     "value": "09/02/1995"
+    },
+    {
+     "type": "name",
+     "value": "Sneha Gill"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Nursing Home"
+    },
+    {
+     "type": "date",
+     "value": "5 October 2026"
+    }
+   ],
+   "keep": [
+    "headache",
+    "dizziness",
+    "chills",
+    "1 day",
+    "SpO2 88%"
+   ],
+   "active": [
+    "headache",
+    "dizziness",
+    "chills"
+   ],
+   "negated": [
+    "nausea",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_066",
+   "text": "Sunrise Hospital - OPD note\nPatient: Gaurav Agarwal   MRN: 9643722   DOB: 01/02/1957\nAddress: 6, Anna Salai, Jaipur\n\n33-year-old female presents with chills and abdominal pain for 13 days. No night sweats. Denies sore throat. Vitals: BP 132/74, HR 79, RR 12, SpO2 92%, Temp 38.4 C. Seen by Dr. Meera Chatterjee. Review on 27 January 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gaurav Agarwal"
+    },
+    {
+     "type": "id",
+     "value": "9643722"
+    },
+    {
+     "type": "date",
+     "value": "01/02/1957"
+    },
+    {
+     "type": "name",
+     "value": "Meera Chatterjee"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "27 January 2024"
+    }
+   ],
+   "keep": [
+    "chills",
+    "abdominal pain",
+    "13 days",
+    "SpO2 92%"
+   ],
+   "active": [
+    "chills",
+    "abdominal pain"
+   ],
+   "negated": [
+    "night sweats",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_067",
+   "text": "Kaveri Hospital - Ward round\nPt: Mehta, Deepika   Hospital No. 2025/92128   DOB: 03/01/1940\nContact: 7855992356\n\n62-year-old female presents with cough, fever and wheezing for 13 days. Patient denies any dizziness. Negative for weight loss. Known case of hypertension. Vitals: BP 121/80, HR 125, RR 30, SpO2 88%, Temp 38.3 C. Seen by Dr. Meera Ansari. Review on 16 October 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mehta, Deepika"
+    },
+    {
+     "type": "id",
+     "value": "2025/92128"
+    },
+    {
+     "type": "date",
+     "value": "03/01/1940"
+    },
+    {
+     "type": "name",
+     "value": "Meera Ansari"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "7855992356"
+    },
+    {
+     "type": "date",
+     "value": "16 October 2025"
+    }
+   ],
+   "keep": [
+    "cough",
+    "fever",
+    "wheezing",
+    "13 days",
+    "SpO2 88%",
+    "hypertension"
+   ],
+   "active": [
+    "cough",
+    "fever",
+    "wheezing"
+   ],
+   "negated": [
+    "dizziness",
+    "weight loss"
+   ]
+  },
+  {
+   "id": "heldout_068",
+   "text": "St. Joseph's Nursing Home - OPD note\nPt: Fernandes, Gaurav   Hospital No. 2023/55498   DOB: 2004-12-02\nEmail: gaurav.fernandes33@yahoo.co.in\n\n35-year-old female presents with high-grade fever, leg swelling and confusion for 8 days. No shortness of breath. Negative for orthopnea. Vitals: BP 135/78, HR 115, RR 12, SpO2 96%, Temp 36.3 C. Seen by Dr. Kavya Reddy. Review on 5 November 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Fernandes, Gaurav"
+    },
+    {
+     "type": "id",
+     "value": "2023/55498"
+    },
+    {
+     "type": "date",
+     "value": "2004-12-02"
+    },
+    {
+     "type": "name",
+     "value": "Kavya Reddy"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "gaurav.fernandes33@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "5 November 2024"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "leg swelling",
+    "confusion",
+    "8 days",
+    "SpO2 96%"
+   ],
+   "active": [
+    "fever",
+    "leg swelling",
+    "confusion"
+   ],
+   "negated": [
+    "shortness of breath",
+    "orthopnea"
+   ]
+  },
+  {
+   "id": "heldout_069",
+   "text": "Lotus Nursing Home - Ward round\nPt: Tiwari, Harleen   MRN: 4400568   DOB: 15 June 1999\nAddress: 30, Civil Lines, Kochi\n\n77-year-old female presents with syncope and weight loss for 8 days. No chills. There is no dizziness. Patient denies any sore throat. Known case of type 2 diabetes mellitus. Vitals: BP 135/98, HR 99, RR 29, SpO2 99%, Temp 38.7 C. Seen by Dr. Nisha Yadav. Review on 12 December 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tiwari, Harleen"
+    },
+    {
+     "type": "id",
+     "value": "4400568"
+    },
+    {
+     "type": "date",
+     "value": "15 June 1999"
+    },
+    {
+     "type": "name",
+     "value": "Nisha Yadav"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "location",
+     "value": "Kochi"
+    },
+    {
+     "type": "date",
+     "value": "12 December 2026"
+    }
+   ],
+   "keep": [
+    "syncope",
+    "weight loss",
+    "8 days",
+    "SpO2 99%",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "syncope",
+    "weight loss"
+   ],
+   "negated": [
+    "chills",
+    "dizziness",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_070",
+   "text": "Sahyadri Nursing Home - OPD note\nName: Ms. Tanvi Tiwari   IP No: 989101   DOB: 1999-05-14\nEmail: tanvi.tiwari64@outlook.com\n\n81-year-old female presents with orthopnea, chills and vomiting for 2 days. There is no shortness of breath. There is no chest pain. Denies breathlessness. Vitals: BP 133/63, HR 76, RR 15, SpO2 93%, Temp 39.2 C. Seen by Dr. Zoya Bose. Review on 26 April 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tanvi Tiwari"
+    },
+    {
+     "type": "id",
+     "value": "989101"
+    },
+    {
+     "type": "date",
+     "value": "1999-05-14"
+    },
+    {
+     "type": "name",
+     "value": "Zoya Bose"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "tanvi.tiwari64@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "26 April 2026"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "chills",
+    "vomiting",
+    "2 days",
+    "SpO2 93%"
+   ],
+   "active": [
+    "orthopnea",
+    "chills",
+    "vomiting"
+   ],
+   "negated": [
+    "shortness of breath",
+    "chest pain",
+    "breathlessness"
+   ]
+  },
+  {
+   "id": "heldout_071",
+   "text": "Lifeline Hospital - OPD note\nPt: Desai, Nisha   UHID LMC26711369   DOB: 1996-09-07\nContact: +91-8913469629\nEmail: nisha.desai65@yahoo.co.in\n\n52-year-old female presents with dizziness and fatigue for 8 days. Denies orthopnea. No night sweats. There is no chest pain. Known case of COPD and type 2 diabetes mellitus. Vitals: BP 94/62, HR 92, RR 24, SpO2 99%, Temp 38.1 C. Seen by Dr. Olivia George. Review on 28 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Desai, Nisha"
+    },
+    {
+     "type": "id",
+     "value": "LMC26711369"
+    },
+    {
+     "type": "date",
+     "value": "1996-09-07"
+    },
+    {
+     "type": "name",
+     "value": "Olivia George"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8913469629"
+    },
+    {
+     "type": "email",
+     "value": "nisha.desai65@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "28 October 2024"
+    }
+   ],
+   "keep": [
+    "dizziness",
+    "fatigue",
+    "8 days",
+    "SpO2 99%",
+    "COPD",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "dizziness",
+    "fatigue"
+   ],
+   "negated": [
+    "orthopnea",
+    "night sweats",
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_072",
+   "text": "Silver Oak Nursing Home - OPD note\nPatient: Siddharth Mathew   IP No: 996490   DOB: 21-12-1995\nContact: 015-2375-4453\n\n67-year-old female presents with breathlessness, fever, shortness of breath and confusion for 10 days. Denies wheezing. There is no nausea. Denies syncope. Known case of chronic kidney disease and type 2 diabetes mellitus. Vitals: BP 159/72, HR 73, RR 29, SpO2 87%, Temp 36.5 C. Seen by Dr. Suresh George. Review on 18 September 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Siddharth Mathew"
+    },
+    {
+     "type": "id",
+     "value": "996490"
+    },
+    {
+     "type": "date",
+     "value": "21-12-1995"
+    },
+    {
+     "type": "name",
+     "value": "Suresh George"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "015-2375-4453"
+    },
+    {
+     "type": "date",
+     "value": "18 September 2025"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "fever",
+    "shortness of breath",
+    "confusion",
+    "10 days",
+    "SpO2 87%",
+    "chronic kidney disease",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "breathlessness",
+    "fever",
+    "shortness of breath",
+    "confusion"
+   ],
+   "negated": [
+    "wheezing",
+    "nausea",
+    "syncope"
+   ]
+  },
+  {
+   "id": "heldout_073",
+   "text": "Silver Oak Multispeciality Hospital - OPD note\nPatient: Zoya Mathew   MRN: 8508597   DOB: 14/04/1967\nContact: 055-2032-3423\n\n36-year-old female presents with fever and vomiting for 10 days. No leg swelling. Known case of asthma. Vitals: BP 118/97, HR 106, RR 13, SpO2 97%, Temp 38.4 C. Seen by Dr. Pranav Chopra. Review on 15 November 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Zoya Mathew"
+    },
+    {
+     "type": "id",
+     "value": "8508597"
+    },
+    {
+     "type": "date",
+     "value": "14/04/1967"
+    },
+    {
+     "type": "name",
+     "value": "Pranav Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Silver Oak Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "055-2032-3423"
+    },
+    {
+     "type": "date",
+     "value": "15 November 2025"
+    }
+   ],
+   "keep": [
+    "fever",
+    "vomiting",
+    "10 days",
+    "SpO2 97%",
+    "asthma"
+   ],
+   "active": [
+    "fever",
+    "vomiting"
+   ],
+   "negated": [
+    "leg swelling"
+   ]
+  },
+  {
+   "id": "heldout_074",
+   "text": "Sahyadri Clinic - OPD note\nPatient: Thomas Chatterjee   MRN: 7765143   DOB: 23 April 1946\nEmail: thomas.chatterjee37@yahoo.co.in\nAddress: 44, Banjara Hills, Nagpur\n\n50-year-old female presents with breathlessness, fever, palpitations and chest pain for 8 days. Patient denies any weight loss. No abdominal pain. Patient denies any leg swelling. Known case of type 2 diabetes mellitus. Vitals: BP 116/81, HR 97, RR 18, SpO2 94%, Temp 38.3 C. Seen by Dr. Harish Mukherjee. Review on 21 July 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Thomas Chatterjee"
+    },
+    {
+     "type": "id",
+     "value": "7765143"
+    },
+    {
+     "type": "date",
+     "value": "23 April 1946"
+    },
+    {
+     "type": "name",
+     "value": "Harish Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Clinic"
+    },
+    {
+     "type": "email",
+     "value": "thomas.chatterjee37@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "21 July 2026"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "fever",
+    "palpitations",
+    "chest pain",
+    "8 days",
+    "SpO2 94%",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "breathlessness",
+    "fever",
+    "palpitations",
+    "chest pain"
+   ],
+   "negated": [
+    "weight loss",
+    "abdominal pain",
+    "leg swelling"
+   ]
+  },
+  {
+   "id": "heldout_075",
+   "text": "Navjeevan Nursing Home - OPD note\nName: Ms. Mary Nair   IP No: 527143   DOB: 24/11/1957\nContact: +91-6189863029\nEmail: mary.nair61@gmail.com\n\n65-year-old female presents with productive cough, fever and dry cough for 13 days. There is no shortness of breath. Vitals: BP 108/71, HR 68, RR 26, SpO2 93%, Temp 36.7 C. Seen by Dr. Sneha Kulkarni. Review on 4 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mary Nair"
+    },
+    {
+     "type": "id",
+     "value": "527143"
+    },
+    {
+     "type": "date",
+     "value": "24/11/1957"
+    },
+    {
+     "type": "name",
+     "value": "Sneha Kulkarni"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-6189863029"
+    },
+    {
+     "type": "email",
+     "value": "mary.nair61@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "4 February 2024"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "fever",
+    "dry cough",
+    "13 days",
+    "SpO2 93%"
+   ],
+   "active": [
+    "productive cough",
+    "fever",
+    "dry cough"
+   ],
+   "negated": [
+    "shortness of breath"
+   ]
+  },
+  {
+   "id": "heldout_076",
+   "text": "Lifeline Nursing Home - OPD note\nPatient: Thomas Kulkarni   UHID AC97019064   DOB: 1998-05-24\nContact: +91 79303 54008\nEmail: thomas.kulkarni51@yahoo.co.in\nAddress: 143, Park Street, Ahmedabad\n\n25-year-old male presents with fatigue and hemoptysis for 11 days. Negative for vomiting. No fever. Known case of hypothyroidism. Vitals: BP 156/75, HR 72, RR 18, SpO2 91%, Temp 37.5 C. Seen by Dr. Gaurav Chopra. Review on 9 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Thomas Kulkarni"
+    },
+    {
+     "type": "id",
+     "value": "AC97019064"
+    },
+    {
+     "type": "date",
+     "value": "1998-05-24"
+    },
+    {
+     "type": "name",
+     "value": "Gaurav Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91 79303 54008"
+    },
+    {
+     "type": "email",
+     "value": "thomas.kulkarni51@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Ahmedabad"
+    },
+    {
+     "type": "date",
+     "value": "9 September 2024"
+    }
+   ],
+   "keep": [
+    "fatigue",
+    "hemoptysis",
+    "11 days",
+    "SpO2 91%",
+    "hypothyroidism"
+   ],
+   "active": [
+    "fatigue",
+    "hemoptysis"
+   ],
+   "negated": [
+    "vomiting",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_077",
+   "text": "Green Valley Hospital - Ward round\nName: Mr. Gaurav D'Souza   IP No: 171157   DOB: 06/04/1966\nContact: +91 71679 61201\n\n21-year-old male presents with night sweats and cough for 13 days. Patient denies any palpitations. Known case of COPD and asthma. Vitals: BP 129/86, HR 83, RR 16, SpO2 88%, Temp 36.9 C. Seen by Dr. Meera Tiwari. Review on 11 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gaurav D'Souza"
+    },
+    {
+     "type": "id",
+     "value": "171157"
+    },
+    {
+     "type": "date",
+     "value": "06/04/1966"
+    },
+    {
+     "type": "name",
+     "value": "Meera Tiwari"
+    },
+    {
+     "type": "facility",
+     "value": "Green Valley Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 71679 61201"
+    },
+    {
+     "type": "date",
+     "value": "11 June 2024"
+    }
+   ],
+   "keep": [
+    "night sweats",
+    "cough",
+    "13 days",
+    "SpO2 88%",
+    "COPD",
+    "asthma"
+   ],
+   "active": [
+    "night sweats",
+    "cough"
+   ],
+   "negated": [
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_078",
+   "text": "St. Mary's Clinic - OPD note\nName: Ms. Diya Tiwari   IP No: 837696   DOB: 12 December 1941\nContact: +91-8408130179\nAddress: 167, Anna Salai, Lucknow\n\n37-year-old female presents with night sweats, chest pain and wheezing for 12 days. Denies shortness of breath. Known case of type 2 diabetes mellitus and COPD. Vitals: BP 145/97, HR 113, RR 13, SpO2 91%, Temp 38.1 C. Seen by Dr. Suresh Bansal. Review on 26 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Diya Tiwari"
+    },
+    {
+     "type": "id",
+     "value": "837696"
+    },
+    {
+     "type": "date",
+     "value": "12 December 1941"
+    },
+    {
+     "type": "name",
+     "value": "Suresh Bansal"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8408130179"
+    },
+    {
+     "type": "location",
+     "value": "Lucknow"
+    },
+    {
+     "type": "date",
+     "value": "26 September 2024"
+    }
+   ],
+   "keep": [
+    "night sweats",
+    "chest pain",
+    "wheezing",
+    "12 days",
+    "SpO2 91%",
+    "type 2 diabetes mellitus",
+    "COPD"
+   ],
+   "active": [
+    "night sweats",
+    "chest pain",
+    "wheezing"
+   ],
+   "negated": [
+    "shortness of breath"
+   ]
+  },
+  {
+   "id": "heldout_079",
+   "text": "Metro Multispeciality Hospital - Ward round\nPatient: Riya Thomas   UHID LMC60591650   DOB: 16/10/2002\nContact: +91 89718 79955\nEmail: riya.thomas45@outlook.com\n\n47-year-old male presents with wheezing and palpitations for 7 days. No vomiting. Denies chest pain. Known case of COPD and hypothyroidism. Vitals: BP 139/87, HR 119, RR 30, SpO2 92%, Temp 37.1 C. Seen by Dr. Emily Chopra. Review on 10 August 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Riya Thomas"
+    },
+    {
+     "type": "id",
+     "value": "LMC60591650"
+    },
+    {
+     "type": "date",
+     "value": "16/10/2002"
+    },
+    {
+     "type": "name",
+     "value": "Emily Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 89718 79955"
+    },
+    {
+     "type": "email",
+     "value": "riya.thomas45@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "10 August 2024"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "palpitations",
+    "7 days",
+    "SpO2 92%",
+    "COPD",
+    "hypothyroidism"
+   ],
+   "active": [
+    "wheezing",
+    "palpitations"
+   ],
+   "negated": [
+    "vomiting",
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_080",
+   "text": "Navjeevan Nursing Home - OPD note\nPt: Mehta, Swati   Hospital No. 2019/67527   DOB: 09/02/1974\nEmail: swati.mehta3@outlook.com\nAddress: 5, Banjara Hills, Jaipur\n\n73-year-old female presents with nausea, headache and cough for 3 days. Patient denies any confusion. Known case of asthma and COPD. Vitals: BP 150/60, HR 95, RR 14, SpO2 99%, Temp 38.7 C. Seen by Dr. Olivia Fernandes. Review on 19 December 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mehta, Swati"
+    },
+    {
+     "type": "id",
+     "value": "2019/67527"
+    },
+    {
+     "type": "date",
+     "value": "09/02/1974"
+    },
+    {
+     "type": "name",
+     "value": "Olivia Fernandes"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "swati.mehta3@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "19 December 2024"
+    }
+   ],
+   "keep": [
+    "nausea",
+    "headache",
+    "cough",
+    "3 days",
+    "SpO2 99%",
+    "asthma",
+    "COPD"
+   ],
+   "active": [
+    "nausea",
+    "headache",
+    "cough"
+   ],
+   "negated": [
+    "confusion"
+   ]
+  },
+  {
+   "id": "heldout_081",
+   "text": "St. Mary's Hospital - Admission note\nPatient: Pooja Rao   UHID SMH72153856   DOB: 21-11-1977\nContact: +91-9863853119\nEmail: pooja.rao77@gmail.com\n\n84-year-old female presents with breathlessness, night sweats, dizziness and shortness of breath for 1 day. Denies nausea. Vitals: BP 123/68, HR 122, RR 25, SpO2 94%, Temp 37.8 C. Seen by Dr. Rohan Sharma. Review on 4 August 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Pooja Rao"
+    },
+    {
+     "type": "id",
+     "value": "SMH72153856"
+    },
+    {
+     "type": "date",
+     "value": "21-11-1977"
+    },
+    {
+     "type": "name",
+     "value": "Rohan Sharma"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-9863853119"
+    },
+    {
+     "type": "email",
+     "value": "pooja.rao77@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "4 August 2026"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "night sweats",
+    "dizziness",
+    "shortness of breath",
+    "1 day",
+    "SpO2 94%"
+   ],
+   "active": [
+    "breathlessness",
+    "night sweats",
+    "dizziness",
+    "shortness of breath"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_082",
+   "text": "St. Mary's Multispeciality Hospital - Ward round\nPt: Khan, Mary   IP No: 815204   DOB: 27 September 1989\nContact: 7199545471\n\n83-year-old female presents with leg swelling, chills and breathlessness for 12 days. No sore throat. Denies cough. Known case of hypertension and hypothyroidism. Vitals: BP 123/83, HR 121, RR 16, SpO2 98%, Temp 39.5 C. Seen by Dr. Riya Sharma. Review on 22 June 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Khan, Mary"
+    },
+    {
+     "type": "id",
+     "value": "815204"
+    },
+    {
+     "type": "date",
+     "value": "27 September 1989"
+    },
+    {
+     "type": "name",
+     "value": "Riya Sharma"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "7199545471"
+    },
+    {
+     "type": "date",
+     "value": "22 June 2026"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "chills",
+    "breathlessness",
+    "12 days",
+    "SpO2 98%",
+    "hypertension",
+    "hypothyroidism"
+   ],
+   "active": [
+    "leg swelling",
+    "chills",
+    "breathlessness"
+   ],
+   "negated": [
+    "sore throat",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_083",
+   "text": "Sunrise Institute of Medical Sciences - ED note\nPt: Thomas, Harleen   IP No: 534473   DOB: 09/02/1998\nContact: +91-7824321101\n\n87-year-old male presents with high-grade fever, orthopnea and night sweats for 9 days. No syncope. Patient denies any chills. Known case of chronic kidney disease and COPD. Vitals: BP 94/73, HR 92, RR 28, SpO2 88%, Temp 39.1 C. Seen by Dr. Riya Khan. Review on 4 June 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Thomas, Harleen"
+    },
+    {
+     "type": "id",
+     "value": "534473"
+    },
+    {
+     "type": "date",
+     "value": "09/02/1998"
+    },
+    {
+     "type": "name",
+     "value": "Riya Khan"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "+91-7824321101"
+    },
+    {
+     "type": "date",
+     "value": "4 June 2026"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "orthopnea",
+    "night sweats",
+    "9 days",
+    "SpO2 88%",
+    "chronic kidney disease",
+    "COPD"
+   ],
+   "active": [
+    "fever",
+    "orthopnea",
+    "night sweats"
+   ],
+   "negated": [
+    "syncope",
+    "chills"
+   ]
+  },
+  {
+   "id": "heldout_084",
+   "text": "Lifeline Hospital - Ward round\nPt: Mathew, Thomas   IP No: 850834   DOB: 22-07-1986\nContact: +91 86075 81097\nEmail: thomas.mathew87@yahoo.co.in\nAddress: 151, Residency Road, Hyderabad\n\n70-year-old female presents with breathlessness, nausea, abdominal pain and palpitations for 7 days. There is no leg swelling. Negative for dry cough. Known case of asthma. Vitals: BP 106/67, HR 64, RR 30, SpO2 96%, Temp 37.5 C. Seen by Dr. Mary Agarwal. Review on 19 April 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Mathew, Thomas"
+    },
+    {
+     "type": "id",
+     "value": "850834"
+    },
+    {
+     "type": "date",
+     "value": "22-07-1986"
+    },
+    {
+     "type": "name",
+     "value": "Mary Agarwal"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 86075 81097"
+    },
+    {
+     "type": "email",
+     "value": "thomas.mathew87@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Hyderabad"
+    },
+    {
+     "type": "date",
+     "value": "19 April 2025"
+    }
+   ],
+   "keep": [
+    "breathlessness",
+    "nausea",
+    "abdominal pain",
+    "palpitations",
+    "7 days",
+    "SpO2 96%",
+    "asthma"
+   ],
+   "active": [
+    "breathlessness",
+    "nausea",
+    "abdominal pain",
+    "palpitations"
+   ],
+   "negated": [
+    "leg swelling",
+    "dry cough"
+   ]
+  },
+  {
+   "id": "heldout_085",
+   "text": "St. Mary's Super Speciality Hospital - Ward round\nPt: Nair, Gurpreet   Hospital No. 2020/83497   DOB: 20 April 1944\nContact: +91-9961856033\nAddress: 209, Linking Road, Jaipur\n\n59-year-old female presents with shortness of breath, night sweats and syncope for 3 days. Patient denies any productive cough. Denies sore throat. Known case of chronic kidney disease and coronary artery disease. Vitals: BP 100/61, HR 95, RR 28, SpO2 99%, Temp 39.5 C. Seen by Dr. Mary D'Souza. Review on 19 November 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nair, Gurpreet"
+    },
+    {
+     "type": "id",
+     "value": "2020/83497"
+    },
+    {
+     "type": "date",
+     "value": "20 April 1944"
+    },
+    {
+     "type": "name",
+     "value": "Mary D'Souza"
+    },
+    {
+     "type": "facility",
+     "value": "St. Mary's Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-9961856033"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "19 November 2024"
+    }
+   ],
+   "keep": [
+    "shortness of breath",
+    "night sweats",
+    "syncope",
+    "3 days",
+    "SpO2 99%",
+    "chronic kidney disease",
+    "coronary artery disease"
+   ],
+   "active": [
+    "shortness of breath",
+    "night sweats",
+    "syncope"
+   ],
+   "negated": [
+    "productive cough",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_086",
+   "text": "Lifeline Multispeciality Hospital - Ward round\nName: Mr. Harleen Reddy   IP No: 376111   DOB: 05/07/1977\n\n77-year-old male presents with shortness of breath, sore throat and leg swelling for 2 days. Negative for vomiting. Negative for dry cough. Denies abdominal pain. Known case of tuberculosis and coronary artery disease. Vitals: BP 108/94, HR 73, RR 15, SpO2 97%, Temp 36.5 C. Seen by Dr. Vivaan Shah. Review on 12 April 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Harleen Reddy"
+    },
+    {
+     "type": "id",
+     "value": "376111"
+    },
+    {
+     "type": "date",
+     "value": "05/07/1977"
+    },
+    {
+     "type": "name",
+     "value": "Vivaan Shah"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Multispeciality Hospital"
+    },
+    {
+     "type": "date",
+     "value": "12 April 2025"
+    }
+   ],
+   "keep": [
+    "shortness of breath",
+    "sore throat",
+    "leg swelling",
+    "2 days",
+    "SpO2 97%",
+    "tuberculosis",
+    "coronary artery disease"
+   ],
+   "active": [
+    "shortness of breath",
+    "sore throat",
+    "leg swelling"
+   ],
+   "negated": [
+    "vomiting",
+    "dry cough",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_087",
+   "text": "Lakeview Medical Centre - Admission note\nName: Ms. Farhan Desai   UHID SMH70452238   DOB: 1951-02-28\nEmail: farhan.desai31@gmail.com\n\n77-year-old female presents with productive cough and breathlessness for 4 days. Patient denies any leg swelling. Denies nausea. Denies high-grade fever. Vitals: BP 102/64, HR 77, RR 28, SpO2 93%, Temp 36.4 C. Seen by Dr. Aarav Ansari. Review on 9 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Farhan Desai"
+    },
+    {
+     "type": "id",
+     "value": "SMH70452238"
+    },
+    {
+     "type": "date",
+     "value": "1951-02-28"
+    },
+    {
+     "type": "name",
+     "value": "Aarav Ansari"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Medical Centre"
+    },
+    {
+     "type": "email",
+     "value": "farhan.desai31@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "9 November 2026"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "breathlessness",
+    "4 days",
+    "SpO2 93%"
+   ],
+   "active": [
+    "productive cough",
+    "breathlessness"
+   ],
+   "negated": [
+    "leg swelling",
+    "nausea",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_088",
+   "text": "Kaveri Hospital - Admission note\nPt: Yadav, Harish   IP No: 310649   DOB: 27 October 1946\nContact: +91-6357354021\nAddress: 143, Civil Lines, Kolkata\n\n27-year-old female presents with orthopnea, productive cough and syncope for 12 days. Denies nausea. Known case of chronic kidney disease. Vitals: BP 144/99, HR 84, RR 16, SpO2 97%, Temp 37.7 C. Seen by Dr. Lakshmi Saxena. Review on 6 July 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Yadav, Harish"
+    },
+    {
+     "type": "id",
+     "value": "310649"
+    },
+    {
+     "type": "date",
+     "value": "27 October 1946"
+    },
+    {
+     "type": "name",
+     "value": "Lakshmi Saxena"
+    },
+    {
+     "type": "facility",
+     "value": "Kaveri Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-6357354021"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "6 July 2025"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "productive cough",
+    "syncope",
+    "12 days",
+    "SpO2 97%",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "orthopnea",
+    "productive cough",
+    "syncope"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_089",
+   "text": "Riverside Nursing Home - OPD note\nPt: Singh, Gaurav   UHID SMH84995851   DOB: 02-07-1972\nEmail: gaurav.singh51@outlook.com\nAddress: 149, Park Street, Nagpur\n\n87-year-old male presents with high-grade fever, palpitations, syncope and fatigue for 6 days. No abdominal pain. Denies chills. Known case of asthma and hypertension. Vitals: BP 99/91, HR 79, RR 26, SpO2 86%, Temp 38.1 C. Seen by Dr. Gurpreet Mukherjee. Review on 19 May 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Singh, Gaurav"
+    },
+    {
+     "type": "id",
+     "value": "SMH84995851"
+    },
+    {
+     "type": "date",
+     "value": "02-07-1972"
+    },
+    {
+     "type": "name",
+     "value": "Gurpreet Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "Riverside Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "gaurav.singh51@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "19 May 2024"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "palpitations",
+    "syncope",
+    "fatigue",
+    "6 days",
+    "SpO2 86%",
+    "asthma",
+    "hypertension"
+   ],
+   "active": [
+    "fever",
+    "palpitations",
+    "syncope",
+    "fatigue"
+   ],
+   "negated": [
+    "abdominal pain",
+    "chills"
+   ]
+  },
+  {
+   "id": "heldout_090",
+   "text": "Lifeline Hospital - Ward round\nPatient: Aarav D'Souza   MRN: 2081499   DOB: 1967-05-21\nAddress: 218, Banjara Hills, Jaipur\n\n22-year-old female presents with wheezing, fatigue, chest pain and sore throat for 4 days. Patient denies any productive cough. Known case of coronary artery disease. Vitals: BP 130/70, HR 110, RR 22, SpO2 88%, Temp 36.9 C. Seen by Dr. Olivia Sharma. Review on 20 January 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Aarav D'Souza"
+    },
+    {
+     "type": "id",
+     "value": "2081499"
+    },
+    {
+     "type": "date",
+     "value": "1967-05-21"
+    },
+    {
+     "type": "name",
+     "value": "Olivia Sharma"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Jaipur"
+    },
+    {
+     "type": "date",
+     "value": "20 January 2025"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "fatigue",
+    "chest pain",
+    "sore throat",
+    "4 days",
+    "SpO2 88%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "wheezing",
+    "fatigue",
+    "chest pain",
+    "sore throat"
+   ],
+   "negated": [
+    "productive cough"
+   ]
+  },
+  {
+   "id": "heldout_091",
+   "text": "Sunrise Institute of Medical Sciences - Admission note\nPatient: Rohan Joshi   UHID LMC35928452   DOB: 1999-12-28\nContact: 9830839809\nEmail: rohan.joshi61@outlook.com\nAddress: 81, Residency Road, Chennai\n\n88-year-old male presents with leg swelling, fever and shortness of breath for 7 days. Patient denies any wheezing. Vitals: BP 143/66, HR 105, RR 26, SpO2 92%, Temp 37.0 C. Seen by Dr. Siddharth Deshmukh. Review on 20 December 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Rohan Joshi"
+    },
+    {
+     "type": "id",
+     "value": "LMC35928452"
+    },
+    {
+     "type": "date",
+     "value": "1999-12-28"
+    },
+    {
+     "type": "name",
+     "value": "Siddharth Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Institute of Medical Sciences"
+    },
+    {
+     "type": "phone",
+     "value": "9830839809"
+    },
+    {
+     "type": "email",
+     "value": "rohan.joshi61@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "20 December 2024"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "fever",
+    "shortness of breath",
+    "7 days",
+    "SpO2 92%"
+   ],
+   "active": [
+    "leg swelling",
+    "fever",
+    "shortness of breath"
+   ],
+   "negated": [
+    "wheezing"
+   ]
+  },
+  {
+   "id": "heldout_092",
+   "text": "Riverside Nursing Home - OPD note\nName: Mr. Suresh Gill   UHID SJH31209509   DOB: 13-03-1978\nContact: 036-2771-3626\n\n86-year-old male presents with headache, dry cough, confusion and breathlessness for 3 days. There is no hemoptysis. Negative for productive cough. Denies high-grade fever. Vitals: BP 140/77, HR 113, RR 16, SpO2 86%, Temp 37.1 C. Seen by Dr. Aarav Gill. Review on 19 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Suresh Gill"
+    },
+    {
+     "type": "id",
+     "value": "SJH31209509"
+    },
+    {
+     "type": "date",
+     "value": "13-03-1978"
+    },
+    {
+     "type": "name",
+     "value": "Aarav Gill"
+    },
+    {
+     "type": "facility",
+     "value": "Riverside Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "036-2771-3626"
+    },
+    {
+     "type": "date",
+     "value": "19 October 2024"
+    }
+   ],
+   "keep": [
+    "headache",
+    "dry cough",
+    "confusion",
+    "breathlessness",
+    "3 days",
+    "SpO2 86%"
+   ],
+   "active": [
+    "headache",
+    "dry cough",
+    "confusion",
+    "breathlessness"
+   ],
+   "negated": [
+    "hemoptysis",
+    "productive cough",
+    "fever"
+   ]
+  },
+  {
+   "id": "heldout_093",
+   "text": "Shanti Medical Centre - Admission note\nName: Ms. Aarav Desai   Hospital No. 2021/30399   DOB: 3 January 1983\n\n68-year-old female presents with hemoptysis, vomiting and syncope for 5 days. Patient denies any night sweats. No headache. Known case of asthma and tuberculosis. Vitals: BP 112/100, HR 113, RR 23, SpO2 87%, Temp 36.5 C. Seen by Dr. Mary Rao. Review on 28 August 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Aarav Desai"
+    },
+    {
+     "type": "id",
+     "value": "2021/30399"
+    },
+    {
+     "type": "date",
+     "value": "3 January 1983"
+    },
+    {
+     "type": "name",
+     "value": "Mary Rao"
+    },
+    {
+     "type": "facility",
+     "value": "Shanti Medical Centre"
+    },
+    {
+     "type": "date",
+     "value": "28 August 2024"
+    }
+   ],
+   "keep": [
+    "hemoptysis",
+    "vomiting",
+    "syncope",
+    "5 days",
+    "SpO2 87%",
+    "asthma",
+    "tuberculosis"
+   ],
+   "active": [
+    "hemoptysis",
+    "vomiting",
+    "syncope"
+   ],
+   "negated": [
+    "night sweats",
+    "headache"
+   ]
+  },
+  {
+   "id": "heldout_094",
+   "text": "Riverside Nursing Home - ED note\nPatient: Deepika Mukherjee   IP No: 785751   DOB: 20 September 1948\nEmail: deepika.mukherjee71@gmail.com\nAddress: 32, Linking Road, Mumbai\n\n75-year-old female presents with chills and dry cough for 14 days. No orthopnea. Patient denies any syncope. Denies palpitations. Vitals: BP 116/62, HR 121, RR 28, SpO2 95%, Temp 39.5 C. Seen by Dr. Meera Mehta. Review on 10 January 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Deepika Mukherjee"
+    },
+    {
+     "type": "id",
+     "value": "785751"
+    },
+    {
+     "type": "date",
+     "value": "20 September 1948"
+    },
+    {
+     "type": "name",
+     "value": "Meera Mehta"
+    },
+    {
+     "type": "facility",
+     "value": "Riverside Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "deepika.mukherjee71@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Mumbai"
+    },
+    {
+     "type": "date",
+     "value": "10 January 2024"
+    }
+   ],
+   "keep": [
+    "chills",
+    "dry cough",
+    "14 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "chills",
+    "dry cough"
+   ],
+   "negated": [
+    "orthopnea",
+    "syncope",
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_095",
+   "text": "Lifeline Nursing Home - OPD note\nName: Ms. Aarav Kaur   Hospital No. 2021/91348   DOB: 15-05-1975\nEmail: aarav.kaur64@outlook.com\n\n31-year-old female presents with fever and fatigue for 12 days. No dizziness. Vitals: BP 126/85, HR 124, RR 22, SpO2 95%, Temp 38.6 C. Seen by Dr. Harleen Joshi. Review on 19 January 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Aarav Kaur"
+    },
+    {
+     "type": "id",
+     "value": "2021/91348"
+    },
+    {
+     "type": "date",
+     "value": "15-05-1975"
+    },
+    {
+     "type": "name",
+     "value": "Harleen Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "Lifeline Nursing Home"
+    },
+    {
+     "type": "email",
+     "value": "aarav.kaur64@outlook.com"
+    },
+    {
+     "type": "date",
+     "value": "19 January 2024"
+    }
+   ],
+   "keep": [
+    "fever",
+    "fatigue",
+    "12 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "fever",
+    "fatigue"
+   ],
+   "negated": [
+    "dizziness"
+   ]
+  },
+  {
+   "id": "heldout_096",
+   "text": "St. Joseph's Hospital - Ward round\nPt: Singh, Siddharth   MRN: 9234418   DOB: 4 October 1954\nEmail: siddharth.singh27@outlook.com\nAddress: 203, MG Road, Nagpur\n\n46-year-old female presents with wheezing, hemoptysis and weight loss for 9 days. Denies night sweats. There is no abdominal pain. Known case of chronic kidney disease and coronary artery disease. Vitals: BP 98/97, HR 72, RR 29, SpO2 90%, Temp 37.6 C. Seen by Dr. Farhan Shah. Review on 1 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Singh, Siddharth"
+    },
+    {
+     "type": "id",
+     "value": "9234418"
+    },
+    {
+     "type": "date",
+     "value": "4 October 1954"
+    },
+    {
+     "type": "name",
+     "value": "Farhan Shah"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Hospital"
+    },
+    {
+     "type": "email",
+     "value": "siddharth.singh27@outlook.com"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "1 February 2024"
+    }
+   ],
+   "keep": [
+    "wheezing",
+    "hemoptysis",
+    "weight loss",
+    "9 days",
+    "SpO2 90%",
+    "chronic kidney disease",
+    "coronary artery disease"
+   ],
+   "active": [
+    "wheezing",
+    "hemoptysis",
+    "weight loss"
+   ],
+   "negated": [
+    "night sweats",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_097",
+   "text": "Sahyadri Institute of Medical Sciences - ED note\nName: Mr. Siddharth Kulkarni   MRN: 7596145   DOB: 1965-11-27\nEmail: siddharth.kulkarni86@yahoo.co.in\nAddress: 225, Linking Road, Hyderabad\n\n82-year-old male presents with fatigue and sore throat for 3 days. No vomiting. Vitals: BP 110/71, HR 118, RR 19, SpO2 98%, Temp 37.6 C. Seen by Dr. Rohan Rao. Review on 4 August 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Siddharth Kulkarni"
+    },
+    {
+     "type": "id",
+     "value": "7596145"
+    },
+    {
+     "type": "date",
+     "value": "1965-11-27"
+    },
+    {
+     "type": "name",
+     "value": "Rohan Rao"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Institute of Medical Sciences"
+    },
+    {
+     "type": "email",
+     "value": "siddharth.kulkarni86@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Hyderabad"
+    },
+    {
+     "type": "date",
+     "value": "4 August 2024"
+    }
+   ],
+   "keep": [
+    "fatigue",
+    "sore throat",
+    "3 days",
+    "SpO2 98%"
+   ],
+   "active": [
+    "fatigue",
+    "sore throat"
+   ],
+   "negated": [
+    "vomiting"
+   ]
+  },
+  {
+   "id": "heldout_098",
+   "text": "Lotus Nursing Home - ED note\nPatient: David Thomas   MRN: 4262263   DOB: 7 January 1972\nContact: +91-8320205510\n\n50-year-old male presents with headache, nausea, breathlessness and syncope for 10 days. There is no hemoptysis. Patient denies any fatigue. Known case of coronary artery disease. Vitals: BP 96/61, HR 66, RR 13, SpO2 86%, Temp 37.3 C. Seen by Dr. Kabir Chopra. Review on 25 March 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "David Thomas"
+    },
+    {
+     "type": "id",
+     "value": "4262263"
+    },
+    {
+     "type": "date",
+     "value": "7 January 1972"
+    },
+    {
+     "type": "name",
+     "value": "Kabir Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-8320205510"
+    },
+    {
+     "type": "date",
+     "value": "25 March 2025"
+    }
+   ],
+   "keep": [
+    "headache",
+    "nausea",
+    "breathlessness",
+    "syncope",
+    "10 days",
+    "SpO2 86%",
+    "coronary artery disease"
+   ],
+   "active": [
+    "headache",
+    "nausea",
+    "breathlessness",
+    "syncope"
+   ],
+   "negated": [
+    "hemoptysis",
+    "fatigue"
+   ]
+  },
+  {
+   "id": "heldout_099",
+   "text": "Ganga Clinic - Admission note\nPatient: Harleen Fernandes   MRN: 3866223   DOB: 9 January 2002\n\n64-year-old male presents with productive cough, dizziness, nausea and confusion for 10 days. Patient denies any orthopnea. Known case of tuberculosis and chronic kidney disease. Vitals: BP 113/76, HR 117, RR 15, SpO2 98%, Temp 37.6 C. Seen by Dr. Zoya Deshmukh. Review on 7 May 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Harleen Fernandes"
+    },
+    {
+     "type": "id",
+     "value": "3866223"
+    },
+    {
+     "type": "date",
+     "value": "9 January 2002"
+    },
+    {
+     "type": "name",
+     "value": "Zoya Deshmukh"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Clinic"
+    },
+    {
+     "type": "date",
+     "value": "7 May 2026"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "dizziness",
+    "nausea",
+    "confusion",
+    "10 days",
+    "SpO2 98%",
+    "tuberculosis",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "productive cough",
+    "dizziness",
+    "nausea",
+    "confusion"
+   ],
+   "negated": [
+    "orthopnea"
+   ]
+  },
+  {
+   "id": "heldout_100",
+   "text": "Metro Nursing Home - ED note\nPt: Tiwari, Arjun   UHID SMH34332788   DOB: 10 June 1974\nContact: +91-6330602942\nEmail: arjun.tiwari1@yahoo.co.in\n\n82-year-old male presents with shortness of breath, syncope and dizziness for 5 days. There is no hemoptysis. Vitals: BP 160/82, HR 77, RR 24, SpO2 97%, Temp 38.9 C. Seen by Dr. Sarah Banerjee. Review on 13 August 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Tiwari, Arjun"
+    },
+    {
+     "type": "id",
+     "value": "SMH34332788"
+    },
+    {
+     "type": "date",
+     "value": "10 June 1974"
+    },
+    {
+     "type": "name",
+     "value": "Sarah Banerjee"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "+91-6330602942"
+    },
+    {
+     "type": "email",
+     "value": "arjun.tiwari1@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "13 August 2024"
+    }
+   ],
+   "keep": [
+    "shortness of breath",
+    "syncope",
+    "dizziness",
+    "5 days",
+    "SpO2 97%"
+   ],
+   "active": [
+    "shortness of breath",
+    "syncope",
+    "dizziness"
+   ],
+   "negated": [
+    "hemoptysis"
+   ]
+  },
+  {
+   "id": "heldout_101",
+   "text": "Lotus Nursing Home - Ward round\nPt: Nair, Zoya   IP No: 407538   DOB: 14/02/1992\nContact: 6730236323\nEmail: zoya.nair62@gmail.com\n\n20-year-old male presents with chills, dry cough and palpitations for 8 days. No chest pain. Vitals: BP 134/81, HR 109, RR 19, SpO2 93%, Temp 36.9 C. Seen by Dr. Ishaan Chopra. Review on 3 February 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Nair, Zoya"
+    },
+    {
+     "type": "id",
+     "value": "407538"
+    },
+    {
+     "type": "date",
+     "value": "14/02/1992"
+    },
+    {
+     "type": "name",
+     "value": "Ishaan Chopra"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "6730236323"
+    },
+    {
+     "type": "email",
+     "value": "zoya.nair62@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "3 February 2024"
+    }
+   ],
+   "keep": [
+    "chills",
+    "dry cough",
+    "palpitations",
+    "8 days",
+    "SpO2 93%"
+   ],
+   "active": [
+    "chills",
+    "dry cough",
+    "palpitations"
+   ],
+   "negated": [
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_102",
+   "text": "Metro Multispeciality Hospital - ED note\nName: Ms. Swati Shah   UHID LMC52759921   DOB: 1957-10-26\nContact: +91 87581 74896\nAddress: 207, Anna Salai, Nagpur\n\n63-year-old female presents with dizziness, chest pain, vomiting and chills for 2 days. Denies high-grade fever. There is no fever. There is no leg swelling. Known case of asthma. Vitals: BP 110/77, HR 75, RR 26, SpO2 89%, Temp 39.2 C. Seen by Dr. Lakshmi Gill. Review on 14 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Swati Shah"
+    },
+    {
+     "type": "id",
+     "value": "LMC52759921"
+    },
+    {
+     "type": "date",
+     "value": "1957-10-26"
+    },
+    {
+     "type": "name",
+     "value": "Lakshmi Gill"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 87581 74896"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "14 October 2026"
+    }
+   ],
+   "keep": [
+    "dizziness",
+    "chest pain",
+    "vomiting",
+    "chills",
+    "2 days",
+    "SpO2 89%",
+    "asthma"
+   ],
+   "active": [
+    "dizziness",
+    "chest pain",
+    "vomiting",
+    "chills"
+   ],
+   "negated": [
+    "fever",
+    "fever",
+    "leg swelling"
+   ]
+  },
+  {
+   "id": "heldout_103",
+   "text": "Sahyadri Super Speciality Hospital - Admission note\nPt: Chopra, Joseph   IP No: 666561   DOB: 08/08/1989\nContact: 013-2808-5614\nEmail: joseph.chopra45@gmail.com\n\n87-year-old male presents with chills and leg swelling for 13 days. Denies headache. There is no sore throat. Known case of chronic kidney disease and coronary artery disease. Vitals: BP 121/90, HR 66, RR 26, SpO2 98%, Temp 38.9 C. Seen by Dr. Michael Thomas. Review on 10 June 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Chopra, Joseph"
+    },
+    {
+     "type": "id",
+     "value": "666561"
+    },
+    {
+     "type": "date",
+     "value": "08/08/1989"
+    },
+    {
+     "type": "name",
+     "value": "Michael Thomas"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "013-2808-5614"
+    },
+    {
+     "type": "email",
+     "value": "joseph.chopra45@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "10 June 2024"
+    }
+   ],
+   "keep": [
+    "chills",
+    "leg swelling",
+    "13 days",
+    "SpO2 98%",
+    "chronic kidney disease",
+    "coronary artery disease"
+   ],
+   "active": [
+    "chills",
+    "leg swelling"
+   ],
+   "negated": [
+    "headache",
+    "sore throat"
+   ]
+  },
+  {
+   "id": "heldout_104",
+   "text": "Lotus Institute of Medical Sciences - Ward round\nPt: Chopra, Pooja   IP No: 113274   DOB: 19-07-1941\nEmail: pooja.chopra33@yahoo.co.in\nAddress: 84, Anna Salai, Chennai\n\n30-year-old female presents with fatigue and palpitations for 14 days. Denies shortness of breath. Known case of type 2 diabetes mellitus and chronic kidney disease. Vitals: BP 121/74, HR 101, RR 20, SpO2 98%, Temp 36.7 C. Seen by Dr. Nisha Rao. Review on 12 November 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Chopra, Pooja"
+    },
+    {
+     "type": "id",
+     "value": "113274"
+    },
+    {
+     "type": "date",
+     "value": "19-07-1941"
+    },
+    {
+     "type": "name",
+     "value": "Nisha Rao"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Institute of Medical Sciences"
+    },
+    {
+     "type": "email",
+     "value": "pooja.chopra33@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "12 November 2026"
+    }
+   ],
+   "keep": [
+    "fatigue",
+    "palpitations",
+    "14 days",
+    "SpO2 98%",
+    "type 2 diabetes mellitus",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "fatigue",
+    "palpitations"
+   ],
+   "negated": [
+    "shortness of breath"
+   ]
+  },
+  {
+   "id": "heldout_105",
+   "text": "Lakeview Institute of Medical Sciences - OPD note\nPt: Kaur, Neha   UHID AC84978923   DOB: 1982-07-10\nEmail: neha.kaur11@gmail.com\nAddress: 250, Linking Road, Nagpur\n\n37-year-old female presents with dry cough and cough for 13 days. There is no hemoptysis. Denies chest pain. Known case of hypertension. Vitals: BP 125/89, HR 88, RR 25, SpO2 94%, Temp 36.4 C. Seen by Dr. Ishaan Mukherjee. Review on 23 December 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Kaur, Neha"
+    },
+    {
+     "type": "id",
+     "value": "AC84978923"
+    },
+    {
+     "type": "date",
+     "value": "1982-07-10"
+    },
+    {
+     "type": "name",
+     "value": "Ishaan Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "Lakeview Institute of Medical Sciences"
+    },
+    {
+     "type": "email",
+     "value": "neha.kaur11@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "23 December 2026"
+    }
+   ],
+   "keep": [
+    "dry cough",
+    "cough",
+    "13 days",
+    "SpO2 94%",
+    "hypertension"
+   ],
+   "active": [
+    "dry cough",
+    "cough"
+   ],
+   "negated": [
+    "hemoptysis",
+    "chest pain"
+   ]
+  },
+  {
+   "id": "heldout_106",
+   "text": "Metro Nursing Home - ED note\nPt: Saxena, Gaurav   IP No: 271706   DOB: 1973-10-07\nContact: 077-2471-3784\nEmail: gaurav.saxena67@gmail.com\nAddress: 161, MG Road, Chennai\n\n84-year-old male presents with chest pain, cough and sore throat for 12 days. Denies leg swelling. There is no weight loss. Denies wheezing. Known case of COPD and hypertension. Vitals: BP 158/79, HR 65, RR 24, SpO2 93%, Temp 36.8 C. Seen by Dr. Michael Mukherjee. Review on 10 December 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Saxena, Gaurav"
+    },
+    {
+     "type": "id",
+     "value": "271706"
+    },
+    {
+     "type": "date",
+     "value": "1973-10-07"
+    },
+    {
+     "type": "name",
+     "value": "Michael Mukherjee"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Nursing Home"
+    },
+    {
+     "type": "phone",
+     "value": "077-2471-3784"
+    },
+    {
+     "type": "email",
+     "value": "gaurav.saxena67@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "10 December 2025"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "cough",
+    "sore throat",
+    "12 days",
+    "SpO2 93%",
+    "COPD",
+    "hypertension"
+   ],
+   "active": [
+    "chest pain",
+    "cough",
+    "sore throat"
+   ],
+   "negated": [
+    "leg swelling",
+    "weight loss",
+    "wheezing"
+   ]
+  },
+  {
+   "id": "heldout_107",
+   "text": "Ganga Medical Centre - ED note\nName: Mr. Olivia Chopra   IP No: 462909   DOB: 18-03-1970\nContact: 015-2603-2996\nAddress: 127, Anna Salai, Chennai\n\n25-year-old male presents with chest pain and dry cough for 10 days. Patient denies any sore throat. Negative for abdominal pain. Known case of hypertension and coronary artery disease. Vitals: BP 132/70, HR 126, RR 24, SpO2 91%, Temp 39.0 C. Seen by Dr. Kabir Yadav. Review on 9 June 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Olivia Chopra"
+    },
+    {
+     "type": "id",
+     "value": "462909"
+    },
+    {
+     "type": "date",
+     "value": "18-03-1970"
+    },
+    {
+     "type": "name",
+     "value": "Kabir Yadav"
+    },
+    {
+     "type": "facility",
+     "value": "Ganga Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "015-2603-2996"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "9 June 2026"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "dry cough",
+    "10 days",
+    "SpO2 91%",
+    "hypertension",
+    "coronary artery disease"
+   ],
+   "active": [
+    "chest pain",
+    "dry cough"
+   ],
+   "negated": [
+    "sore throat",
+    "abdominal pain"
+   ]
+  },
+  {
+   "id": "heldout_108",
+   "text": "Green Valley Clinic - ED note\nName: Mr. Gurpreet George   Hospital No. 2022/39865   DOB: 04/04/1948\nContact: +91 99555 05096\nAddress: 79, Banjara Hills, Nagpur\n\n47-year-old male presents with headache, high-grade fever, dry cough and wheezing for 6 days. Patient denies any cough. Patient denies any confusion. Known case of chronic kidney disease. Vitals: BP 168/98, HR 111, RR 28, SpO2 87%, Temp 38.8 C. Seen by Dr. Gaurav Kaur. Review on 19 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Gurpreet George"
+    },
+    {
+     "type": "id",
+     "value": "2022/39865"
+    },
+    {
+     "type": "date",
+     "value": "04/04/1948"
+    },
+    {
+     "type": "name",
+     "value": "Gaurav Kaur"
+    },
+    {
+     "type": "facility",
+     "value": "Green Valley Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "+91 99555 05096"
+    },
+    {
+     "type": "location",
+     "value": "Nagpur"
+    },
+    {
+     "type": "date",
+     "value": "19 October 2024"
+    }
+   ],
+   "keep": [
+    "headache",
+    "high-grade fever",
+    "dry cough",
+    "wheezing",
+    "6 days",
+    "SpO2 87%",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "headache",
+    "fever",
+    "dry cough",
+    "wheezing"
+   ],
+   "negated": [
+    "cough",
+    "confusion"
+   ]
+  },
+  {
+   "id": "heldout_109",
+   "text": "Metro Hospital - Ward round\nPt: Desai, Thomas   Hospital No. 2023/28494   DOB: 7 November 1963\nContact: +91 94363 58746\nEmail: thomas.desai48@yahoo.co.in\nAddress: 81, Linking Road, Kochi\n\n86-year-old male presents with abdominal pain and headache for 8 days. There is no hemoptysis. Negative for chest pain. There is no cough. Known case of COPD and coronary artery disease. Vitals: BP 132/69, HR 120, RR 12, SpO2 96%, Temp 38.1 C. Seen by Dr. Joseph Das. Review on 26 March 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Desai, Thomas"
+    },
+    {
+     "type": "id",
+     "value": "2023/28494"
+    },
+    {
+     "type": "date",
+     "value": "7 November 1963"
+    },
+    {
+     "type": "name",
+     "value": "Joseph Das"
+    },
+    {
+     "type": "facility",
+     "value": "Metro Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91 94363 58746"
+    },
+    {
+     "type": "email",
+     "value": "thomas.desai48@yahoo.co.in"
+    },
+    {
+     "type": "location",
+     "value": "Kochi"
+    },
+    {
+     "type": "date",
+     "value": "26 March 2026"
+    }
+   ],
+   "keep": [
+    "abdominal pain",
+    "headache",
+    "8 days",
+    "SpO2 96%",
+    "COPD",
+    "coronary artery disease"
+   ],
+   "active": [
+    "abdominal pain",
+    "headache"
+   ],
+   "negated": [
+    "hemoptysis",
+    "chest pain",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_110",
+   "text": "Sunrise Medical Centre - Ward round\nName: Mr. Harish Rao   Hospital No. 2023/65331   DOB: 4 November 1959\nContact: +91 73550 67454\nEmail: harish.rao95@gmail.com\n\n66-year-old male presents with orthopnea, wheezing and chills for 3 days. Patient denies any syncope. Known case of type 2 diabetes mellitus and asthma. Vitals: BP 116/64, HR 75, RR 17, SpO2 92%, Temp 39.3 C. Seen by Dr. Pranav Qureshi. Review on 27 April 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Harish Rao"
+    },
+    {
+     "type": "id",
+     "value": "2023/65331"
+    },
+    {
+     "type": "date",
+     "value": "4 November 1959"
+    },
+    {
+     "type": "name",
+     "value": "Pranav Qureshi"
+    },
+    {
+     "type": "facility",
+     "value": "Sunrise Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "+91 73550 67454"
+    },
+    {
+     "type": "email",
+     "value": "harish.rao95@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "27 April 2026"
+    }
+   ],
+   "keep": [
+    "orthopnea",
+    "wheezing",
+    "chills",
+    "3 days",
+    "SpO2 92%",
+    "type 2 diabetes mellitus",
+    "asthma"
+   ],
+   "active": [
+    "orthopnea",
+    "wheezing",
+    "chills"
+   ],
+   "negated": [
+    "syncope"
+   ]
+  },
+  {
+   "id": "heldout_111",
+   "text": "Lotus Institute of Medical Sciences - ED note\nName: Ms. Swati Fernandes   UHID AC48176080   DOB: 1956-06-15\nEmail: swati.fernandes44@gmail.com\n\n80-year-old female presents with high-grade fever, weight loss and headache for 9 days. No nausea. Vitals: BP 104/89, HR 81, RR 16, SpO2 91%, Temp 37.2 C. Seen by Dr. Kabir Mathew. Review on 7 September 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Swati Fernandes"
+    },
+    {
+     "type": "id",
+     "value": "AC48176080"
+    },
+    {
+     "type": "date",
+     "value": "1956-06-15"
+    },
+    {
+     "type": "name",
+     "value": "Kabir Mathew"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Institute of Medical Sciences"
+    },
+    {
+     "type": "email",
+     "value": "swati.fernandes44@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "7 September 2024"
+    }
+   ],
+   "keep": [
+    "high-grade fever",
+    "weight loss",
+    "headache",
+    "9 days",
+    "SpO2 91%"
+   ],
+   "active": [
+    "fever",
+    "weight loss",
+    "headache"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_112",
+   "text": "Navjeevan Medical Centre - OPD note\nPt: Agarwal, Zoya   MRN: 7828268   DOB: 20 July 1997\nContact: 8651668984\nEmail: zoya.agarwal30@yahoo.co.in\n\n76-year-old male presents with hemoptysis, night sweats, weight loss and wheezing for 4 days. Patient denies any fatigue. There is no palpitations. No syncope. Vitals: BP 113/87, HR 83, RR 29, SpO2 92%, Temp 36.5 C. Seen by Dr. Emily Thomas. Review on 4 February 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Agarwal, Zoya"
+    },
+    {
+     "type": "id",
+     "value": "7828268"
+    },
+    {
+     "type": "date",
+     "value": "20 July 1997"
+    },
+    {
+     "type": "name",
+     "value": "Emily Thomas"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Medical Centre"
+    },
+    {
+     "type": "phone",
+     "value": "8651668984"
+    },
+    {
+     "type": "email",
+     "value": "zoya.agarwal30@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "4 February 2026"
+    }
+   ],
+   "keep": [
+    "hemoptysis",
+    "night sweats",
+    "weight loss",
+    "wheezing",
+    "4 days",
+    "SpO2 92%"
+   ],
+   "active": [
+    "hemoptysis",
+    "night sweats",
+    "weight loss",
+    "wheezing"
+   ],
+   "negated": [
+    "fatigue",
+    "palpitations",
+    "syncope"
+   ]
+  },
+  {
+   "id": "heldout_113",
+   "text": "St. Joseph's Super Speciality Hospital - Ward round\nPt: George, Farhan   UHID AC65599620   DOB: 20-03-1990\nContact: +91-6897669802\n\n35-year-old female presents with productive cough and breathlessness for 5 days. No palpitations. There is no night sweats. Vitals: BP 170/64, HR 68, RR 14, SpO2 95%, Temp 36.8 C. Seen by Dr. Deepika Joshi. Review on 21 March 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "George, Farhan"
+    },
+    {
+     "type": "id",
+     "value": "AC65599620"
+    },
+    {
+     "type": "date",
+     "value": "20-03-1990"
+    },
+    {
+     "type": "name",
+     "value": "Deepika Joshi"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Super Speciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "+91-6897669802"
+    },
+    {
+     "type": "date",
+     "value": "21 March 2024"
+    }
+   ],
+   "keep": [
+    "productive cough",
+    "breathlessness",
+    "5 days",
+    "SpO2 95%"
+   ],
+   "active": [
+    "productive cough",
+    "breathlessness"
+   ],
+   "negated": [
+    "palpitations",
+    "night sweats"
+   ]
+  },
+  {
+   "id": "heldout_114",
+   "text": "Lotus Hospital - ED note\nName: Mr. Diya Gupta   IP No: 924108   DOB: 1958-02-21\nAddress: 245, Civil Lines, Kolkata\n\n44-year-old male presents with dizziness and wheezing for 12 days. No nausea. Known case of chronic kidney disease and COPD. Vitals: BP 160/89, HR 75, RR 25, SpO2 90%, Temp 36.7 C. Seen by Dr. Ananya Singh. Review on 14 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Diya Gupta"
+    },
+    {
+     "type": "id",
+     "value": "924108"
+    },
+    {
+     "type": "date",
+     "value": "1958-02-21"
+    },
+    {
+     "type": "name",
+     "value": "Ananya Singh"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "14 October 2024"
+    }
+   ],
+   "keep": [
+    "dizziness",
+    "wheezing",
+    "12 days",
+    "SpO2 90%",
+    "chronic kidney disease",
+    "COPD"
+   ],
+   "active": [
+    "dizziness",
+    "wheezing"
+   ],
+   "negated": [
+    "nausea"
+   ]
+  },
+  {
+   "id": "heldout_115",
+   "text": "St. Joseph's Multispeciality Hospital - ED note\nPt: Thomas, Swati   IP No: 553891   DOB: 02/06/1941\nContact: 9232666587\nEmail: swati.thomas23@gmail.com\n\n20-year-old male presents with chest pain, fatigue and leg swelling for 13 days. No palpitations. Vitals: BP 104/74, HR 126, RR 15, SpO2 88%, Temp 39.2 C. Seen by Dr. Ayesha Das. Review on 26 August 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Thomas, Swati"
+    },
+    {
+     "type": "id",
+     "value": "553891"
+    },
+    {
+     "type": "date",
+     "value": "02/06/1941"
+    },
+    {
+     "type": "name",
+     "value": "Ayesha Das"
+    },
+    {
+     "type": "facility",
+     "value": "St. Joseph's Multispeciality Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "9232666587"
+    },
+    {
+     "type": "email",
+     "value": "swati.thomas23@gmail.com"
+    },
+    {
+     "type": "date",
+     "value": "26 August 2024"
+    }
+   ],
+   "keep": [
+    "chest pain",
+    "fatigue",
+    "leg swelling",
+    "13 days",
+    "SpO2 88%"
+   ],
+   "active": [
+    "chest pain",
+    "fatigue",
+    "leg swelling"
+   ],
+   "negated": [
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_116",
+   "text": "Navjeevan Super Speciality Hospital - Ward round\nName: Mr. Pooja D'Souza   Hospital No. 2021/44966   DOB: 28 February 1957\nAddress: 98, Banjara Hills, Indore\n\n64-year-old male presents with fever, fatigue and productive cough for 4 days. Negative for headache. No cough. Known case of coronary artery disease and type 2 diabetes mellitus. Vitals: BP 160/70, HR 79, RR 19, SpO2 98%, Temp 37.6 C. Seen by Dr. Joseph Banerjee. Review on 16 April 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Pooja D'Souza"
+    },
+    {
+     "type": "id",
+     "value": "2021/44966"
+    },
+    {
+     "type": "date",
+     "value": "28 February 1957"
+    },
+    {
+     "type": "name",
+     "value": "Joseph Banerjee"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Super Speciality Hospital"
+    },
+    {
+     "type": "location",
+     "value": "Indore"
+    },
+    {
+     "type": "date",
+     "value": "16 April 2026"
+    }
+   ],
+   "keep": [
+    "fever",
+    "fatigue",
+    "productive cough",
+    "4 days",
+    "SpO2 98%",
+    "coronary artery disease",
+    "type 2 diabetes mellitus"
+   ],
+   "active": [
+    "fever",
+    "fatigue",
+    "productive cough"
+   ],
+   "negated": [
+    "headache",
+    "cough"
+   ]
+  },
+  {
+   "id": "heldout_117",
+   "text": "Sahyadri Hospital - Ward round\nPatient: Kavya D'Souza   IP No: 247199   DOB: 14-07-1981\nContact: 036-2050-1016\nEmail: kavya.dsouza95@yahoo.co.in\n\n57-year-old female presents with cough, leg swelling, hemoptysis and palpitations for 3 days. Denies high-grade fever. Denies syncope. There is no night sweats. Known case of hypertension and chronic kidney disease. Vitals: BP 129/81, HR 105, RR 25, SpO2 87%, Temp 36.4 C. Seen by Dr. Harleen Malhotra. Review on 28 October 2026.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Kavya D'Souza"
+    },
+    {
+     "type": "id",
+     "value": "247199"
+    },
+    {
+     "type": "date",
+     "value": "14-07-1981"
+    },
+    {
+     "type": "name",
+     "value": "Harleen Malhotra"
+    },
+    {
+     "type": "facility",
+     "value": "Sahyadri Hospital"
+    },
+    {
+     "type": "phone",
+     "value": "036-2050-1016"
+    },
+    {
+     "type": "email",
+     "value": "kavya.dsouza95@yahoo.co.in"
+    },
+    {
+     "type": "date",
+     "value": "28 October 2026"
+    }
+   ],
+   "keep": [
+    "cough",
+    "leg swelling",
+    "hemoptysis",
+    "palpitations",
+    "3 days",
+    "SpO2 87%",
+    "hypertension",
+    "chronic kidney disease"
+   ],
+   "active": [
+    "cough",
+    "leg swelling",
+    "hemoptysis",
+    "palpitations"
+   ],
+   "negated": [
+    "fever",
+    "syncope",
+    "night sweats"
+   ]
+  },
+  {
+   "id": "heldout_118",
+   "text": "Lotus Clinic - Ward round\nPatient: Pooja Gill   MRN: 4153357   DOB: 23/11/1956\nContact: 8651151630\nEmail: pooja.gill88@gmail.com\nAddress: 124, Civil Lines, Chennai\n\n22-year-old male presents with leg swelling, wheezing and chest pain for 2 days. Negative for palpitations. Known case of COPD. Vitals: BP 153/84, HR 115, RR 14, SpO2 93%, Temp 39.4 C. Seen by Dr. Mary Banerjee. Review on 22 June 2025.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Pooja Gill"
+    },
+    {
+     "type": "id",
+     "value": "4153357"
+    },
+    {
+     "type": "date",
+     "value": "23/11/1956"
+    },
+    {
+     "type": "name",
+     "value": "Mary Banerjee"
+    },
+    {
+     "type": "facility",
+     "value": "Lotus Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "8651151630"
+    },
+    {
+     "type": "email",
+     "value": "pooja.gill88@gmail.com"
+    },
+    {
+     "type": "location",
+     "value": "Chennai"
+    },
+    {
+     "type": "date",
+     "value": "22 June 2025"
+    }
+   ],
+   "keep": [
+    "leg swelling",
+    "wheezing",
+    "chest pain",
+    "2 days",
+    "SpO2 93%",
+    "COPD"
+   ],
+   "active": [
+    "leg swelling",
+    "wheezing",
+    "chest pain"
+   ],
+   "negated": [
+    "palpitations"
+   ]
+  },
+  {
+   "id": "heldout_119",
+   "text": "Navjeevan Clinic - Ward round\nName: Mr. Riya Tiwari   UHID LMC43832278   DOB: 05-08-1967\nContact: +91 79915 18581\nAddress: 54, MG Road, Kolkata\n\n69-year-old male presents with night sweats and abdominal pain for 11 days. Patient denies any dizziness. Patient denies any sore throat. Patient denies any fatigue. Vitals: BP 135/75, HR 111, RR 13, SpO2 97%, Temp 37.6 C. Seen by Dr. Diya Singh. Review on 25 October 2024.",
+   "phi": [
+    {
+     "type": "name",
+     "value": "Riya Tiwari"
+    },
+    {
+     "type": "id",
+     "value": "LMC43832278"
+    },
+    {
+     "type": "date",
+     "value": "05-08-1967"
+    },
+    {
+     "type": "name",
+     "value": "Diya Singh"
+    },
+    {
+     "type": "facility",
+     "value": "Navjeevan Clinic"
+    },
+    {
+     "type": "phone",
+     "value": "+91 79915 18581"
+    },
+    {
+     "type": "location",
+     "value": "Kolkata"
+    },
+    {
+     "type": "date",
+     "value": "25 October 2024"
+    }
+   ],
+   "keep": [
+    "night sweats",
+    "abdominal pain",
+    "11 days",
+    "SpO2 97%"
+   ],
+   "active": [
+    "night sweats",
+    "abdominal pain"
+   ],
+   "negated": [
+    "dizziness",
+    "sore throat",
+    "fatigue"
+   ]
+  }
+ ]
+}

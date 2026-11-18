@@ -1,0 +1,178 @@
+{
+  "experiment": "phase5_heldout_text",
+  "timestamp": "2026-11-18T17:55:37+00:00",
+  "environment": {
+    "device": "cuda",
+    "llm_model": "llama3.1:8b",
+    "biomedclip_model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "python": "3.11.7"
+  },
+  "dataset": {
+    "name": "generated held-out notes",
+    "n": 120,
+    "seed": 2027
+  },
+  "runs": [
+    {
+      "typo_rate": 0.0,
+      "phi_recall": 0.998,
+      "phi_recall_by_type": {
+        "date": {
+          "n": 240,
+          "recall": 1.0
+        },
+        "email": {
+          "n": 55,
+          "recall": 1.0
+        },
+        "facility": {
+          "n": 120,
+          "recall": 1.0
+        },
+        "id": {
+          "n": 120,
+          "recall": 1.0
+        },
+        "location": {
+          "n": 57,
+          "recall": 1.0
+        },
+        "name": {
+          "n": 240,
+          "recall": 0.992
+        },
+        "phone": {
+          "n": 74,
+          "recall": 1.0
+        }
+      },
+      "phi_token_leak_rate": 0.021,
+      "clinical_text_kept": 0.999,
+      "active_recall": 0.997,
+      "negation_precision": 1.0,
+      "negation_recall": 1.0,
+      "negation_f1": 1.0
+    },
+    {
+      "typo_rate": 0.02,
+      "phi_recall": 0.994,
+      "phi_recall_by_type": {
+        "date": {
+          "n": 240,
+          "recall": 0.996
+        },
+        "email": {
+          "n": 55,
+          "recall": 1.0
+        },
+        "facility": {
+          "n": 120,
+          "recall": 0.983
+        },
+        "id": {
+          "n": 120,
+          "recall": 1.0
+        },
+        "location": {
+          "n": 57,
+          "recall": 1.0
+        },
+        "name": {
+          "n": 240,
+          "recall": 0.992
+        },
+        "phone": {
+          "n": 74,
+          "recall": 1.0
+        }
+      },
+      "phi_token_leak_rate": 0.03,
+      "clinical_text_kept": 0.996,
+      "active_recall": 0.969,
+      "negation_precision": 1.0,
+      "negation_recall": 0.979,
+      "negation_f1": 0.989
+    },
+    {
+      "typo_rate": 0.05,
+      "phi_recall": 0.982,
+      "phi_recall_by_type": {
+        "date": {
+          "n": 240,
+          "recall": 0.975
+        },
+        "email": {
+          "n": 55,
+          "recall": 1.0
+        },
+        "facility": {
+          "n": 120,
+          "recall": 0.967
+        },
+        "id": {
+          "n": 120,
+          "recall": 0.983
+        },
+        "location": {
+          "n": 57,
+          "recall": 0.965
+        },
+        "name": {
+          "n": 240,
+          "recall": 0.992
+        },
+        "phone": {
+          "n": 74,
+          "recall": 1.0
+        }
+      },
+      "phi_token_leak_rate": 0.038,
+      "clinical_text_kept": 0.989,
+      "active_recall": 0.932,
+      "negation_precision": 0.995,
+      "negation_recall": 0.916,
+      "negation_f1": 0.954
+    },
+    {
+      "typo_rate": 0.1,
+      "phi_recall": 0.978,
+      "phi_recall_by_type": {
+        "date": {
+          "n": 240,
+          "recall": 0.996
+        },
+        "email": {
+          "n": 55,
+          "recall": 1.0
+        },
+        "facility": {
+          "n": 120,
+          "recall": 0.925
+        },
+        "id": {
+          "n": 120,
+          "recall": 0.975
+        },
+        "location": {
+          "n": 57,
+          "recall": 0.947
+        },
+        "name": {
+          "n": 240,
+          "recall": 0.983
+        },
+        "phone": {
+          "n": 74,
+          "recall": 1.0
+        }
+      },
+      "phi_token_leak_rate": 0.051,
+      "clinical_text_kept": 0.982,
+      "active_recall": 0.907,
+      "negation_precision": 0.986,
+      "negation_recall": 0.89,
+      "negation_f1": 0.936
+    }
+  ]
+}

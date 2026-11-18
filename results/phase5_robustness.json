@@ -1,0 +1,160 @@
+{
+  "experiment": "phase5_robustness",
+  "timestamp": "2026-11-18T17:53:56+00:00",
+  "environment": {
+    "device": "cuda",
+    "llm_model": "llama3.1:8b",
+    "biomedclip_model": "hf-hub:microsoft/BiomedCLIP-PubMedBERT_256-vit_base_patch16_224",
+    "embedding_model": "pritamdeka/S-PubMedBert-MS-MARCO",
+    "python": "3.11.7"
+  },
+  "dataset": {
+    "name": "IU X-Ray test",
+    "n": 435
+  },
+  "classifier": "ensemble (calibrated)",
+  "clean": {
+    "macro_auroc": 0.752,
+    "abnormal_auroc": 0.773
+  },
+  "corruptions": {
+    "gaussian noise": [
+      {
+        "macro_auroc": 0.75,
+        "abnormal_auroc": 0.772,
+        "severity": "sigma 5",
+        "macro_auroc_drop": 0.002,
+        "mean_abs_prob_change": 0.0089
+      },
+      {
+        "macro_auroc": 0.735,
+        "abnormal_auroc": 0.709,
+        "severity": "sigma 15",
+        "macro_auroc_drop": 0.017,
+        "mean_abs_prob_change": 0.0445
+      },
+      {
+        "macro_auroc": 0.651,
+        "abnormal_auroc": 0.615,
+        "severity": "sigma 30",
+        "macro_auroc_drop": 0.101,
+        "mean_abs_prob_change": 0.1069
+      }
+    ],
+    "gaussian blur": [
+      {
+        "macro_auroc": 0.751,
+        "abnormal_auroc": 0.758,
+        "severity": "sigma 1px",
+        "macro_auroc_drop": 0.001,
+        "mean_abs_prob_change": 0.0137
+      },
+      {
+        "macro_auroc": 0.744,
+        "abnormal_auroc": 0.737,
+        "severity": "sigma 2px",
+        "macro_auroc_drop": 0.008,
+        "mean_abs_prob_change": 0.0364
+      },
+      {
+        "macro_auroc": 0.708,
+        "abnormal_auroc": 0.698,
+        "severity": "sigma 4px",
+        "macro_auroc_drop": 0.044,
+        "mean_abs_prob_change": 0.0558
+      }
+    ],
+    "rotation": [
+      {
+        "macro_auroc": 0.758,
+        "abnormal_auroc": 0.783,
+        "severity": "5 deg",
+        "macro_auroc_drop": -0.006,
+        "mean_abs_prob_change": 0.0348
+      },
+      {
+        "macro_auroc": 0.743,
+        "abnormal_auroc": 0.789,
+        "severity": "10 deg",
+        "macro_auroc_drop": 0.009,
+        "mean_abs_prob_change": 0.047
+      },
+      {
+        "macro_auroc": 0.708,
+        "abnormal_auroc": 0.641,
+        "severity": "20 deg",
+        "macro_auroc_drop": 0.044,
+        "mean_abs_prob_change": 0.097
+      }
+    ],
+    "low contrast": [
+      {
+        "macro_auroc": 0.751,
+        "abnormal_auroc": 0.758,
+        "severity": "x0.7",
+        "macro_auroc_drop": 0.001,
+        "mean_abs_prob_change": 0.0167
+      },
+      {
+        "macro_auroc": 0.748,
+        "abnormal_auroc": 0.738,
+        "severity": "x0.5",
+        "macro_auroc_drop": 0.004,
+        "mean_abs_prob_change": 0.0325
+      },
+      {
+        "macro_auroc": 0.729,
+        "abnormal_auroc": 0.701,
+        "severity": "x0.3",
+        "macro_auroc_drop": 0.023,
+        "mean_abs_prob_change": 0.0621
+      }
+    ],
+    "jpeg": [
+      {
+        "macro_auroc": 0.751,
+        "abnormal_auroc": 0.773,
+        "severity": "quality 50",
+        "macro_auroc_drop": 0.001,
+        "mean_abs_prob_change": 0.0062
+      },
+      {
+        "macro_auroc": 0.751,
+        "abnormal_auroc": 0.747,
+        "severity": "quality 20",
+        "macro_auroc_drop": 0.001,
+        "mean_abs_prob_change": 0.0183
+      },
+      {
+        "macro_auroc": 0.646,
+        "abnormal_auroc": 0.65,
+        "severity": "quality 5",
+        "macro_auroc_drop": 0.106,
+        "mean_abs_prob_change": 0.1438
+      }
+    ],
+    "low resolution": [
+      {
+        "macro_auroc": 0.749,
+        "abnormal_auroc": 0.751,
+        "severity": "256px",
+        "macro_auroc_drop": 0.003,
+        "mean_abs_prob_change": 0.0204
+      },
+      {
+        "macro_auroc": 0.739,
+        "abnormal_auroc": 0.723,
+        "severity": "128px",
+        "macro_auroc_drop": 0.013,
+        "mean_abs_prob_change": 0.0425
+      },
+      {
+        "macro_auroc": 0.698,
+        "abnormal_auroc": 0.704,
+        "severity": "64px",
+        "macro_auroc_drop": 0.054,
+        "mean_abs_prob_change": 0.0617
+      }
+    ]
+  }
+}
