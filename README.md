@@ -21,8 +21,9 @@ See [docs/design.md](docs/design.md) for architecture, scope and the phase plan.
 | 1 Ingestion & privacy | ✅ de-ID (text + DICOM), clinical NER with negation, upload API |
 | 2 Unimodal modules | ✅ CXR findings (BiomedCLIP), heatmaps, similar cases, RAG; unimodal baselines |
 | 3 Fusion | ✅ multimodal assistant: routing, fused scores, conflicts, NEWS2 triage, cited answers |
-| 4 Interface | ⏳ next (React) |
-| 5-6 | planned |
+| 4 Interface | ✅ React app: case workspace, streaming cited answers, heatmaps, leader-line evidence tracing |
+| 5 Evaluation | ⏳ next |
+| 6 Docs & demo | planned |
 
 ### Phase 2 results (details and caveats in [docs/design.md](docs/design.md) §10)
 
@@ -94,7 +95,26 @@ python -m scripts.eval_retrieval              # also builds the similar-case ind
 
 # 7. Demo cases (7 synthetic notes on real X-rays)
 python -m scripts.load_demo_cases --analyze --reset
+
+# 8. Build the web interface (Node 18+)
+npm --prefix ui install
+npm --prefix ui run build
 ```
+
+## Run the app
+
+```bash
+uvicorn api.main:app --port 8000   # serves the API and the built UI
+```
+
+Open http://127.0.0.1:8000. For UI development with hot reload, run the backend as above
+and `npm --prefix ui run dev` (http://127.0.0.1:5173; API calls are proxied to :8000).
+
+The interface: a case rail; a triage band (NEWS2 + red flags); the X-ray with per-finding
+heatmaps and the de-identified note with entity highlighting; an evidence column (triage
+reasons, note-vs-image conflicts, calibrated findings as reference bands, similar prior
+cases); and an answer log that streams cited answers. Hover any citation, or any finding,
+to draw leader lines to the exact evidence. Design system: [DESIGN.md](DESIGN.md).
 
 ## Verify
 
@@ -121,6 +141,9 @@ uvicorn api.main:app --reload      # then open http://127.0.0.1:8000/docs
 | GET | `/cases` | List cases (title, counts) |
 | POST | `/cases/{id}/chat` | `{"question", "image_id"?}`: **full multimodal answer**: route, cited summary/details, fused findings, conflicts, NEWS2 triage, follow-ups, timings |
 | GET | `/cases/{id}/chat` | Conversation history (questions stored de-identified) |
+| GET | `/cases/{id}/overview` | Findings, conflicts, triage and follow-ups without a question (~1 s) |
+| POST | `/cases/{id}/chat/stream` | Same as `/chat` as server-sent events: `evidence` first, then `token`s, then `done` |
+| GET | `/cases/{id}/notes/{note_id}` | One de-identified note with entities |
 
 Privacy guarantees: raw uploads are never written to disk; original filenames
 are discarded; the audit log (`data/store/audit.log`) records actions and PHI
@@ -142,7 +165,7 @@ medassist/
   llm/                Ollama client
   evaluation/         metrics, result saving
 api/                  FastAPI app
-ui/                   React + Vite frontend (Phase 4)
+ui/                   React + Vite + TypeScript frontend (src/components, leader.tsx, styles.css)
 scripts/              smoke test, dataset preparation, evaluation scripts
 results/              evaluation outputs (JSON), committed for reproducibility
 tests/                pytest suite

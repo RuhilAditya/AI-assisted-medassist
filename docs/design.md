@@ -85,7 +85,7 @@ the report must be reproducible with one command from `medassist/evaluation`.
 | 1 Ingestion & privacy | 3-4 | Upload API, DICOM pipeline, de-ID, NER + negation ✅ |
 | 2 Unimodal modules | 5-8 | RAG over notes; BiomedCLIP labels + retrieval + heatmaps; unimodal baselines ✅ |
 | 3 Fusion | 9-11 | Router, evidence bundle, prompt templates, triage, conflict detection ✅ |
-| 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner |
+| 4 Interface | 12-13 | React app: case workspace with uploads, chat, image viewer with heatmap overlay, findings + evidence panel, triage banner ✅ |
 | 5 Evaluation | 14-16 | Full benchmark suite + user study |
 | 6 Docs & demo | 17-20 | Report, slides, demo video |
 
@@ -322,7 +322,42 @@ conflict), unconfirmed pneumonia (conflict), COPD (EMERGENCY, NEWS2 8), routine
 screening (ROUTINE), wrong image (modality mismatch). Curated for demonstration
 and never used in evaluation.
 
-## 12. Known limitations / risks
+## 12. Phase 4 design notes (interface)
+
+**Process.** Built with the Impeccable design skill (`.claude/skills/impeccable`), followed
+manually because its engine binary was not approved to run: product interview ->
+`PRODUCT.md`; direction chosen by the user from four derived directions ("Atlas plate");
+direction contract in `.impeccable/surfaces/case-workspace.md`; two inspection rounds at
+1440x900 and 375x812 in a real browser; design system recorded in `DESIGN.md`. Impeccable's
+automated detector and its separate finish-review agent did not run (the engine is not
+approved and its agents were not loaded); this is disclosed rather than claimed.
+
+**Key decisions.**
+- *Light theme from the use scene*: projector in a lit room, bright wards.
+- *Evidence before answers*: opening a case calls `/overview` (~1 s, no LLM) so triage,
+  conflicts and findings appear immediately; questions stream over SSE
+  (`/chat/stream`: `evidence` -> `token`... -> `done`), so the ~30 s LLM wait shows live text.
+- *Provenance colour code*: vermilion = image evidence, blue = note evidence (the atlas
+  arterial/venous convention); the heatmap overlay was changed from a rainbow (JET) map
+  to a single vermilion ink, which also avoids JET's false boundaries.
+- *Signature: leader lines.* Hovering a citation chip or a finding draws lines to the exact
+  evidence (image, note phrase, vitals, similar case, conflict, triage). It turns
+  "explainable AI" from a claim into something the examiner can see.
+- *Conflicts first*: placed directly under triage in the evidence column, because a HIGH
+  disagreement is the most decision-relevant output (found in inspection round 1, where
+  it sat below the fold).
+- *Probabilities as reference bands* (unlikely | possible | likely) with image and
+  note-adjusted markers, instead of big-number tiles.
+- *Accessibility*: Atkinson Hyperlegible (designed for low vision), colour never the only
+  carrier of meaning, keyboard focus traces leader lines too, reduced-motion respected,
+  phone layout with tabs.
+
+**Verified in the browser**: demo case loading, overview, heatmap (vermilion overlay,
+aligned), leader lines for citations and finding rows (and that they clear), live
+streaming of a real Llama answer with citation chips (~37 s), mobile tabs. Tests:
+`tests/test_phase4.py` covers overview, streaming order, listing, creation, notes.
+
+## 13. Known limitations / risks
 
 - Zero-shot BiomedCLIP accuracy on CXR findings is moderate; mitigation: a
   linear probe on frozen features as an improved variant.

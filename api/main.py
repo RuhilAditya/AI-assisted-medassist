@@ -7,10 +7,13 @@ Phase 2: image analysis (findings, similar cases, heatmaps) and RAG over notes.
 from __future__ import annotations
 
 import io
+import json
 from functools import lru_cache
+from pathlib import Path
 
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import FileResponse, Response, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from PIL import Image
 from pydantic import BaseModel, Field
 
@@ -187,9 +190,61 @@ def chat(case_id: str, body: ChatRequest) -> dict:
         raise _not_found(case_id) from None
 
 
+@app.get("/cases/{case_id}/overview")
+def case_overview(case_id: str) -> dict:
+    """Findings, conflicts and triage for a case without asking a question (~1 s)."""
+    from medassist.fusion.assistant import MedAssistant
+
+    try:
+        return MedAssistant(get_store()).overview(case_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None
+
+
+@app.post("/cases/{case_id}/chat/stream")
+def chat_stream(case_id: str, body: ChatRequest) -> StreamingResponse:
+    """Server-sent events: `evidence` (findings, conflicts, triage: ~1 s), then `token`
+    chunks of the written answer as the LLM produces them, then `done` (full response)."""
+    from medassist.fusion.assistant import MedAssistant
+
+    try:
+        get_store().get_case(case_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None
+
+    def events():
+        try:
+            for name, payload in MedAssistant(get_store()).chat_stream(case_id, body.question, body.image_id):
+                data = payload if name != "token" else {"text": payload}
+                yield f"event: {name}\ndata: {json.dumps(data)}\n\n"
+        except Exception as exc:  # surface failures to the client instead of a dropped stream
+            yield f"event: error\ndata: {json.dumps({'detail': f'{type(exc).__name__}: {exc}'})}\n\n"
+
+    return StreamingResponse(events(), media_type="text/event-stream",
+                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
 @app.get("/cases/{case_id}/chat")
 def chat_history(case_id: str) -> list[dict]:
     try:
         return get_store().get_chat(case_id)
     except CaseNotFoundError:
         raise _not_found(case_id) from None
+
+
+@app.get("/cases/{case_id}/notes/{note_id}")
+def get_note(case_id: str, note_id: str) -> dict:
+    try:
+        case = get_store().get_case(case_id)
+    except CaseNotFoundError:
+        raise _not_found(case_id) from None
+    note = next((n for n in case["notes"] if n["note_id"] == note_id), None)
+    if note is None:
+        raise HTTPException(status_code=404, detail="Note not found.")
+    return note
+
+
+# ---------------- Phase 4: serve the built React app ----------------
+UI_DIST = Path(__file__).resolve().parent.parent / "ui" / "dist"
+if UI_DIST.is_dir():  # after `npm run build`; in development Vite serves the UI instead
+    app.mount("/", StaticFiles(directory=UI_DIST, html=True), name="ui")

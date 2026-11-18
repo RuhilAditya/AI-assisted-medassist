@@ -210,10 +210,18 @@ def detect_modality(model: BiomedCLIP, image: Image.Image, min_confidence: float
     return ModalityCheck(top.label, round(top.score, 3), top.label == "chest X-ray" and top.score >= min_confidence)
 
 
-def overlay_heatmap(image: Image.Image, heatmap: np.ndarray, alpha: float = 0.45) -> Image.Image:
-    """Colour-map the heatmap (JET) on top of the padded-square grayscale image."""
-    square = np.asarray(pad_to_square(image.convert("RGB")))
-    colored = cv2.applyColorMap((heatmap * 255).astype(np.uint8), cv2.COLORMAP_JET)[:, :, ::-1]
-    mask = (heatmap[..., None] > 0.15).astype(np.float32) * alpha  # only tint salient areas
-    blended = square * (1 - mask) + colored * mask
-    return Image.fromarray(blended.astype(np.uint8))
+HEATMAP_INK = np.array([224, 68, 43], dtype=np.float32)  # the UI's vermilion "image evidence" ink
+
+
+def overlay_heatmap(image: Image.Image, heatmap: np.ndarray, alpha: float = 0.6) -> Image.Image:
+    """Single-ink overlay, the way an anatomy atlas tints a structure: vermilion whose
+    opacity follows the saliency, plus a thin contour at the 50% level. A single hue
+    reads more honestly than a rainbow (JET) map, which invents false boundaries."""
+    square = np.asarray(pad_to_square(image.convert("RGB"))).astype(np.float32)
+    weight = np.clip((heatmap - 0.15) / 0.85, 0, 1)[..., None] * alpha
+    blended = square * (1 - weight) + HEATMAP_INK * weight
+    contour_mask = (heatmap >= 0.5).astype(np.uint8)
+    contours, _ = cv2.findContours(contour_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    out = blended.astype(np.uint8).copy()
+    cv2.drawContours(out, contours, -1, tuple(int(c) for c in HEATMAP_INK), max(1, square.shape[0] // 300))
+    return Image.fromarray(out)

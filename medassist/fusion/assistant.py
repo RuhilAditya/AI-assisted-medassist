@@ -106,8 +106,29 @@ class MedAssistant:
         return [{"text": h.metadata["text"], "source": h.metadata["source"], "score": round(h.score, 3)}
                 for h in kb.retrieve(question, k=k)]
 
+    def overview(self, case_id: str, image_id: str | None = None) -> dict:
+        """Deterministic case summary for opening a case: fused findings, conflicts,
+        triage and follow-ups. No question, no retrieval, no LLM, nothing stored."""
+        case = self.store.get_case(case_id)
+        image = None
+        if case.get("images"):
+            image = next((i for i in case["images"] if i["image_id"] == image_id), None) if image_id else case["images"][-1]
+        analysis = self._image_analysis(case_id, image) if image else None
+        bundle = build_bundle(case, analysis, image["image_id"] if image else None)
+        conflicts = detect_conflicts(bundle)
+        triage = assess(bundle)
+        return {
+            "evidence": bundle.to_dict(),
+            "conflicts": [asdict(c) for c in conflicts],
+            "triage": asdict(triage),
+            "follow_ups": asdict(suggest(bundle, conflicts, triage, "overview")),
+            "disclaimer": DISCLAIMER,
+        }
+
     # ---------- main entry ----------
-    def chat(self, case_id: str, question: str, image_id: str | None = None) -> dict:
+    def prepare(self, case_id: str, question: str, image_id: str | None = None) -> tuple[dict, str, list]:
+        """Everything except the LLM: returns (partial response, LLM user message, extra state).
+        Fast (~1 s warm), so the UI can show findings, conflicts and triage immediately."""
         timings: dict[str, float] = {}
         t0 = time.perf_counter()
 
@@ -145,33 +166,59 @@ class MedAssistant:
             question=safe_question,
             task=prompts.ROUTE_TASKS[route.name],
         )
-        llm_error = None
-        try:
-            raw = self.chain.invoke({"user": user_msg})
-            summary, details = parse_sections(raw)
-        except Exception as exc:  # LLM down: still return the deterministic analysis
-            llm_error = f"{type(exc).__name__}: {exc}"
-            summary = "The language model is unavailable, so no written answer was generated. The findings, conflicts and triage below were computed without it."
-            details = ""
-        lap("llm")
-
-        cited = extract_citations(summary + " " + details)
-        response = {
+        partial = {
             "question": safe_question,
             "route": asdict(route),
-            "summary": summary,
-            "details": details,
-            "citations": cited,
             "evidence": bundle.to_dict(),
             "conflicts": [asdict(c) for c in conflicts],
             "triage": asdict(triage),
             "follow_ups": asdict(followups),
             "disclaimer": DISCLAIMER,
-            "llm_error": llm_error,
             "timings_s": timings,
         }
+        return partial, user_msg, [time.perf_counter()]
+
+    def _finish(self, case_id: str, partial: dict, raw: str | None, error: str | None, started: float) -> dict:
+        if error is None and raw is not None:
+            summary, details = parse_sections(raw)
+        else:
+            summary = ("The language model is unavailable, so no written answer was generated. "
+                       "The findings, conflicts and triage below were computed without it.")
+            details = ""
+        partial["timings_s"]["llm"] = round(time.perf_counter() - started, 2)
+        response = {**partial, "summary": summary, "details": details,
+                    "citations": extract_citations(summary + " " + details), "llm_error": error}
         self.store.add_chat_turn(case_id, {
-            "question": safe_question, "summary": summary, "route": route.name,
-            "triage_level": triage.level, "conflicts": len(conflicts),
+            "question": partial["question"], "summary": summary, "route": partial["route"]["name"],
+            "triage_level": partial["triage"]["level"], "conflicts": len(partial["conflicts"]),
         })
         return response
+
+    def chat(self, case_id: str, question: str, image_id: str | None = None) -> dict:
+        partial, user_msg, (started,) = self.prepare(case_id, question, image_id)
+        try:
+            raw, error = self.chain.invoke({"user": user_msg}), None
+        except Exception as exc:  # LLM down: still return the deterministic analysis
+            raw, error = None, f"{type(exc).__name__}: {exc}"
+        return self._finish(case_id, partial, raw, error, started)
+
+    def chat_stream(self, case_id: str, question: str, image_id: str | None = None):
+        """Generator of (event, payload): ("evidence", partial) first, then ("token", text)
+        chunks as the LLM writes, then ("done", full response)."""
+        partial, user_msg, (started,) = self.prepare(case_id, question, image_id)
+        yield "evidence", partial
+        chunks: list[str] = []
+        error = None
+        try:
+            stream = getattr(self.chain, "stream", None)
+            if stream is None:  # chains without streaming (e.g. test fakes)
+                chunks.append(self.chain.invoke({"user": user_msg}))
+                yield "token", chunks[-1]
+            else:
+                for chunk in stream({"user": user_msg}):
+                    if chunk:
+                        chunks.append(chunk)
+                        yield "token", chunk
+        except Exception as exc:
+            error = f"{type(exc).__name__}: {exc}"
+        yield "done", self._finish(case_id, partial, "".join(chunks) if not error else None, error, started)
